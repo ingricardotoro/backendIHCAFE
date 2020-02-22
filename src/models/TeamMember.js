@@ -9,7 +9,7 @@ import File from './File';
 //import connection object
 import { sequelize } from '../database/database';
 
-const Team = sequelize.define('teams',{
+const Teams = sequelize.define('teams',{
 
     id:{
         type: Sequelize.INTEGER,
@@ -57,4 +57,4 @@ const Team = sequelize.define('teams',{
 
 },{timestamps:true });
 
-export default Team;
+export default Teams;
