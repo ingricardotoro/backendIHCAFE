@@ -3,7 +3,7 @@ import Sequelize from 'sequelize';
 import Person from './Person';
 import Project from './Project';
 import Rol from './Rol';
-import Rol from './Team';
+import Team from './Team';
 import File from './File';
 
 //import connection object
