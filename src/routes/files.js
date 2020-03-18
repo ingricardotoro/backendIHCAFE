@@ -3,23 +3,13 @@ import path from 'path';
 import multer from 'multer';
 import { v4 as uuidv4 } from 'uuid';
 import Archivo from '../models/Archivo'
+import regeneratorRuntime from "regenerator-runtime";
+import '@babel/polyfill';
 
 const router = Router();
 
-
 import {FileByBudgetId} from '../controllers/filesController';
 
-/*const storage=multer.diskStorage({
-    
-    destination: path.join(__dirname, '../public/files'),
-    filename: (req, file , cb) => {
-        cb(null, file.originalname)
-    }
-});*/
-
-/*const upload = multer({
-    storage
-}).single(req.body.file)*/
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, path.join(__dirname, '../public/files'))
@@ -33,7 +23,7 @@ var storage = multer.diskStorage({
       storage: storage,
       limits:{fileSize: 5000000}, //5 megas
       fileFilter: (req,file, cb) => {
-        const filetypes = /jpeg|jpg|png|gif|pdf/;
+        const filetypes = /jpeg|jpg|png|gif|/;
         const mimetype = filetypes.test(file.mimetype);
         const extname = filetypes.test(path.extname(file.originalname));
 
@@ -44,8 +34,6 @@ var storage = multer.diskStorage({
       }
      
 });
-
-//const upload = multer ({dest: path.join(__dirname, '../public/files')});
 
 //ruta para la creacion de un nuevo archivo, asignado a un budgetLiine Atlas
 router.post('/filesbybudgetid/:id',FileByBudgetId);
@@ -83,10 +71,5 @@ router.post('/:id', upload.single('archivo'),async function (req, res, next ){
     }
     
 });
-
-/* router.get('/categories_parents',categoriesparents);
-router.get('/categories_childs/:id',categories_childs);// para obtener todas las categorias hijas dado el id del padre
-router.get('/child/:id',childbyid); // para solicitar una clasificacion hijo en especifico
- */
 
 export default router;

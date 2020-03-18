@@ -15,6 +15,10 @@ var _uuid = require("uuid");
 
 var _Archivo = _interopRequireDefault(require("../models/Archivo"));
 
+var _regeneratorRuntime = _interopRequireDefault(require("regenerator-runtime"));
+
+require("@babel/polyfill");
+
 var _filesController = require("../controllers/filesController");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -25,17 +29,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var router = (0, _express.Router)();
 
-/*const storage=multer.diskStorage({
-    
-    destination: path.join(__dirname, '../public/files'),
-    filename: (req, file , cb) => {
-        cb(null, file.originalname)
-    }
-});*/
-
-/*const upload = multer({
-    storage
-}).single(req.body.file)*/
 var storage = _multer["default"].diskStorage({
   destination: function destination(req, file, cb) {
     cb(null, _path["default"].join(__dirname, '../public/files'));
@@ -52,7 +45,7 @@ var upload = (0, _multer["default"])({
   },
   //5 megas
   fileFilter: function fileFilter(req, file, cb) {
-    var filetypes = /jpeg|jpg|png|gif|pdf/;
+    var filetypes = /jpeg|jpg|png|gif|/;
     var mimetype = filetypes.test(file.mimetype);
     var extname = filetypes.test(_path["default"].extname(file.originalname));
 
@@ -62,8 +55,7 @@ var upload = (0, _multer["default"])({
 
     cb("Solo se Permite Archivos Tipo Imagen");
   }
-}); //const upload = multer ({dest: path.join(__dirname, '../public/files')});
-//ruta para la creacion de un nuevo archivo, asignado a un budgetLiine Atlas
+}); //ruta para la creacion de un nuevo archivo, asignado a un budgetLiine Atlas
 
 router.post('/filesbybudgetid/:id', _filesController.FileByBudgetId);
 router.post('/:id', upload.single('archivo'),
@@ -71,9 +63,9 @@ router.post('/:id', upload.single('archivo'),
 function () {
   var _ref = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee(req, res, next) {
+  _regeneratorRuntime["default"].mark(function _callee(req, res, next) {
     var dir, newFile;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
+    return _regeneratorRuntime["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
@@ -134,10 +126,5 @@ function () {
     return _ref.apply(this, arguments);
   };
 }());
-/* router.get('/categories_parents',categoriesparents);
-router.get('/categories_childs/:id',categories_childs);// para obtener todas las categorias hijas dado el id del padre
-router.get('/child/:id',childbyid); // para solicitar una clasificacion hijo en especifico
- */
-
 var _default = router;
 exports["default"] = _default;
