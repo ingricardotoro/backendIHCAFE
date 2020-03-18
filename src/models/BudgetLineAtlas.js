@@ -28,14 +28,14 @@ const BudgetLineAtlas = sequelize.define('budgetlines_atlas',{
         type: Sequelize.STRING, 
         allowNull: false
     },
-    /*code_atlas:{
+    code_atlas:{
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: AtlasAccount,
           key: 'id',
          }
-    },*/
+    },
     code_sub_atlas:{
         /*type: Sequelize.STRING, 
         allowNull: false*/
