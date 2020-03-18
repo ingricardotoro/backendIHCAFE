@@ -53,8 +53,9 @@ router.post('/:id', upload.single('archivo'),async function (req, res, next ){
 
         if (newFile){
             
-            res.redirect('http://localhost:3000/project/'+req.body.project_id);
-    
+            //res.redirect('http://localhost:3000/project/'+req.body.project_id);
+            res.redirect('https://ihcafe-35ae7.firebaseapp.com/project/'+req.body.project_id);
+            
         }else{
             return res.json({
                 message:"No se Pudo Crear el Nuevo Archivo",
