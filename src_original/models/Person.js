@@ -1,5 +1,5 @@
 //para modelar datos 
-import Sequelize from 'sequelize'; 
+import Sequelize from 'sequelize';
 
 //import connection object
 import { sequelize } from '../database/database';

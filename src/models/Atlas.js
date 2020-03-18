@@ -1,10 +1,10 @@
 //para modelar datos 
-import Sequelize from 'sequelize'; 
+import Sequelize from 'sequelize';
 
 //import connection object
 import { sequelize } from '../database/database';
 
-const Person = sequelize.define('persons',{
+const Atlas = sequelize.define('atlas',{
 
     id:{
         type: Sequelize.INTEGER,
@@ -12,31 +12,20 @@ const Person = sequelize.define('persons',{
         autoIncrement: true
     },
    
-    fullname:{
+    name:{
+        type: Sequelize.TEXT, 
+        allowNull: false,
+    },
+    code:{
         type: Sequelize.STRING, 
         allowNull: false,
     },
-    jobtitle:{
-        type:Sequelize.STRING
+    details:{
+        type:Sequelize.TEXT
     },
-    gender:{
-        type: Sequelize.STRING, 
+    code_atlas:{
+        type: Sequelize.STRING,
         allowNull: false,
-    },
-    address:{
-        type: Sequelize.TEXT, 
-    },
-    phone1:{
-        type: Sequelize.STRING, 
-    },
-    phone2:{
-        type: Sequelize.STRING, 
-    },
-    email:{
-        type: Sequelize.STRING, 
-    },
-    filename:{
-        type: Sequelize.TEXT, 
     },
     
     createdAt:{
@@ -52,4 +41,4 @@ const Person = sequelize.define('persons',{
 
 },{timestamps:true });
 
-export default Person;
+export default Atlas;

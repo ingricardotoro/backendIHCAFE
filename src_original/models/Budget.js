@@ -1,19 +1,21 @@
 //para modelar datos 
 import Sequelize from 'sequelize';
-//import Category from './Category';
 import Person from './Person';
+import Account from './Account';
 
 //import connection object
 import { sequelize } from '../database/database';
 
-const Account = sequelize.define('accounts',{
+const Budget = sequelize.define('budgets',{
 
     id:{
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-   
+    code:{
+        type: Sequelize.STRING, 
+    },
     name:{
         type: Sequelize.STRING, 
         allowNull: false,
@@ -21,14 +23,20 @@ const Account = sequelize.define('accounts',{
     description:{
         type:Sequelize.TEXT
     },
-   /*  category_id: {
+    excercise_start:{
+        type: Sequelize.DATEONLY, 
+    },
+    excercise_end:{
+        type: Sequelize.DATEONLY, 
+    },
+    account_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: Category,
+          model: Account,
           key: 'id',
          }
-    }, */
+    },
     person_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -37,19 +45,46 @@ const Account = sequelize.define('accounts',{
           key: 'id',
          }
     },
-    initialbalance:{
+    buddgetstart:{
         type:Sequelize.DOUBLE,
         allowNull: false,
     },
-    actualbalance:{
+    buddgeupdate:{
         type:Sequelize.DOUBLE,
         allowNull: false,
     },
-    coin:{
+    buddgetfinal:{
+        type:Sequelize.DOUBLE,
+        allowNull: false,
+    },
+    balance:{
+        type:Sequelize.DOUBLE,
+        allowNull: false,
+    },
+    returns:{
+        type:Sequelize.DOUBLE,
+    },
+    deviation:{
+        type:Sequelize.DOUBLE,
+    },
+    status:{
         type:Sequelize.STRING,
         allowNull: false,
     },
-    
+    approval:{
+        type:Sequelize.BOOLEAN,
+    },
+    approvalby_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: Person,
+          key: 'id',
+         }
+    },
+    dateapproval:{
+        type:Sequelize.DATEONLY,
+    },
     createdAt:{
         type:Sequelize.DATE,
         defaultValue: Sequelize.NOW,
@@ -63,4 +98,8 @@ const Account = sequelize.define('accounts',{
 
 },{timestamps:true });
 
-export default Account;
+//Budget.hasMany(Project);
+//Project.belongsTo(Budget, {foreignKey: 'budget_id'});
+Budget.belongsTo(Account, {foreignKey: 'account_id'});
+
+export default Budget;

@@ -1,6 +1,6 @@
 //para modelar datos 
 import Sequelize from 'sequelize';
-//import Category from './Category';
+import Category from './Category';
 import Person from './Person';
 
 //import connection object

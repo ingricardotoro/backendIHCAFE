@@ -1,12 +1,10 @@
 //para modelar datos 
 import Sequelize from 'sequelize';
-//import Category from './Category';
-import Person from './Person';
 
 //import connection object
 import { sequelize } from '../database/database';
 
-const Account = sequelize.define('accounts',{
+const Category = sequelize.define('categories',{
 
     id:{
         type: Sequelize.INTEGER,
@@ -18,35 +16,15 @@ const Account = sequelize.define('accounts',{
         type: Sequelize.STRING, 
         allowNull: false,
     },
+    code:{
+        type: Sequelize.STRING, 
+        allowNull: false,
+    },
     description:{
         type:Sequelize.TEXT
     },
-   /*  category_id: {
+    parent_category:{
         type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: Category,
-          key: 'id',
-         }
-    }, */
-    person_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: Person,
-          key: 'id',
-         }
-    },
-    initialbalance:{
-        type:Sequelize.DOUBLE,
-        allowNull: false,
-    },
-    actualbalance:{
-        type:Sequelize.DOUBLE,
-        allowNull: false,
-    },
-    coin:{
-        type:Sequelize.STRING,
         allowNull: false,
     },
     
@@ -63,4 +41,4 @@ const Account = sequelize.define('accounts',{
 
 },{timestamps:true });
 
-export default Account;
+export default Category;

@@ -1,12 +1,15 @@
 //para modelar datos 
 import Sequelize from 'sequelize';
-//import Category from './Category';
 import Person from './Person';
+import Project from './Project';
+import Rol from './Rol';
+import Team from './Team';
+import File from './File';
 
 //import connection object
 import { sequelize } from '../database/database';
 
-const Account = sequelize.define('accounts',{
+const Teams = sequelize.define('teams',{
 
     id:{
         type: Sequelize.INTEGER,
@@ -14,21 +17,15 @@ const Account = sequelize.define('accounts',{
         autoIncrement: true
     },
    
-    name:{
-        type: Sequelize.STRING, 
-        allowNull: false,
-    },
-    description:{
-        type:Sequelize.TEXT
-    },
-   /*  category_id: {
+    team_id:{
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: Category,
+          model: Team,
           key: 'id',
          }
-    }, */
+    },
+  
     person_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -37,17 +34,14 @@ const Account = sequelize.define('accounts',{
           key: 'id',
          }
     },
-    initialbalance:{
-        type:Sequelize.DOUBLE,
+  
+    rol_id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-    },
-    actualbalance:{
-        type:Sequelize.DOUBLE,
-        allowNull: false,
-    },
-    coin:{
-        type:Sequelize.STRING,
-        allowNull: false,
+        references: {
+          model: Rol,
+          key: 'id',
+         }
     },
     
     createdAt:{
@@ -63,4 +57,4 @@ const Account = sequelize.define('accounts',{
 
 },{timestamps:true });
 
-export default Account;
+export default Teams;
