@@ -41,15 +41,14 @@ var BudgetLineAtlas = _database.sequelize.define('budgetlines_atlas', {
     type: _sequelize["default"].STRING,
     allowNull: false
   },
-
-  /*code_atlas:{
-      type: Sequelize.INTEGER,
-      allowNull: false,
-      references: {
-        model: AtlasAccount,
-        key: 'id',
-       }
-  },*/
+  code_atlas: {
+    type: _sequelize["default"].INTEGER,
+    allowNull: false,
+    references: {
+      model: _AtlasAccount["default"],
+      key: 'id'
+    }
+  },
   code_sub_atlas: {
     /*type: Sequelize.STRING, 
     allowNull: false*/

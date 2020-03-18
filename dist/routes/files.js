@@ -91,7 +91,8 @@ function () {
               break;
             }
 
-            res.redirect('http://localhost:3000/project/' + req.body.project_id);
+            //res.redirect('http://localhost:3000/project/'+req.body.project_id);
+            res.redirect('https://ihcafe-35ae7.firebaseapp.com/project/' + req.body.project_id);
             _context.next = 11;
             break;
 
