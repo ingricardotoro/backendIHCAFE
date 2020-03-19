@@ -23,7 +23,7 @@ var storage = multer.diskStorage({
       storage: storage,
       limits:{fileSize: 5000000}, //5 megas
       fileFilter: (req,file, cb) => {
-        const filetypes = /jpeg|jpg|png|gif|/;
+        const filetypes = /jpeg|jpg|png|gif/;
         const mimetype = filetypes.test(file.mimetype);
         const extname = filetypes.test(path.extname(file.originalname));
 
@@ -37,6 +37,7 @@ var storage = multer.diskStorage({
 
 //ruta para la creacion de un nuevo archivo, asignado a un budgetLiine Atlas
 router.post('/filesbybudgetid/:id',FileByBudgetId);
+
 router.post('/:id', upload.single('archivo'),async function (req, res, next ){
     console.log(req.file);
     const dir = '/files/'
@@ -54,7 +55,7 @@ router.post('/:id', upload.single('archivo'),async function (req, res, next ){
         if (newFile){
             
             //res.redirect('http://localhost:3000/project/'+req.body.project_id);
-            res.redirect('https://ihcafe-35ae7.firebaseapp.com/project/'+req.body.project_id);
+            res.redirect('localhost:3000/project/'+req.body.project_id);
             
         }else{
             return res.json({
