@@ -28,11 +28,11 @@ export async function createBudget(req, res){
         });
 
         if (newBudget){
-            res.redirect('https://ihcafe-35ae7.firebaseapp.com/budgets');
-            /*return res.json({
+            //res.redirect('https://ihcafe-35ae7.firebaseapp.com/budgets');
+            return res.json({
                 message:"Presupuesto Creado Exitosamente",
                 data:newBudget
-            });*/
+            });
         }else{
             return res.json({
                 message:"No se Pudo Crear el Nuevo Presupuesto",
