@@ -328,6 +328,7 @@ export async function createBudgetLinesAtlas(req, res){
     }
 
 }
+
 //funcion para obtener todos los renglones presupuestarios atlas de este projecto id
 //nos ayuda a calcular los totales de presupuestos para las RowCardProjects
 export async function budgetLinesAtlasbyProjectId(req,res){
@@ -373,6 +374,7 @@ export async function budgetLinesAccountsAtlasByProjectId(req,res){
     }
    
 }
+
 //funcion para aprobar un budgetLineAtlas
 export async function AprobarBudgetLinesAtlasbyId(req, res){
 
