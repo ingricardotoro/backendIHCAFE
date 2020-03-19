@@ -395,7 +395,8 @@ export async function AprobarBudgetLinesAtlasbyId(req, res){
         try { 
             const result = await BudgetLineAtlas.update({
                 status:Nuevo_status,
-                budgeupdate:valor
+                budgeupdate:valor,
+                balance:0
             },
             {
                 where:{id}
