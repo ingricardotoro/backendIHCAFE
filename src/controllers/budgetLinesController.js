@@ -284,7 +284,7 @@ export async function createBudgetLinesAtlas(req, res){
                 const newBalance = parseFloat(balance_old) + parseFloat(balance);
 
                 const result_update = await Budget.update({
-                    buddgetstart:newBudgetStar,
+                    budgetstart:newBudgetStar,
                     balance:newBalance
                 },
                     {
