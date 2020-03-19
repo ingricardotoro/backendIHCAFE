@@ -380,7 +380,7 @@ export async function AprobarBudgetLinesAtlasbyId(req, res){
 
     let Nuevo_status = '';
 
-    const { id, status } = req.params;
+    const { id, status, valor } = req.params;
     console.log("VALOR DE ID:"+id);
     console.log("VALOR DE STATUS:"+status);
     if (status!=0) {
@@ -395,7 +395,7 @@ export async function AprobarBudgetLinesAtlasbyId(req, res){
         try { 
             const result = await BudgetLineAtlas.update({
                 status:Nuevo_status,
-                budgeupdate:req.valor
+                budgeupdate:valor
             },
             {
                 where:{id}
