@@ -1,5 +1,6 @@
 import Budget from '../models/Budget';
 import Account from '../models/Account';
+import { async } from 'regenerator-runtime';
 export async function createBudget(req, res){
 
     const {code , name , description , excercise_start , excercise_end , account_id , person_id , buddgetstart , buddgeupdate , buddgetfinal , balance , returns , deviation , status , approval , approvalby_id, dateapproval } = req.body;
@@ -28,7 +29,7 @@ export async function createBudget(req, res){
         });
 
         if (newBudget){
-            //res.redirect('https://ihcafe-35ae7.firebaseapp.com/budgets');
+          
             return res.json({
                 message:"Presupuesto Creado Exitosamente",
                 data:newBudget
@@ -60,4 +61,23 @@ export async function listBudgets(req,res){
         console.log("ERROR AL QUERE LISTAR BUSGETS:"+error);
     }
    
+}
+
+export async function deleteBudget (req,res){
+
+    const { id } = req.params;
+    try {
+        const deleteRowCount = await Budget.destroy({
+            where:{
+                id
+            }
+        });
+        res.json({
+            message:"Budget Eliminado Satifactoriamente",
+            count:deleteRowCount
+        });
+    } catch (error) {
+        console.log("ERROR AL QUERE ELIMINAR EL PROJECT:"+error);
+    }
+
 }
