@@ -63,10 +63,14 @@ function _createBudget() {
               break;
             }
 
-            return _context.abrupt("return", res.json({
-              message: "Presupuesto Creado Exitosamente",
-              data: newBudget
-            }));
+            res.redirect('https://ihcafe-35ae7.firebaseapp.com/budgets');
+            /*return res.json({
+                message:"Presupuesto Creado Exitosamente",
+                data:newBudget
+            });*/
+
+            _context.next = 10;
+            break;
 
           case 9:
             return _context.abrupt("return", res.json({
