@@ -294,7 +294,7 @@ export async function createBudgetLinesAtlas(req, res){
 
                 if(result_update){
                     res.json({
-                        message:"BudgetStarNEW Atlas Actualizado Satifactoriamente"
+                        message:"BudgetStarNEW Atlas Creado Satifactoriamente"
                     })
                 }
                 
@@ -420,4 +420,24 @@ export async function AprobarBudgetLinesAtlasbyId(req, res){
     }
    
     
+}
+
+//funcion para eliminar un budgetLineAtlas
+export async function deleteBudgetLinesAtlas (req,res){
+
+    const { id } = req.params;
+    try {
+        const deleteRowCount = await BudgetLineAtlas.destroy({
+            where:{
+                id
+            }
+        });
+        res.json({
+            message:"BudgetLineAtlas Eliminado Satifactoriamente",
+            count:deleteRowCount
+        });
+    } catch (error) {
+        console.log("ERROR AL QUERE ELIMINAR EL BudgetLineAtlas:"+error);
+    }
+
 }
