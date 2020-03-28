@@ -17,14 +17,15 @@ router.post('/cat_project/:id', _budgetLinesController.budgetLinesCatgoriesByPro
 
 router.post('/project/category/:idPro/:idCat', _budgetLinesController.budgetLinesbyProjectIdCategories); // ruta para actualizar el status del budget line por ser aprobado
 
-router.post('/aprobar/:id/:status', _budgetLinesController.AprobarBudgetLinesbyId); // ruta para actualizar el status del budget line por ser aprobado
+router.post('/aprobar/:id/:status/:valor', _budgetLinesController.AprobarBudgetLinesbyId); // ruta para actualizar el status del budget line por ser aprobado
 
-router.post('/aprobar_atlas/:id/:status', _budgetLinesController.AprobarBudgetLinesAtlasbyId); // ruta /api/budgetlines/project/:id -> para buscar los renglones de cada projecto
+router.post('/aprobar_atlas/:id/:status/:valor', _budgetLinesController.AprobarBudgetLinesAtlasbyId); // ruta /api/budgetlines/project/:id -> para buscar los renglones de cada projecto
 
 router.post('/atlas/project/:id', _budgetLinesController.budgetLinesAtlasbyProjectId); // ruta /api/budgetlines/ -> para crear un nuevo renglon
 
 router.post('/', _budgetLinesController.createBudgetLines);
-router.post('/budgetlineatlas', _budgetLinesController.createBudgetLinesAtlas); //router.get('/', listBudgets);
+router.post('/budgetlineatlas', _budgetLinesController.createBudgetLinesAtlas);
+router.post('/budgetlineatlas/delete/:id', _budgetLinesController.deleteBudgetLinesAtlas); //router.get('/', listBudgets);
 //router.get('/:id', findProject);
 //router.delete('/:id', deleteProject);
 //router.put('/:id', updateProject);

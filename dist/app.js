@@ -49,7 +49,7 @@ require('dotenv').config(); //importamos el objeto servidor
 //Initialization
 var app = (0, _express["default"])(); //settings
 
-app.set('port', process.env.PORT || 5000); //middlewares
+app.set('port', process.env.PORT || 4000); //middlewares
 
 app.use((0, _morgan["default"])('dev'));
 app.use((0, _cors["default"])());
@@ -65,8 +65,10 @@ app.use('/api/accounts', _accounts["default"]);
 app.use('/api/atlas', _atlas["default"]);
 app.use('/api/tasks', _task["default"]);
 app.use('/api/suppliers', _suppliers["default"]);
-app.use('/api/files', _files["default"]); //crar carpeta publica para el navegador
+app.use('/api/files', _files["default"]); //crear carpeta publica para el navegador
 
-app.use(_express["default"]["static"](_path["default"].join(__dirname, 'public')));
+app.use(_express["default"]["static"](_path["default"].join(__dirname, '../src/public'))); //app.use(express.static(__dirname + '../src/public'));
+//app.use(express.static('public'));
+
 var _default = app;
 exports["default"] = _default;

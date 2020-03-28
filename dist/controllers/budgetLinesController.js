@@ -12,6 +12,7 @@ exports.createBudgetLinesAtlas = createBudgetLinesAtlas;
 exports.budgetLinesAtlasbyProjectId = budgetLinesAtlasbyProjectId;
 exports.budgetLinesAccountsAtlasByProjectId = budgetLinesAccountsAtlasByProjectId;
 exports.AprobarBudgetLinesAtlasbyId = AprobarBudgetLinesAtlasbyId;
+exports.deleteBudgetLinesAtlas = deleteBudgetLinesAtlas;
 
 var _Budgetline = _interopRequireDefault(require("../models/Budgetline"));
 
@@ -473,7 +474,7 @@ function _createBudgetLinesAtlas() {
             newBalance = parseFloat(balance_old) + parseFloat(balance);
             _context6.next = 16;
             return _Budget["default"].update({
-              buddgetstart: newBudgetStar,
+              budgetstart: newBudgetStar,
               balance: newBalance
             }, {
               where: {
@@ -486,7 +487,7 @@ function _createBudgetLinesAtlas() {
 
             if (result_update) {
               res.json({
-                message: "BudgetStarNEW Atlas Actualizado Satifactoriamente"
+                message: "BudgetStarNEW Atlas Creado Satifactoriamente"
               });
             }
 
@@ -635,20 +636,21 @@ function _budgetLinesAccountsAtlasByProjectId() {
 
 function AprobarBudgetLinesAtlasbyId(_x17, _x18) {
   return _AprobarBudgetLinesAtlasbyId.apply(this, arguments);
-}
+} //funcion para eliminar un budgetLineAtlas
+
 
 function _AprobarBudgetLinesAtlasbyId() {
   _AprobarBudgetLinesAtlasbyId = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee9(req, res) {
-    var Nuevo_status, _req$params3, id, status, result;
+    var Nuevo_status, _req$params3, id, status, valor, result;
 
     return regeneratorRuntime.wrap(function _callee9$(_context9) {
       while (1) {
         switch (_context9.prev = _context9.next) {
           case 0:
             Nuevo_status = '';
-            _req$params3 = req.params, id = _req$params3.id, status = _req$params3.status;
+            _req$params3 = req.params, id = _req$params3.id, status = _req$params3.status, valor = _req$params3.valor;
             console.log("VALOR DE ID:" + id);
             console.log("VALOR DE STATUS:" + status);
 
@@ -668,7 +670,9 @@ function _AprobarBudgetLinesAtlasbyId() {
             _context9.prev = 7;
             _context9.next = 10;
             return _BudgetLineAtlas["default"].update({
-              status: Nuevo_status
+              status: Nuevo_status,
+              budgeupdate: valor,
+              balance: 0
             }, {
               where: {
                 id: id
@@ -704,4 +708,50 @@ function _AprobarBudgetLinesAtlasbyId() {
     }, _callee9, null, [[7, 14]]);
   }));
   return _AprobarBudgetLinesAtlasbyId.apply(this, arguments);
+}
+
+function deleteBudgetLinesAtlas(_x19, _x20) {
+  return _deleteBudgetLinesAtlas.apply(this, arguments);
+}
+
+function _deleteBudgetLinesAtlas() {
+  _deleteBudgetLinesAtlas = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee10(req, res) {
+    var id, deleteRowCount;
+    return regeneratorRuntime.wrap(function _callee10$(_context10) {
+      while (1) {
+        switch (_context10.prev = _context10.next) {
+          case 0:
+            id = req.params.id;
+            _context10.prev = 1;
+            _context10.next = 4;
+            return _BudgetLineAtlas["default"].destroy({
+              where: {
+                id: id
+              }
+            });
+
+          case 4:
+            deleteRowCount = _context10.sent;
+            res.json({
+              message: "BudgetLineAtlas Eliminado Satifactoriamente",
+              count: deleteRowCount
+            });
+            _context10.next = 11;
+            break;
+
+          case 8:
+            _context10.prev = 8;
+            _context10.t0 = _context10["catch"](1);
+            console.log("ERROR AL QUERE ELIMINAR EL BudgetLineAtlas:" + _context10.t0);
+
+          case 11:
+          case "end":
+            return _context10.stop();
+        }
+      }
+    }, _callee10, null, [[1, 8]]);
+  }));
+  return _deleteBudgetLinesAtlas.apply(this, arguments);
 }

@@ -31,7 +31,7 @@ var router = (0, _express.Router)();
 
 var storage = _multer["default"].diskStorage({
   destination: function destination(req, file, cb) {
-    cb(null, _path["default"].join(__dirname, '../../../src/public/files'));
+    cb(null, _path["default"].join(__dirname, '../../src/public/files'));
   },
   filename: function filename(req, file, cb) {
     cb(null, (0, _uuid.v4)() + _path["default"].extname(file.originalname).toLocaleLowerCase());
@@ -45,7 +45,7 @@ var upload = (0, _multer["default"])({
   },
   //5 megas
   fileFilter: function fileFilter(req, file, cb) {
-    var filetypes = /jpeg|jpg|png|gif|/;
+    var filetypes = /jpeg|jpg|png|gif|pdf/;
     var mimetype = filetypes.test(file.mimetype);
     var extname = filetypes.test(_path["default"].extname(file.originalname));
 
@@ -53,7 +53,7 @@ var upload = (0, _multer["default"])({
       return cb(null, true);
     }
 
-    cb("Solo se Permite Archivos Tipo Imagen");
+    cb("Solo se Permite Archivos Tipo Imagen o PDF");
   }
 }); //ruta para la creacion de un nuevo archivo, asignado a un budgetLiine Atlas
 
@@ -92,7 +92,7 @@ function () {
             }
 
             //res.redirect('http://localhost:3000/project/'+req.body.project_id);
-            res.redirect('https://ihcafe-35ae7.firebaseapp.com/project/' + req.body.project_id);
+            res.redirect('http://167.99.15.83:3001/project/' + req.body.project_id);
             _context.next = 11;
             break;
 

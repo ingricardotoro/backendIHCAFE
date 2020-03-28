@@ -14,8 +14,8 @@ var router = (0, _express.Router)(); //import {createProjects,listProjects,findP
 
 router.post('/', _budgetsController.createBudget);
 router.get('/', _budgetsController.listBudgets); //router.get('/:id', findProject);
-//router.delete('/:id', deleteProject);
-//router.put('/:id', updateProject);
+
+router.post('/delete/:id', _budgetsController.deleteBudget); //router.put('/:id', updateProject);
 
 var _default = router;
 exports["default"] = _default;

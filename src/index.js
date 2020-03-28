@@ -6,8 +6,9 @@ import '@babel/polyfill';
 async function main(){
     //console.log('PUERTO='+process.env.PORT);
     
-    await app.listen(app.get('port'));
+    await app.listen(app.get('port')); 
     console.log('Server on port=', app.get('port'));
+   
 
     /*import { sequelize } from './database/database';
     sequelize.authenticate()

@@ -5,10 +5,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createBudget = createBudget;
 exports.listBudgets = listBudgets;
+exports.deleteBudget = deleteBudget;
 
 var _Budget = _interopRequireDefault(require("../models/Budget"));
 
 var _Account = _interopRequireDefault(require("../models/Account"));
+
+var _regeneratorRuntime = require("regenerator-runtime");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -63,14 +66,10 @@ function _createBudget() {
               break;
             }
 
-            res.redirect('https://ihcafe-35ae7.firebaseapp.com/budgets');
-            /*return res.json({
-                message:"Presupuesto Creado Exitosamente",
-                data:newBudget
-            });*/
-
-            _context.next = 10;
-            break;
+            return _context.abrupt("return", res.json({
+              message: "Presupuesto Creado Exitosamente",
+              data: newBudget
+            }));
 
           case 9:
             return _context.abrupt("return", res.json({
@@ -141,4 +140,50 @@ function _listBudgets() {
     }, _callee2, null, [[0, 7]]);
   }));
   return _listBudgets.apply(this, arguments);
+}
+
+function deleteBudget(_x5, _x6) {
+  return _deleteBudget.apply(this, arguments);
+}
+
+function _deleteBudget() {
+  _deleteBudget = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee3(req, res) {
+    var id, deleteRowCount;
+    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            id = req.params.id;
+            _context3.prev = 1;
+            _context3.next = 4;
+            return _Budget["default"].destroy({
+              where: {
+                id: id
+              }
+            });
+
+          case 4:
+            deleteRowCount = _context3.sent;
+            res.json({
+              message: "Budget Eliminado Satifactoriamente",
+              count: deleteRowCount
+            });
+            _context3.next = 11;
+            break;
+
+          case 8:
+            _context3.prev = 8;
+            _context3.t0 = _context3["catch"](1);
+            console.log("ERROR AL QUERE ELIMINAR EL PROJECT:" + _context3.t0);
+
+          case 11:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3, null, [[1, 8]]);
+  }));
+  return _deleteBudget.apply(this, arguments);
 }

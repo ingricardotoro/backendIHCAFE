@@ -44,7 +44,10 @@ app.use('/api/tasks',taskRoutes);
 app.use('/api/suppliers',suppliersRoutes); 
 app.use('/api/files',filesRoutes); 
 
-//crar carpeta publica para el navegador
-app.use(express.static(path.join(__dirname,'public')));
+//crear carpeta publica para el navegador
+//app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname,'../src/public')));
 
+//app.use(express.static(__dirname + '../src/public'));
+//app.use(express.static('public'));
 export default app;
