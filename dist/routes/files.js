@@ -31,7 +31,7 @@ var router = (0, _express.Router)();
 
 var storage = _multer["default"].diskStorage({
   destination: function destination(req, file, cb) {
-    cb(null, _path["default"].join(__dirname, '../public/files'));
+    cb(null, _path["default"].join(__dirname, '../../../src/public/files'));
   },
   filename: function filename(req, file, cb) {
     cb(null, (0, _uuid.v4)() + _path["default"].extname(file.originalname).toLocaleLowerCase());
