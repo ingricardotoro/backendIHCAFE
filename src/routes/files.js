@@ -40,7 +40,7 @@ router.post('/filesbybudgetid/:id',FileByBudgetId);
 
 router.post('/:id', upload.single('archivo'),async function (req, res, next ){
     console.log(req.file);
-    const dir = 'files/'
+    const dir = 'dist/public/files/'
     try {
         let newFile = await Archivo.create({
             filename: req.file.filename,
