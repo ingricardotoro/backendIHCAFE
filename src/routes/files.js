@@ -55,7 +55,7 @@ router.post('/:id', upload.single('archivo'),async function (req, res, next ){
         if (newFile){
             
             //res.redirect('http://localhost:3000/project/'+req.body.project_id);
-            res.redirect('localhost:3000/project/'+req.body.project_id);
+            res.redirect('http://167.99.15.83:3001/project/'+req.body.project_id);
             
         }else{
             return res.json({
