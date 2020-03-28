@@ -12,7 +12,7 @@ import {FileByBudgetId} from '../controllers/filesController';
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, path.join(__dirname, '../public/files'))
+      cb(null, path.join(__dirname, '../dist/public/files'))
     },
     filename: function (req, file, cb) {
       cb(null, uuidv4()+path.extname(file.originalname).toLocaleLowerCase());
@@ -30,7 +30,7 @@ var storage = multer.diskStorage({
         if (mimetype && extname){
             return cb(null,true);
         }
-        cb("Solo se Permite Archivos Tipo Imagen");
+        cb("Solo se Permite Archivos Tipo Imagen o PDF");
       }
      
 });
@@ -40,7 +40,7 @@ router.post('/filesbybudgetid/:id',FileByBudgetId);
 
 router.post('/:id', upload.single('archivo'),async function (req, res, next ){
     console.log(req.file);
-    const dir = '/files/'
+    const dir = 'dist/files/'
     try {
         let newFile = await Archivo.create({
             filename: req.file.filename,
