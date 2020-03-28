@@ -66,6 +66,7 @@ app.use('/api/atlas', _atlas["default"]);
 app.use('/api/tasks', _task["default"]);
 app.use('/api/suppliers', _suppliers["default"]);
 app.use('/api/files', _files["default"]); //crear carpeta publica para el navegador
+//app.use(express.static(path.join(__dirname,'public')));
 
 app.use(_express["default"]["static"](_path["default"].join(__dirname, '../src/public'))); //app.use(express.static(__dirname + '../src/public'));
 //app.use(express.static('public'));
