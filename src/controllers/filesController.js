@@ -34,8 +34,9 @@ export async function DeleteFileById(req, res){
             }
         });
         res.json({
-            message:"Archivo Eliminado Satifactoriamente",
-            count:deleteRowCount
+           // message:"Archivo Eliminado Satifactoriamente",
+            //count:deleteRowCount
+            deleteRowCount
         });
     } catch (error) {
         console.log("ERROR AL QUERE ELIMINAR EL Archivo:"+error);
