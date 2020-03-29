@@ -38,8 +38,10 @@ var storage = multer.diskStorage({
 //ruta para la creacion de un nuevo archivo, asignado a un budgetLiine Atlas
 router.post('/filesbybudgetid/:id',FileByBudgetId);
 
+//ruta para eliminar un archivo por Id
 router.post('/delete/:id', DeleteFileById);
 
+//Ruta para almacenar el archivo
 router.post('/:id', upload.single('archivo'),async function (req, res, next ){
     console.log(req.file);
     const dir = 'files/'

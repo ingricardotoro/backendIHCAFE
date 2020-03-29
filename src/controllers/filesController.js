@@ -23,6 +23,7 @@ export async function FileByBudgetId(req, res){
 
 }
 
+//funcion para eliminar archivos por id
 export async function DeleteFileById(req, res){
 
     const { id } = req.params;
