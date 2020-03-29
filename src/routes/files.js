@@ -8,7 +8,7 @@ import '@babel/polyfill';
 
 const router = Router();
 
-import {FileByBudgetId} from '../controllers/filesController';
+import {FileByBudgetId,DeleteFileById} from '../controllers/filesController';
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -37,6 +37,8 @@ var storage = multer.diskStorage({
 
 //ruta para la creacion de un nuevo archivo, asignado a un budgetLiine Atlas
 router.post('/filesbybudgetid/:id',FileByBudgetId);
+
+router.post('/delete/:id', DeleteFileById);
 
 router.post('/:id', upload.single('archivo'),async function (req, res, next ){
     console.log(req.file);

@@ -22,3 +22,21 @@ export async function FileByBudgetId(req, res){
     
 
 }
+
+export async function DeleteFileById(req, res){
+
+    const { id } = req.params;
+    try {
+        const deleteRowCount = await Archivo.destroy({
+            where:{
+                id
+            }
+        });
+        res.json({
+            message:"Archivo Eliminado Satifactoriamente",
+            count:deleteRowCount
+        });
+    } catch (error) {
+        console.log("ERROR AL QUERE ELIMINAR EL Archivo:"+error);
+    }
+}
