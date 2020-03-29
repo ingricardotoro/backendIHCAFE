@@ -337,7 +337,7 @@ export async function budgetLinesAtlasbyProjectId(req,res){
        
         const  budgetLines_atlas =await  BudgetLineAtlas.findAll({
             include: [ Person, AtlasAccount ],
-            order: [['id', 'ASC']],
+            order: [['id', 'DESC']],
             where:{
                 project_id:id
             }
