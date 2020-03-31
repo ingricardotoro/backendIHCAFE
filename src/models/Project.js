@@ -30,6 +30,10 @@ const Project = sequelize.define('projects',{
         type: Sequelize.STRING, 
         allowNull: false,
     },
+    budgetstart:{
+        type:Sequelize.DOUBLE,
+        allowNull: false,
+    },
     color:{
         type: Sequelize.STRING, 
         allowNull: false,
