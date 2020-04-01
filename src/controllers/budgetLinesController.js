@@ -405,9 +405,11 @@ export async function AprobarBudgetLinesAtlasbyId(req, res){
             );
     
             if(result){
-                res.json({
+                res.redirect('http://167.99.15.83:3001/project/'+req.body.project_id);
+
+                /*res.json({
                     message:"Actualizado Satifactoriamente"
-                })
+                })*/
             }
               
         }catch(erro){
