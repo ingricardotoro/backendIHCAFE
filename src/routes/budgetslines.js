@@ -24,7 +24,7 @@ router.post('/project/category/:idPro/:idCat',budgetLinesbyProjectIdCategories);
 router.post('/aprobar/:id/:status/:valor/:comentario',AprobarBudgetLinesbyId);
 
 // ruta para actualizar el status del budget line por ser aprobado
-router.post('/aprobar_atlas/:id/:status/:valor',AprobarBudgetLinesAtlasbyId);
+router.post('/aprobar_atlas/:id/:status/:valor/:comentario',AprobarBudgetLinesAtlasbyId);
 
 
 // ruta /api/budgetlines/project/:id -> para buscar los renglones de cada projecto
