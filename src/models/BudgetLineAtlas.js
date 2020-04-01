@@ -52,6 +52,9 @@ const BudgetLineAtlas = sequelize.define('budgetlines_atlas',{
     details:{
         type: Sequelize.TEXT, 
     },
+    comentario:{
+        type: Sequelize.TEXT, 
+    },
     
     date_start:{
         type: Sequelize.DATEONLY, 
