@@ -231,7 +231,7 @@ export async function AprobarBudgetLinesbyId(req, res){
 //funion para crear nuevos renglones presupuestarios en la tabla budgetlines_atlas
 export async function createBudgetLinesAtlas(req, res){
 
-    const {code_resultado , code_producto,code_activity,code_atlas,code_sub_atlas,code,details, date_start , date_end , account_id , project_id ,user_id,supplier_id, budgetstart , budgeupdate , budgetfinal , balance , returns , deviation , status , approval , approvalby_id, dateapproval } = req.body;
+    const {code_resultado , code_producto,code_activity,code_atlas,code_sub_atlas,code,details, date_start , date_end , account_id , project_id ,user_id,supplier_id, budgetstart , budgeupdate , budgetfinal , balance , returns , deviation , status , approval , approvalby_id, dateapproval,comentario } = req.body;
     try {
         let newBudgetLineAtlas = await BudgetLineAtlas.create({
             code_resultado,
@@ -256,10 +256,11 @@ export async function createBudgetLinesAtlas(req, res){
             status ,
             approval ,
             approvalby_id,
-            dateapproval
+            dateapproval,
+            comentario
             
         },{
-            fields:['code_resultado' , 'code_producto' , 'code_activity' , 'code_atlas' ,'code_sub_atlas' , 'code' ,'details', 'date_start' , 'date_end' , 'account_id', 'project_id' , 'user_id' , 'supplier_id' , 'budgetstart' , 'budgeupdate' , 'budgetfinal' , 'balance' , 'returns' , 'deviation' , 'status' , 'approval' , 'approvalby_id', 'dateapproval']
+            fields:['code_resultado' , 'code_producto' , 'code_activity' , 'code_atlas' ,'code_sub_atlas' , 'code' ,'details', 'date_start' , 'date_end' , 'account_id', 'project_id' , 'user_id' , 'supplier_id' , 'budgetstart' , 'budgeupdate' , 'budgetfinal' , 'balance' , 'returns' , 'deviation' , 'status' , 'approval' , 'approvalby_id', 'dateapproval', 'comentario']
         });
 
         if (newBudgetLineAtlas){
