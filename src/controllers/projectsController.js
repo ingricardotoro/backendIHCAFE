@@ -64,7 +64,7 @@ export async function deleteProject(req,res){
 
 export async function createProjects(req, res){
 
-    const { code,name,description,startdate,enddate,status,location,budget_id,team_id,priority } = req.body;
+    const { code,name,description,budgetstart,startdate,enddate,status,location,budget_id,team_id,priority } = req.body;
     try {
         let newProject = await Project.create({
             code ,
