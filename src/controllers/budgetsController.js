@@ -6,6 +6,8 @@ export async function createBudget(req, res) {
   const {
     code,
     name,
+    tipo,
+    coin_id,
     description,
     excercise_start,
     excercise_end,
@@ -27,6 +29,8 @@ export async function createBudget(req, res) {
       {
         code,
         name,
+        tipo,
+        coin_id,
         description,
         excercise_start,
         excercise_end,
@@ -47,6 +51,8 @@ export async function createBudget(req, res) {
         fields: [
           "code",
           "name",
+          "tipo",
+          "coin_id",
           "description",
           "excercise_start",
           "excercise_end",
