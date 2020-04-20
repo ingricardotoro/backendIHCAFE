@@ -1,7 +1,7 @@
 import { Router } from "express";
 const router = Router();
 
-import { Listcoins } from "../controllers/categoriesController";
+import { Listcoins } from "../controllers/coinsController";
 
 //router.post("/categoriesbyid/:id", categoriesbyid);
 router.get("/", Listcoins);
