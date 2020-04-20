@@ -1,9 +1,9 @@
 import { Router } from "express";
 const router = Router();
 
-import { Listcoins } from "../controllers/coinsController";
+import { Listcoins } from "../controllers/coinscontroller";
 
-//router.post("/categoriesbyid/:id", categoriesbyid);
+//router.post("/api/coins", categoriesbyid);
 router.get("/", Listcoins);
 
 /*router.get('/categories_childs/:id',categories_childs);// para obtener todas las categorias hijas dado el id del padre
