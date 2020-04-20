@@ -2,6 +2,7 @@
 import Sequelize from "sequelize";
 import Person from "./Person";
 import Account from "./Account";
+import Coin from "./Coin";
 
 //import connection object
 import { sequelize } from "../database/database";
