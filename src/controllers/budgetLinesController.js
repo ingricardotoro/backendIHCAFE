@@ -14,7 +14,7 @@ import AtlasAccount from "../models/AtlasAccount";
 export async function budgetLinesbyProjectId(req, res) {
   const { id } = req.params;
   try {
-    const budgetLines = await Budgetline.findAll({
+    const budgetLines = await BudgetLine.findAll({
       include: [Person],
       order: [["category_id", "ASC"]],
       where: {
