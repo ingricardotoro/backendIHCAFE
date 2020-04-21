@@ -139,11 +139,11 @@ BudgetLine.belongsTo(Person, { foreignKey: "supplier_id" });
 //BudgetLine.belongsTo(Person, {foreignKey: 'approvalby_id'});
 //Budget.hasMany(Project);
 //Project.belongsTo(Budget, {foreignKey: 'budget_id'});
-BudgetLineAtlas.belongsTo(Category, {
+BudgetLine.belongsTo(Category, {
   foreignKey: "category_id",
   targetKey: "id",
 });
-BudgetLineAtlas.belongsTo(Category, {
+BudgetLine.belongsTo(Category, {
   foreignKey: "sub_category_code",
   targetKey: "code",
 });
