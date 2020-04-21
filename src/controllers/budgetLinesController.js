@@ -6,6 +6,7 @@ import Budget from "../models/Budget";
 import Archivo from "../models/Archivo";
 import sequelize from "sequelize";
 import BudgetLineAtlas from "../models/BudgetLineAtlas";
+import BudgetLine from "../models/BudgetLine";
 import AtlasAccount from "../models/AtlasAccount";
 
 //funcion para obtener todos los renglones presupuestario de este projecto id
