@@ -1,132 +1,140 @@
-//para modelar datos 
-import Sequelize from 'sequelize';
-import Person from './Person';
-import Account from './Account';
-import Project from './Project';
-import Category from './Category';
+//para modelar datos
+import Sequelize from "sequelize";
+import Person from "./Person";
+import Account from "./Account";
+import Project from "./Project";
+import Category from "./Category";
 
 //import connection object
-import { sequelize } from '../database/database';
+import { sequelize } from "../database/database";
 
-const BudgetLine = sequelize.define('budgetlines',{
-
-    id:{
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+const BudgetLine = sequelize.define(
+  "budgetlines",
+  {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
-    code:{
-        type: Sequelize.STRING, 
+    code: {
+      type: Sequelize.STRING,
     },
-    name:{
-        type: Sequelize.STRING, 
-        allowNull: false,
+    name: {
+      type: Sequelize.STRING,
+      allowNull: false,
     },
-    description:{
-        type:Sequelize.TEXT
+    description: {
+      type: Sequelize.TEXT,
     },
-    date_start:{
-        type: Sequelize.DATEONLY, 
+    date_start: {
+      type: Sequelize.DATEONLY,
     },
-    date_end:{
-        type: Sequelize.DATEONLY, 
+    date_end: {
+      type: Sequelize.DATEONLY,
     },
     category_id: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model: Category,
-          key: 'id',
-         }
+      type: Sequelize.INTEGER,
+      allowNull: true,
+      references: {
+        model: Category,
+        key: "id",
+      },
+    },
+    sub_category_id: {
+      type: Sequelize.INTEGER,
+      allowNull: true,
+      references: {
+        model: Category,
+        key: "id",
+      },
     },
     account_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: Account,
-          key: 'id',
-         }
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: Account,
+        key: "id",
+      },
     },
     project_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: Project,
-          key: 'id',
-         }
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: Project,
+        key: "id",
+      },
     },
     user_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: Person,
-          key: 'id',
-         }
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: Person,
+        key: "id",
+      },
     },
     supplier_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: Person,
-          key: 'id',
-         }
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: Person,
+        key: "id",
+      },
     },
-    buddgetstart:{
-        type:Sequelize.DOUBLE,
-        allowNull: false,
+    buddgetstart: {
+      type: Sequelize.DOUBLE,
+      allowNull: false,
     },
-    buddgeupdate:{
-        type:Sequelize.DOUBLE,
-        allowNull: false,
+    buddgeupdate: {
+      type: Sequelize.DOUBLE,
+      allowNull: false,
     },
-    buddgetfinal:{
-        type:Sequelize.DOUBLE,
-        allowNull: false,
+    buddgetfinal: {
+      type: Sequelize.DOUBLE,
+      allowNull: false,
     },
-    balance:{
-        type:Sequelize.DOUBLE,
-        allowNull: false,
+    balance: {
+      type: Sequelize.DOUBLE,
+      allowNull: false,
     },
-    returns:{
-        type:Sequelize.DOUBLE,
+    returns: {
+      type: Sequelize.DOUBLE,
     },
-    deviation:{
-        type:Sequelize.DOUBLE,
+    deviation: {
+      type: Sequelize.DOUBLE,
     },
-    status:{
-        type:Sequelize.STRING,
-        allowNull: false,
+    status: {
+      type: Sequelize.STRING,
+      allowNull: false,
     },
-    approval:{
-        type:Sequelize.BOOLEAN,
+    approval: {
+      type: Sequelize.BOOLEAN,
     },
     approvalby_id: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model: Person,
-          key: 'id',
-         }
+      type: Sequelize.INTEGER,
+      allowNull: true,
+      references: {
+        model: Person,
+        key: "id",
+      },
     },
-    dateapproval:{
-        type:Sequelize.DATEONLY,
+    dateapproval: {
+      type: Sequelize.DATEONLY,
     },
-    createdAt:{
-        type:Sequelize.DATE,
-        defaultValue: Sequelize.NOW,
-        
+    createdAt: {
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.NOW,
     },
-    updatedAt:{
-        type:Sequelize.DATE,
-        defaultValue: Sequelize.NOW,
-        
-    }
+    updatedAt: {
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.NOW,
+    },
+  },
+  { timestamps: true }
+);
 
-},{timestamps:true });
-
-BudgetLine.belongsTo(Project, {foreignKey: 'project_id'});
-BudgetLine.belongsTo(Category, {foreignKey: 'category_id'});
-BudgetLine.belongsTo(Person, {foreignKey: 'supplier_id'});
+BudgetLine.belongsTo(Project, { foreignKey: "project_id" });
+BudgetLine.belongsTo(Category, { foreignKey: "category_id" });
+BudgetLine.belongsTo(Person, { foreignKey: "supplier_id" });
 //BudgetLine.belongsTo(Person, {foreignKey: 'approvalby_id'});
 //Budget.hasMany(Project);
 //Project.belongsTo(Budget, {foreignKey: 'budget_id'});
