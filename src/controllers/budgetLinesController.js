@@ -210,7 +210,7 @@ export async function createBudgetLines(req, res) {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Error al crar nuevo Renglon Presupuestario",
+      message: "Error al crear nuevo Renglon Presupuestario",
       data: {},
     });
   }

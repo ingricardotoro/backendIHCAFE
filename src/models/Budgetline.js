@@ -17,7 +17,7 @@ const BudgetLine = sequelize.define(
       autoIncrement: true,
     },
     code: {
-      type: Sequelize.STRING,
+      type: Sequelize.INTEGER,
     },
     name: {
       type: Sequelize.STRING,
@@ -40,12 +40,12 @@ const BudgetLine = sequelize.define(
         key: "id",
       },
     },
-    sub_category_id: {
-      type: Sequelize.INTEGER,
+    sub_category_code: {
+      type: Sequelize.STRING,
       allowNull: true,
       references: {
         model: Category,
-        key: "id",
+        key: "code",
       },
     },
     account_id: {
@@ -133,11 +133,19 @@ const BudgetLine = sequelize.define(
 );
 
 BudgetLine.belongsTo(Project, { foreignKey: "project_id" });
-BudgetLine.belongsTo(Category, { foreignKey: "category_id" });
-BudgetLine.belongsTo(Category, { foreignKey: "sub_category_id" });
+//BudgetLine.belongsTo(Category, { foreignKey: "category_id" });
+//BudgetLine.belongsTo(Category, { foreignKey: "sub_category_code" });
 BudgetLine.belongsTo(Person, { foreignKey: "supplier_id" });
 //BudgetLine.belongsTo(Person, {foreignKey: 'approvalby_id'});
 //Budget.hasMany(Project);
 //Project.belongsTo(Budget, {foreignKey: 'budget_id'});
+BudgetLineAtlas.belongsTo(Category, {
+  foreignKey: "category_id",
+  targetKey: "id",
+});
+BudgetLineAtlas.belongsTo(Category, {
+  foreignKey: "sub_category_code",
+  targetKey: "code",
+});
 
 export default BudgetLine;
