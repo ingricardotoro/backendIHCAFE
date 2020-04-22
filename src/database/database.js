@@ -15,6 +15,6 @@ export const sequelize = new Sequelize(
       require: 30000,
       idle: 10000,
     },
-    logging: true, // para ver las respuestas de la bd por consola
+    logging: false, // para ver las respuestas de la bd por consola
   }
 );
