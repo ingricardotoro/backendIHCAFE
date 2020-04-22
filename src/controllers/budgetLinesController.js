@@ -219,7 +219,7 @@ export async function createBudgetLines(req, res) {
 export async function AprobarBudgetLinesbyId(req, res) {
   let Nuevo_status = "";
 
-  const { id, status } = req.params;
+  const { id, status, valor } = req.params;
 
   if (status != 0) {
     if (status == "1") {
@@ -233,6 +233,7 @@ export async function AprobarBudgetLinesbyId(req, res) {
       const result = await Budgetline.update(
         {
           status: Nuevo_status,
+          balance: valor,
         },
         {
           where: { id },
