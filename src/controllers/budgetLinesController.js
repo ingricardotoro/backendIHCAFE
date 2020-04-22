@@ -220,8 +220,7 @@ export async function AprobarBudgetLinesbyId(req, res) {
   let Nuevo_status = "";
 
   const { id, status } = req.params;
-  console.log("VALOR DE ID:" + id);
-  console.log("VALOR DE SATUS:" + status);
+
   if (status != 0) {
     if (status == "1") {
       Nuevo_status = "Aprobado";
@@ -468,8 +467,7 @@ export async function AprobarBudgetLinesAtlasbyId(req, res) {
   let Nuevo_status = "";
 
   const { id, status, valor, comentario } = req.params;
-  console.log("VALOR DE ID:" + id);
-  console.log("VALOR DE STATUS:" + status);
+
   if (status != 0) {
     if (status == "1") {
       Nuevo_status = "Aprobado";
