@@ -255,6 +255,24 @@ export async function AprobarBudgetLinesbyId(req, res) {
   }
 }
 
+//funcion para eliminar un budgetLine
+export async function deleteBudgetLines(req, res) {
+  const { id } = req.params;
+  try {
+    const deleteRowCount = await BudgetLine.destroy({
+      where: {
+        id,
+      },
+    });
+    res.json({
+      message: "BudgetLine Eliminado Satifactoriamente",
+      count: deleteRowCount,
+    });
+  } catch (error) {
+    console.log("ERROR AL QUERE ELIMINAR EL BudgetLine:" + error);
+  }
+}
+
 /// CREACION DE RENGLON PPRESUPUESTARIO MODALIDAD ATLAS/////
 //funion para crear nuevos renglones presupuestarios en la tabla budgetlines_atlas
 export async function createBudgetLinesAtlas(req, res) {
