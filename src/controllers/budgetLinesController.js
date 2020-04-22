@@ -16,7 +16,7 @@ export async function budgetLinesbyProjectId(req, res) {
   try {
     const budgetLines = await BudgetLine.findAll({
       include: [Person],
-      order: [["category_id", "ASC"]],
+      order: [["code", "Desc"]],
       where: {
         project_id: id,
       },
