@@ -1,6 +1,7 @@
 import Budget from "../models/Budget";
 import Account from "../models/Account";
-import { async } from "regenerator-runtime";
+import Coin from "../models/Coin";
+
 export async function createBudget(req, res) {
   //controladores de
   const {
@@ -100,6 +101,24 @@ export async function listBudgets(req, res) {
     });
   } catch (error) {
     console.log("ERROR AL QUERE LISTAR BUSGETS:" + error);
+  }
+}
+
+//buscar un budget especifico por du ID
+export async function findBudgetById(req, res) {
+  const { id } = req.params;
+  try {
+    const budget = await Budget.findAll({
+      where: {
+        id,
+      },
+      include: [Account, Coin],
+    });
+    res.json({
+      budget,
+    });
+  } catch (error) {
+    console.log("ERROR AL QUERE LISTAR BUSGET:" + error);
   }
 }
 

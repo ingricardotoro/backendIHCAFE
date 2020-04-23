@@ -1,13 +1,19 @@
-import {Router} from 'express';
+import { Router } from "express";
 const router = Router();
 
 //import {createProjects,listProjects,findProject,deleteProject,updateProject } from '../controllers/projectsController';
 // rutas /api/projets
-import {createBudget, listBudgets, deleteBudget} from '../controllers/budgetsController'
-router.post('/', createBudget);
-router.get('/', listBudgets);
+import {
+  createBudget,
+  listBudgets,
+  deleteBudget,
+  findBudgetById,
+} from "../controllers/budgetsController";
+router.post("/", createBudget);
+router.get("/", listBudgets);
 //router.get('/:id', findProject);
-router.post('/delete/:id', deleteBudget);
+router.post("/delete/:id", deleteBudget);
+router.post("/findBudgetById/:id", findBudgetById);
 //router.put('/:id', updateProject);
 
 export default router;
