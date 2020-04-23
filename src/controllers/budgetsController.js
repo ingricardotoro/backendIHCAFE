@@ -127,12 +127,12 @@ export async function updateBudget(req, res) {
   const {
     code,
     name,
-    tipo,
-    coin_id,
+    /*tipo,*/
+    /*coin_id,*/
     description,
     /*excercise_start,
     excercise_end,*/
-    account_id,
+    /*account_id,*/
     /*person_id,*/
     buddgetstart,
     /*buddgeupdate,
@@ -151,12 +151,12 @@ export async function updateBudget(req, res) {
       {
         code,
         name,
-        tipo,
-        coin_id,
+        /*tipo,*/
+        /*coin_id,*/
         description,
         /*excercise_start,
         excercise_end,*/
-        account_id,
+        /*account_id,*/
         /*person_id,*/
         buddgetstart,
         /*buddgeupdate,
