@@ -122,6 +122,72 @@ export async function findBudgetById(req, res) {
   }
 }
 
+export async function updateBudget(req, res) {
+  const { id } = req.params;
+  const {
+    code,
+    name,
+    tipo,
+    coin_id,
+    description,
+    excercise_start,
+    excercise_end,
+    account_id,
+    /*person_id,*/
+    buddgetstart,
+    /*buddgeupdate,
+    buddgetfinal,
+    balance,
+    returns,
+    deviation,
+    /*status,
+    approval,
+    approvalby_id,
+    dateapproval,*/
+  } = req.body;
+
+  try {
+    const result = await Budget.update(
+      {
+        code,
+        name,
+        tipo,
+        coin_id,
+        description,
+        excercise_start,
+        excercise_end,
+        account_id,
+        /*person_id,*/
+        buddgetstart,
+        /*buddgeupdate,
+        buddgetfinal,
+        balance,
+        returns,
+        deviation,
+        /*status,
+        approval,
+        approvalby_id,
+        dateapproval,*/
+      },
+      {
+        where: { id },
+      }
+    );
+
+    if (result) {
+      res.json({
+        message: "Presupuesto Actualizado Satifactoriamente",
+      });
+    }
+  } catch (erro) {
+    console.log(erro);
+    return res.json({
+      message: "Something Wrong in Update Presupuesto",
+      data: {},
+    });
+  }
+}
+
 export async function deleteBudget(req, res) {
   const { id } = req.params;
   try {

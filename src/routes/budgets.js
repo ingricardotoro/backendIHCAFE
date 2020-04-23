@@ -8,12 +8,13 @@ import {
   listBudgets,
   deleteBudget,
   findBudgetById,
+  updateBudget,
 } from "../controllers/budgetsController";
 router.post("/", createBudget);
 router.get("/", listBudgets);
 //router.get('/:id', findProject);
 router.post("/delete/:id", deleteBudget);
 router.post("/findBudgetById/:id", findBudgetById);
-//router.put('/:id', updateProject);
+router.post("/edit/:id", updateBudget);
 
 export default router;
