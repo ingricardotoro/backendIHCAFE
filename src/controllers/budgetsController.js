@@ -130,8 +130,8 @@ export async function updateBudget(req, res) {
     tipo,
     coin_id,
     description,
-    excercise_start,
-    excercise_end,
+    /*excercise_start,
+    excercise_end,*/
     account_id,
     /*person_id,*/
     buddgetstart,
@@ -154,8 +154,8 @@ export async function updateBudget(req, res) {
         tipo,
         coin_id,
         description,
-        excercise_start,
-        excercise_end,
+        /*excercise_start,
+        excercise_end,*/
         account_id,
         /*person_id,*/
         buddgetstart,
