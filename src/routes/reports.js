@@ -3,9 +3,9 @@ const router = Router();
 
 import { createReports, fetchPdf, reportepdf } from '../controllers/reportsController';
 // rutas /api/reports
-router.post('/create-pdf', createReports);
+//router.post('/create-pdf', createReports);
 
-router.get('/fetch-pdf', fetchPdf);
+//router.get('/fetch-pdf', fetchPdf);
 
 router.get('/reportepdf', reportepdf);
 
