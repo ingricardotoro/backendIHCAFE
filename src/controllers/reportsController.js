@@ -21,7 +21,7 @@ export async function fetchPdf(req, res) {
 
 export async function reportepdf(req, res) {
 
-    const html = fs.readFileSync('../templates/report.html', 'utf8');
+    const html = fs.readFileSync('report.html', 'utf8');
     var options = {
         format: "A3",
         orientation: "portrait",
