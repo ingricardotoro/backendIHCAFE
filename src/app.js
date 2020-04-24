@@ -21,6 +21,8 @@ import atlasRoutes from "./routes/atlas";
 import suppliersRoutes from "./routes/suppliers";
 import filesRoutes from "./routes/files";
 import coinsRoutes from "./routes/coins";
+import reportsRoutes from "./routes/reports";
+
 
 //Initialization
 const app = express();
@@ -45,6 +47,7 @@ app.use("/api/tasks", taskRoutes);
 app.use("/api/suppliers", suppliersRoutes);
 app.use("/api/files", filesRoutes);
 app.use("/api/coins", coinsRoutes);
+app.use("/api/reports", reportsRoutes);
 
 //crear carpeta publica para el navegador
 //app.use(express.static(path.join(__dirname,'public')));
