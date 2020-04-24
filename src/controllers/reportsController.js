@@ -1,5 +1,5 @@
 //const pdf = require('html-pdf');
-import pdfTemplate from '../templates/report'
+//import pdfTemplate from '../templates/report.html'
 import pdf from 'pdf-creator-node'
 import fs from 'fs'
 
@@ -21,7 +21,7 @@ export async function fetchPdf(req, res) {
 
 export async function reportepdf(req, res) {
 
-    const html = fs.readFileSync(pdfTemplate, 'utf8');
+    const html = fs.readFileSync('../templates/report.html', 'utf8');
     var options = {
         format: "A3",
         orientation: "portrait",
