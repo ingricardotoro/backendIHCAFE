@@ -3,6 +3,7 @@ import pdfTemplate from '../templates/report'
 
 
 export async function createReports(req, res) {
+    console.log(req.data)
     pdf.create(pdfTemplate(req.data), {}).toFile('Reportes.pdf', (err) => {
         if (err) {
             return Promise.reject();
