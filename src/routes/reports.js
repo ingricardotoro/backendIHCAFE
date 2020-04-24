@@ -1,11 +1,13 @@
 import { Router } from 'express';
 const router = Router();
 
-import { createReports, fetchPdf } from '../controllers/reportsController';
+import { createReports, fetchPdf, reportepdf } from '../controllers/reportsController';
 // rutas /api/reports
 router.post('/create-pdf', createReports);
 
 router.get('/fetch-pdf', fetchPdf);
+
+router.get('/reportepdf', reportepdf);
 
 /*router.get('/:id', findProject);
 router.post('/findProjectsByBudgetId/:id', findProjectsByBudgetId);
