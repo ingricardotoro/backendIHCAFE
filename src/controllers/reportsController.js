@@ -1,4 +1,4 @@
-import pdf from 'html-pdf'
+const pdf = require('html-pdf');
 import pdfTemplate from '../templates/report'
 
 
