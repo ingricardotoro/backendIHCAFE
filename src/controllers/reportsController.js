@@ -3,13 +3,13 @@ import pdfTemplate from '../templates/report'
 
 
 export async function createReports(req, res) {
-    console.log(req.data)
-    pdf.create(pdfTemplate(req.data), {}).toFile('Reportes.pdf', (err) => {
+    console.log(req.body)
+    pdf.create(pdfTemplate(req.body), {}).toFile('Reportes.pdf', (err) => {
         if (err) {
-            return Promise.reject();
+            res.send(Promise.reject());
         }
 
-        Promise.resolve();
+        res.send(Promise.resolve());
     });
 }
 
