@@ -129,6 +129,23 @@ export async function listBudgets_atlas(req, res) {
   }
 }
 
+//listar todos los presupuestos 
+export async function listBudgets_all(req, res) {
+  try {
+    const budgets = await Budget.findAll({
+
+      include: [Account]
+
+
+    });
+    res.json({
+      budgets,
+    });
+  } catch (error) {
+    console.log("ERROR AL QUERE LISTAR BUSGETS:" + error);
+  }
+}
+
 
 
 //buscar un budget especifico por du ID
