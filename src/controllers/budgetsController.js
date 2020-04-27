@@ -95,7 +95,13 @@ export async function createBudget(req, res) {
 
 export async function listBudgets(req, res) {
   try {
-    const budgets = await Budget.findAll({ include: [Account] });
+    const budgets = await Budget.findAll({
+
+      where: {
+        tipo: 'estandar',
+      },
+      include: [Account]
+    });
     res.json({
       budgets,
     });
@@ -103,6 +109,27 @@ export async function listBudgets(req, res) {
     console.log("ERROR AL QUERE LISTAR BUSGETS:" + error);
   }
 }
+
+//listar los presupuestos del tipo atlas para los reportes
+export async function listBudgets_atlas(req, res) {
+  try {
+    const budgets = await Budget.findAll({
+      where: {
+        tipo: 'atlas',
+      },
+      include: [Account]
+
+
+    });
+    res.json({
+      budgets,
+    });
+  } catch (error) {
+    console.log("ERROR AL QUERE LISTAR BUSGETS:" + error);
+  }
+}
+
+
 
 //buscar un budget especifico por du ID
 export async function findBudgetById(req, res) {
