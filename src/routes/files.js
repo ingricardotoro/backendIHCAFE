@@ -3,12 +3,13 @@ import path from "path";
 import multer from "multer";
 import { v4 as uuidv4 } from "uuid";
 import Archivo from "../models/Archivo";
-import regeneratorRuntime from "regenerator-runtime";
+import Archivo_Atlas from "../models/Archivo_Atlas";
+
 import "@babel/polyfill";
 
 const router = Router();
 
-import { FileByBudgetId, DeleteFileById } from "../controllers/filesController";
+import { FileByBudgetId, FileByBudgetIdAtlas, DeleteFileById, DeleteFileByIdAtlas } from "../controllers/filesController";
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -34,14 +35,64 @@ const upload = multer({
   },
 });
 
-//ruta para la creacion de un nuevo archivo, asignado a un budgetLiine Atlas
-router.post("/filesbybudgetid/:id", FileByBudgetId);
+//ruta para visualizar un  archivo, asignado a un budget y a un budgetLine Standar
+router.post("/filesbybudgetid/:budget_id/:budgetline_id", FileByBudgetId);
+
+//ruta para visualizar un  archivo, asignado a un budget y a un budgetLine Atlas  
+router.post("/filesbybudgetid_atlas/:budget_id/:budgetlineatlas_id", FileByBudgetIdAtlas);
 
 //ruta para eliminar un archivo por Id
 router.post("/delete/:filename", DeleteFileById);
 
-//Ruta para almacenar el archivo
-router.post("/:id", upload.single("archivo"), async function (req, res, next) {
+//ruta para eliminar un archivo aTLAS por Id
+router.post("/delete_atlas/:filename", DeleteFileByIdAtlas);
+
+//Ruta para almacenar el archivo para presupuestos ATLAS
+router.post("/atlas", upload.single("archivos"), async function (req, res, next) {
+  console.log(req.file);
+  const dir = "files/";
+  try {
+    let newFile = await Archivo_Atlas.create(
+      {
+        filename: req.file.filename,
+        filedir: dir,
+        description: req.body.file_name,
+        fase: req.body.fase,
+        budget_id: req.body.budget_id,
+        budgetlineatlas_id: req.body.budgetlineatlas_id,
+      },
+      {
+        fields: [
+          "filename",
+          "filedir",
+          "description",
+          "fase",
+          "budget_id",
+          "budgetlineatlas_id",
+        ],
+      }
+    );
+
+    if (newFile) {
+      //res.redirect('http://localhost:3000/project/'+req.body.project_id);
+      res.redirect("http://167.99.15.83:3001/project/" + req.body.project_id);
+    } else {
+      return res.json({
+        message: "No se Pudo Crear el Nuevo Archivo",
+        data: {},
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Error al crear nuevo File",
+      data: {},
+    });
+  }
+});
+
+//Ruta para almacenar el archivo para presupuestos estandar
+router.post("/", upload.single("archivo"), async function (req, res, next) {
   console.log(req.file);
   const dir = "files/";
   try {
@@ -51,7 +102,8 @@ router.post("/:id", upload.single("archivo"), async function (req, res, next) {
         filedir: dir,
         description: req.body.file_name,
         fase: req.body.fase,
-        budgetlineatlas_id: req.body.budget_id,
+        budget_id: req.body.budget_id,
+        budgetline_id: req.body.budgetline_id,
       },
       {
         fields: [
@@ -59,7 +111,8 @@ router.post("/:id", upload.single("archivo"), async function (req, res, next) {
           "filedir",
           "description",
           "fase",
-          "budgetlineatlas_id",
+          "budget_id",
+          "budgetline_id",
         ],
       }
     );

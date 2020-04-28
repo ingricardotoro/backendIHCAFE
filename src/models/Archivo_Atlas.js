@@ -4,9 +4,9 @@ import Sequelize from 'sequelize';
 //import connection object
 import { sequelize } from '../database/database';
 
-import BudgetLine from './BudgetLine';
+import BudgetLineAtlas from './BudgetLineAtlas';
 
-const Archivo = sequelize.define('archivos', {
+const Archivo_Atlas = sequelize.define('archivos_atlas', {
 
     id: {
         type: Sequelize.INTEGER,
@@ -30,11 +30,12 @@ const Archivo = sequelize.define('archivos', {
         type: Sequelize.STRING
     },
 
-    budgetline_id: {
+
+    budgetlineatlas_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
         references: {
-            model: BudgetLine,
+            model: BudgetLineAtlas,
             key: 'id'
         }
     },
@@ -62,4 +63,4 @@ const Archivo = sequelize.define('archivos', {
 //Archivo.belongsTo(BudgetLineAtlas, {foreignKey: 'budgetlineatlas_id'});
 //Archivo.belongsTo(BudgetLineAtlas);
 
-export default Archivo;
+export default Archivo_Atlas;
