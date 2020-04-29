@@ -4,7 +4,7 @@ import Sequelize from 'sequelize';
 //import connection object
 import { sequelize } from '../database/database';
 
-import BudgetLine from './BudgetLine';
+import BudgetLine from './Budgetline';
 
 const Archivo_Estandar = sequelize.define('archivos_estandar', {
 
