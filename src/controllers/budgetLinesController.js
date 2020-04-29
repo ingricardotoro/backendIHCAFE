@@ -3,7 +3,7 @@ import Category from "../models/Category";
 import Person from "../models/Person";
 import Project from "../models/Project";
 import Budget from "../models/Budget";
-import Archivo_Atlas from "../models/Archivo_Atlas";
+//import Archivo_Atlas from "../models/Archivo_Estandar";
 import sequelize from "sequelize";
 import BudgetLineAtlas from "../models/BudgetLineAtlas";
 import BudgetLine from "../models/Budgetline";
