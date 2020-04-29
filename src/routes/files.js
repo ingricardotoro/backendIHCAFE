@@ -10,7 +10,6 @@ import "@babel/polyfill";
 const router = Router();
 
 import { FileByBudgetId, FileByBudgetIdAtlas, DeleteFileById, DeleteFileByIdAtlas } from "../controllers/filesController";
-import Archivo_Estandar from "../models/Archivo_Estandar";
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
