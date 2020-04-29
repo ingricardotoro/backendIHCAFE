@@ -1,11 +1,12 @@
 import Archivo from "../models/Archivo";
+import Archivo_Estandar from "../models/Archivo_Estandar";
 
 //buscamos los archivo que pertenecen a este budgetLine
 export async function FileByBudgetId(req, res) {
   const { budget_id, budgetline_id } = req.params;
 
   try {
-    const files = await Archivo.findAll({
+    const files = await Archivo_Estandar.findAll({
       where: {
         budget_id,
         budgetline_id
@@ -24,7 +25,7 @@ export async function FileByBudgetIdAtlas(req, res) {
   const { budget_id, budgetlineatlas_id } = req.params;
 
   try {
-    const files = await Archivo_Atlas.findAll({
+    const files = await Archivo.findAll({
       where: {
         budget_id,
         budgetlineatlas_id
@@ -42,7 +43,7 @@ export async function FileByBudgetIdAtlas(req, res) {
 export async function DeleteFileById(req, res) {
   const { filename } = req.params;
   try {
-    const deleteRowCount = await Archivo.destroy({
+    const deleteRowCount = await Archivo_Estandar.destroy({
       where: {
         filename,
       },
@@ -61,7 +62,7 @@ export async function DeleteFileById(req, res) {
 export async function DeleteFileByIdAtlas(req, res) {
   const { filename } = req.params;
   try {
-    const deleteRowCount = await Archivo_Atlas.destroy({
+    const deleteRowCount = await Archivo.destroy({
       where: {
         filename,
       },

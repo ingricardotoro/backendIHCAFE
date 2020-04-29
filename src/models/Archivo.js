@@ -4,7 +4,7 @@ import Sequelize from 'sequelize';
 //import connection object
 import { sequelize } from '../database/database';
 
-import BudgetLine from './Budgetline';
+import BudgetLineAtlas from './BudgetLineAtlas';
 
 const Archivo = sequelize.define('archivos', {
 
@@ -30,11 +30,11 @@ const Archivo = sequelize.define('archivos', {
         type: Sequelize.STRING
     },
 
-    budgetline_id: {
+    budgetlineatlas_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
         references: {
-            model: BudgetLine,
+            model: BudgetLineAtlas,
             key: 'id'
         }
     },

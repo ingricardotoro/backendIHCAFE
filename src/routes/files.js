@@ -3,13 +3,14 @@ import path from "path";
 import multer from "multer";
 import { v4 as uuidv4 } from "uuid";
 import Archivo from "../models/Archivo";
-import Archivo_Atlas from "../models/Archivo_Atlas";
+import Archivo_Estandar from "../models/Archivo_Estandar";
 
 import "@babel/polyfill";
 
 const router = Router();
 
 import { FileByBudgetId, FileByBudgetIdAtlas, DeleteFileById, DeleteFileByIdAtlas } from "../controllers/filesController";
+import Archivo_Estandar from "../models/Archivo_Estandar";
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -52,7 +53,7 @@ router.post("/atlas", upload.single("archivos"), async function (req, res, next)
   console.log(req.file);
   const dir = "files/";
   try {
-    let newFile = await Archivo_Atlas.create(
+    let newFile = await Archivo.create(
       {
         filename: req.file.filename,
         filedir: dir,
@@ -96,7 +97,7 @@ router.post("/", upload.single("archivo"), async function (req, res, next) {
   console.log(req.file);
   const dir = "files/";
   try {
-    let newFile = await Archivo.create(
+    let newFile = await Archivo_Estandar.create(
       {
         filename: req.file.filename,
         filedir: dir,
