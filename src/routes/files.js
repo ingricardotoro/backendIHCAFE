@@ -22,7 +22,7 @@ var storage = multer.diskStorage({
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 20000000 }, //5 megas
+  limits: { fileSize: 20000000 }, //20 megas
   fileFilter: (req, file, cb) => {
     const filetypes = /jpeg|jpg|png|gif|pdf/;
     const mimetype = filetypes.test(file.mimetype);
@@ -48,7 +48,7 @@ router.post("/delete/:filename", DeleteFileById);
 router.post("/delete_atlas/:filename", DeleteFileByIdAtlas);
 
 //Ruta para almacenar el archivo para presupuestos ATLAS
-router.post("/atlas", upload.single("archivos"), async function (req, res, next) {
+router.post("/atlas", upload.single("archivo"), async function (req, res, next) {
   console.log(req.file);
   const dir = "files/";
   try {
