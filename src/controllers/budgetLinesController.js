@@ -529,13 +529,13 @@ export async function ReporteAtlasByProjectID(req, res) {
   const { id } = req.params; // obtenemos el id del proyecto
   try {
     const ArrayReportebyProject = await BudgetLineAtlas.findAll({
-      attributes: ["code",
+      attributes: ["code_atlas",
         [sequelize.fn("SUM", sequelize.col("balance")), "TOTAL"],
       ],
 
       include: [{
         model: AtlasAccount,
-        attributes: ["name"]
+        attributes: ["name", "code"]
       }],
 
       group: ['code'],
