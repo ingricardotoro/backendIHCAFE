@@ -533,7 +533,7 @@ export async function ReporteAtlasByProjectID(req, res) {
       attributes: [AtlasAccount.name, BudgetLineAtlas.code,
       [sequelize.fn("SUM", sequelize.col("balance")), "TOTAL"],
       ],
-      group: ['budgetlines_atlas.code'],
+      group: ['code'],
       where: {
         project_id: id,
         status: "Aprobado"
