@@ -150,8 +150,8 @@ const BudgetLineAtlas = sequelize.define('budgetlines_atlas', {
 
 BudgetLineAtlas.belongsTo(Project, { foreignKey: 'project_id' });
 BudgetLineAtlas.belongsTo(Person, { foreignKey: 'supplier_id' });
-BudgetLineAtlas.belongsTo(AtlasAccount, { foreignKey: 'code_atlas' });
-//BudgetLineAtlas.belongsTo(AtlasAccount, { foreignKey: 'code_atlas', targetKey: 'id' });
+//BudgetLineAtlas.belongsTo(AtlasAccount, { foreignKey: 'code_atlas' });
+BudgetLineAtlas.belongsTo(AtlasAccount, { foreignKey: 'code_atlas', targetKey: 'id' });
 //BudgetLineAtlas.belongsTo(AtlasAccount,  {foreignKey: 'code_sub_atlas'});
 
 
