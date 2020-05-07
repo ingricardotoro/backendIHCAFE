@@ -538,11 +538,13 @@ export async function ReporteAtlasByProjectID(req, res) {
         attributes: ["name", "code"]
       }],
 
-      group: [BudgetLineAtlas.code_atlas],
       where: {
         project_id: id,
         status: "Aprobado"
       },
+
+      group: ["code_atlas"],
+
     });
     res.json({
       ArrayReportebyProject,
