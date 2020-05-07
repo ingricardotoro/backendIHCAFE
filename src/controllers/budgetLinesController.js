@@ -538,7 +538,7 @@ export async function ReporteAtlasByProjectID(req, res) {
         attributes: ["name", "code"]
       }],
 
-      group: ['code'],
+      group: ['atlas_accounts.code'],
       where: {
         project_id: id,
         status: "Aprobado"
