@@ -448,6 +448,7 @@ export async function budgetLinesAccountsAtlasByProjectId(req, res) {
   const { id } = req.params;
   try {
     const budgetAccountAtlas = await BudgetlineAtlas.findAll({
+
       attributes: [
         [sequelize.fn("DISTINCT", sequelize.col("code_atlas")), "code_atlas"],
       ],
@@ -520,4 +521,29 @@ export async function deleteBudgetLinesAtlas(req, res) {
   } catch (error) {
     console.log("ERROR AL QUERE ELIMINAR EL BudgetLineAtlas:" + error);
   }
+}
+
+
+export async function ReporteAtlasByProjectID(req, res) {
+
+  const { id } = req.params; // obtenemos el id del proyecto
+  try {
+    const ArrayReportebyProject = await BudgetlineAtlas.findAll({
+      include: [AtlasAccount],
+      attributes: [name, code,
+        [sequelize.fn("SUM", sequelize.col("balance")), "TOTAL"],
+      ],
+      group: ['code'],
+      where: {
+        project_id: id,
+        status: "Aprobado"
+      },
+    });
+    res.json({
+      ArrayReportebyProject,
+    });
+  } catch (error) {
+    console.log("ERROR AL QUERE LISTAR  Reporte_atlas_by_project:" + error);
+  }
+
 }

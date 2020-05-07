@@ -12,6 +12,8 @@ import {
   AprobarBudgetLinesAtlasbyId,
   deleteBudgetLines,
   deleteBudgetLinesAtlas,
+
+  ReporteAtlasByProjectID
 } from "../controllers/budgetLinesController";
 
 // ruta /api/budgetlines/project/:id -> para buscar los renglones de cada projecto
@@ -35,6 +37,7 @@ router.post(
 
 // ruta /api/budgetlines/project/:id -> para buscar los renglones de cada projecto
 router.post("/atlas/project/:id", budgetLinesAtlasbyProjectId);
+router.post("/atlas/reporte_atlas_by_project/:id", ReporteAtlasByProjectID);
 
 // ruta /api/budgetlines/ -> para crear un nuevo renglon
 router.post("/", createBudgetLines);
