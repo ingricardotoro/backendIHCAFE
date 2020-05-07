@@ -535,7 +535,7 @@ export async function ReporteAtlasByProjectID(req, res) {
 
       include: [{
         model: AtlasAccount,
-        attributes: ["name", "code"]
+        attributes: ["name"]
       }],
 
       where: {
