@@ -9,148 +9,149 @@ import Archivo from './Archivo';
 //import connection object
 import { sequelize } from '../database/database';
 
-const BudgetLineAtlas = sequelize.define('budgetlines_atlas',{
+const BudgetLineAtlas = sequelize.define('budgetlines_atlas', {
 
-    id:{
+    id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    code_resultado:{
-        type: Sequelize.STRING, 
+    code_resultado: {
+        type: Sequelize.STRING,
         allowNull: false
     },
-    code_producto:{
-        type: Sequelize.STRING, 
+    code_producto: {
+        type: Sequelize.STRING,
         allowNull: false
     },
-    code_activity:{
-        type: Sequelize.STRING, 
+    code_activity: {
+        type: Sequelize.STRING,
         allowNull: false
     },
-    code_atlas:{
+    code_atlas: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: AtlasAccount,
-          key: 'id',
-         }
+            model: AtlasAccount,
+            key: 'id',
+        }
     },
-    code_sub_atlas:{
+    code_sub_atlas: {
         /*type: Sequelize.STRING, 
         allowNull: false*/
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: AtlasAccount,
-          key: 'id',
-         }
+            model: AtlasAccount,
+            key: 'id',
+        }
     },
-    code:{
-        type: Sequelize.STRING, 
+    code: {
+        type: Sequelize.STRING,
     },
-    details:{
-        type: Sequelize.TEXT, 
+    details: {
+        type: Sequelize.TEXT,
     },
-    comentario:{
-        type: Sequelize.TEXT, 
+    comentario: {
+        type: Sequelize.TEXT,
     },
-    
-    date_start:{
-        type: Sequelize.DATEONLY, 
+
+    date_start: {
+        type: Sequelize.DATEONLY,
     },
-    date_end:{
-        type: Sequelize.DATEONLY, 
+    date_end: {
+        type: Sequelize.DATEONLY,
     },
-    
+
     account_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: Account,
-          key: 'id',
-         }
+            model: Account,
+            key: 'id',
+        }
     },
     project_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: Project,
-          key: 'id',
-         }
+            model: Project,
+            key: 'id',
+        }
     },
     user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: Person,
-          key: 'id',
-         }
+            model: Person,
+            key: 'id',
+        }
     },
     supplier_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: Person,
-          key: 'id',
-         }
+            model: Person,
+            key: 'id',
+        }
     },
-    budgetstart:{
-        type:Sequelize.DOUBLE,
+    budgetstart: {
+        type: Sequelize.DOUBLE,
         allowNull: false,
     },
-    budgeupdate:{
-        type:Sequelize.DOUBLE,
+    budgeupdate: {
+        type: Sequelize.DOUBLE,
         allowNull: false,
     },
-    budgetfinal:{
-        type:Sequelize.DOUBLE,
+    budgetfinal: {
+        type: Sequelize.DOUBLE,
         allowNull: false,
     },
-    balance:{
-        type:Sequelize.DOUBLE,
+    balance: {
+        type: Sequelize.DOUBLE,
         allowNull: false,
     },
-    returns:{
-        type:Sequelize.DOUBLE,
+    returns: {
+        type: Sequelize.DOUBLE,
     },
-    deviation:{
-        type:Sequelize.DOUBLE,
+    deviation: {
+        type: Sequelize.DOUBLE,
     },
-    status:{
-        type:Sequelize.STRING,
+    status: {
+        type: Sequelize.STRING,
         allowNull: false,
     },
-    approval:{
-        type:Sequelize.BOOLEAN,
+    approval: {
+        type: Sequelize.BOOLEAN,
     },
     approvalby_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
         references: {
-          model: Person,
-          key: 'id',
-         }
+            model: Person,
+            key: 'id',
+        }
     },
-    dateapproval:{
-        type:Sequelize.DATEONLY,
+    dateapproval: {
+        type: Sequelize.DATEONLY,
     },
-    createdAt:{
-        type:Sequelize.DATE,
+    createdAt: {
+        type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
-        
+
     },
-    updatedAt:{
-        type:Sequelize.DATE,
+    updatedAt: {
+        type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
-        
+
     }
 
-},{timestamps:true });
+}, { timestamps: true });
 
-BudgetLineAtlas.belongsTo(Project, {foreignKey: 'project_id'});
-BudgetLineAtlas.belongsTo(Person, {foreignKey: 'supplier_id'});
-BudgetLineAtlas.belongsTo(AtlasAccount, {foreignKey: 'code_atlas'});
+BudgetLineAtlas.belongsTo(Project, { foreignKey: 'project_id' });
+BudgetLineAtlas.belongsTo(Person, { foreignKey: 'supplier_id' });
+//BudgetLineAtlas.belongsTo(AtlasAccount, { foreignKey: 'code_atlas' });
+BudgetLineAtlas.belongsTo(AtlasAccount, { foreignKey: 'code_atlas', targetKey: 'id' });
 //BudgetLineAtlas.belongsTo(AtlasAccount,  {foreignKey: 'code_sub_atlas'});
 
 
