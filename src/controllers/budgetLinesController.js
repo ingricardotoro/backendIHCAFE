@@ -545,7 +545,7 @@ export async function ReporteAtlasByProjectID(req, res) {
         status: "Aprobado"
       },
 
-      //group: [BudgetLineAtlas.sequelize.col('code_atlas')],
+      group: [BudgetLineAtlas.sequelize.col('code')],
 
     });
     res.json({
