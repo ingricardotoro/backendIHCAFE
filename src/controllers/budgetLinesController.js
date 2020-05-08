@@ -530,7 +530,7 @@ export async function ReporteAtlasByProjectID(req, res) {
   try {
     const ArrayReportebyProject = await BudgetLineAtlas.findAll({
 
-      attributes: [
+      attributes: ["code_atlas",
 
         [sequelize.fn("SUM", sequelize.col("balance")), "TOTAL"]
       ],
@@ -545,7 +545,7 @@ export async function ReporteAtlasByProjectID(req, res) {
         status: "Aprobado"
       },
 
-      group: [BudgetLineAtlas.sequelize.col('code_atlas')],
+      //group: [BudgetLineAtlas.sequelize.col('code_atlas')],
 
     });
     res.json({
