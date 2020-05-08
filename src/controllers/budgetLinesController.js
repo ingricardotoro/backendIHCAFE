@@ -537,7 +537,7 @@ export async function ReporteAtlasByProjectID(req, res) {
 
       include: [{
         model: AtlasAccount,
-        attributes: [BudgetLineAtlas.sequelize.col('name'), BudgetLineAtlas.sequelize.col('code')]
+        attributes: [AtlasAccount.sequelize.col('name'), AtlasAccount.sequelize.col('code')]
       }],
 
       where: {
