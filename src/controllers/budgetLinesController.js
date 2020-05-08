@@ -532,7 +532,8 @@ export async function ReporteAtlasByProjectID(req, res) {
 
       attributes: ["code_atlas",
 
-        [sequelize.fn("SUM", sequelize.col("balance")), "TOTAL"]
+        [sequelize.fn("SUM", sequelize.col("balance")), "TOTAL"],
+        [sequelize.fn("SUM", sequelize.col("budgetstart")), "inicial"]
       ],
 
       include: [{
