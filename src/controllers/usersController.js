@@ -44,7 +44,7 @@ export async function login(req, res) {
 //codigo para registrar nuevos usuarios
 export async function register(req, res) {
 
-    const { name, lastname, username, password, tipo_user_id } = req.body;
+    const { name, lastname, username, tipo_user_id } = req.body;
     let { password } = req.body;
 
     let user = '';
