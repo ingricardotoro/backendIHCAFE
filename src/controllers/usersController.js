@@ -1,4 +1,5 @@
 import User from '../models/User'
+import TipoUser from '../models/TipoUser'
 
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
@@ -6,7 +7,7 @@ import jwt from 'jsonwebtoken'
 //codigo para listar usuarios
 export async function listUsers(req, res) {
     try {
-        const users = await User.findAll();
+        const users = await User.findAll({ include: [TipoUser] });
         res.json({
             users
         });
@@ -90,7 +91,7 @@ export async function register(req, res) {
             if (newUser) {
                 return res.json({
                     message: "Nuevo Usuario Creado Exitosamente",
-                    data: newUser,
+                    //data: newUser,
                 });
             } else {
                 return res.json({
