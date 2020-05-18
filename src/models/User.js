@@ -1,6 +1,6 @@
 //para modelar datos 
 import Sequelize from 'sequelize';
-import TipoUser from './  '
+import TipoUser from './TipoUser'
 
 //import connection object
 import { sequelize } from '../database/database';

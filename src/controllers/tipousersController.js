@@ -1,7 +1,7 @@
 import TipoUser from '../models/TipoUser'
 
 //codigo para listar tipousuarios
-export async function listUsers(req, res) {
+export async function listTipoUsers(req, res) {
     try {
         const tipousers = await TipoUser.findAll();
         res.json({
