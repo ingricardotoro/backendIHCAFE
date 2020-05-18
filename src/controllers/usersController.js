@@ -45,7 +45,7 @@ export async function login(req, res) {
 export async function register(req, res) {
 
     const { name, lastname, username, password, tipo_user_id } = req.body;
-    const user = '';
+    let user = '';
     //vefiricamos que el username no este registrado
     try {
         user = await User.findOne({
