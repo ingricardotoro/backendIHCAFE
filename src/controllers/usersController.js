@@ -45,6 +45,8 @@ export async function login(req, res) {
 export async function register(req, res) {
 
     const { name, lastname, username, password, tipo_user_id } = req.body;
+    let { password } = req.body;
+
     let user = '';
     //vefiricamos que el username no este registrado
     try {
