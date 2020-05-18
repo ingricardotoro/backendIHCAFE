@@ -22,6 +22,9 @@ import suppliersRoutes from "./routes/suppliers";
 import filesRoutes from "./routes/files";
 import coinsRoutes from "./routes/coins";
 import reportsRoutes from "./routes/reports";
+import usersRoutes from "./routes/users";
+import tipousersRoutes from "./routes/tipousers";
+
 
 
 //Initialization
@@ -48,6 +51,8 @@ app.use("/api/suppliers", suppliersRoutes);
 app.use("/api/files", filesRoutes);
 app.use("/api/coins", coinsRoutes);
 app.use("/api/reports", reportsRoutes);
+app.use("/api/users", usersRoutes);
+app.use("/api/tipousers", tipousersRoutes);
 
 //crear carpeta publica para el navegador
 //app.use(express.static(path.join(__dirname,'public')));
