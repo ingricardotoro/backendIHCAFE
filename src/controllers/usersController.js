@@ -33,12 +33,14 @@ export async function login(req, res) {
 
             if (user) {
                 if (bcrypt.compareSync(req.body.password, user.password)) {
+                    console.log("CLAVE OK:")
                     let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                         expiresIn: 1440
                     })
                     res.send(token)
                 }
             } else {
+                console.log("CLAVE MAL:")
                 res.status(400).json({ error: 'Usuario no existe' })
             }
         })
