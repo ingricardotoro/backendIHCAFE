@@ -19,6 +19,8 @@ export async function listUsers(req, res) {
 //codigo para realizar el login
 export async function login(req, res) {
 
+    console.log("BIENVENIDOOOO")
+
     //confirmamos si el usuario existe
     User.findOne({
         where: {
