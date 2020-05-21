@@ -28,6 +28,8 @@ export async function login(req, res) {
         }
     })
         .then(user => {
+            console.log("USER" + user)
+
             if (user) {
                 if (bcrypt.compareSync(req.body.password, user.password)) {
                     let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
