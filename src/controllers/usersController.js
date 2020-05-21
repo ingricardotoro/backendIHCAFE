@@ -28,7 +28,8 @@ export async function login(req, res) {
         }
     })
         .then(user => {
-            console.log("USER" + user)
+            console.log("USER:" + user.username)
+            console.log("Clave:" + user.password)
 
             if (user) {
                 if (bcrypt.compareSync(req.body.password, user.password)) {
