@@ -47,7 +47,7 @@ export async function CreateAccount(req, res) {
         if (newAccount) {
             return res.json({
                 message: "Cuenta Creada Exitosamente",
-                data: newProject,
+                data: newAccount,
             });
         } else {
             return res.json({
