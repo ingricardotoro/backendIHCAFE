@@ -1,6 +1,6 @@
 //para modelar datos 
 import Sequelize from 'sequelize';
-//import Category from './Category';
+import Coin from './Coin';
 import User from './User';
 
 //import connection object
@@ -62,5 +62,8 @@ const Account = sequelize.define('accounts', {
     }
 
 }, { timestamps: true });
+
+Account.belongsTo(Coin, { foreignKey: 'coin' });
+Account.belongsTo(User, { foreignKey: 'person_id' });
 
 export default Account;
