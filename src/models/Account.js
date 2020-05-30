@@ -67,7 +67,7 @@ const Account = sequelize.define('accounts', {
 
 }, { timestamps: true });
 
-Account.belongsTo(Coin, { foreignKey: 'coin' });
+Account.belongsTo(Coin, { foreignKey: 'coin_id' });
 Account.belongsTo(User, { foreignKey: 'person_id' });
 
 export default Account;
