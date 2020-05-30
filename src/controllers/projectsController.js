@@ -122,7 +122,7 @@ export async function createProjects(req, res) {
   } catch (error) {
     //console.log(error);
     res.status(500).json({
-      message: "Error al crar nuevos projectos",
+      message: "Error al crear nuevos projectos",
       data: {},
     });
   }

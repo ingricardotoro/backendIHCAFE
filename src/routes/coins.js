@@ -3,7 +3,7 @@ const router = Router();
 
 import { Listcoins } from "../controllers/coinscontroller";
 
-//router.post("/api/coins", categoriesbyid);
+//router.post("/api/coins", CreateCoins);
 router.get("/", Listcoins);
 
 /*router.get('/categories_childs/:id',categories_childs);// para obtener todas las categorias hijas dado el id del padre

@@ -19,8 +19,6 @@ export async function listUsers(req, res) {
 //codigo para realizar el login
 export async function login(req, res) {
 
-    console.log("BIENVENIDOOOO")
-
     //confirmamos si el usuario existe
     User.findOne({
         where: {
@@ -28,21 +26,14 @@ export async function login(req, res) {
         }
     })
         .then(user => {
-            console.log("USER:" + user.username)
-            console.log("Clave:" + user.password)
-
             if (user) {
                 if (bcrypt.compareSync(req.body.password, user.password)) {
-                    console.log("CLAVE OK:")
-                    console.log("dataValues:" + user.dataValues)
                     let token = jwt.sign(user.dataValues, 'secret', {
                         expiresIn: 1440
                     })
-                    console.log("Token:" + token)
                     res.send(token)
                 }
             } else {
-                console.log("CLAVE MAL:")
                 res.status(400).json({ error: 'Usuario no existe' })
             }
         })

@@ -1,66 +1,66 @@
 //para modelar datos 
 import Sequelize from 'sequelize';
 //import Category from './Category';
-import Person from './Person';
+import User from './User';
 
 //import connection object
 import { sequelize } from '../database/database';
 
-const Account = sequelize.define('accounts',{
+const Account = sequelize.define('accounts', {
 
-    id:{
+    id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-   
-    name:{
-        type: Sequelize.STRING, 
+
+    name: {
+        type: Sequelize.STRING,
         allowNull: false,
     },
-    description:{
-        type:Sequelize.TEXT
+    description: {
+        type: Sequelize.TEXT
     },
-   /*  category_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: Category,
-          key: 'id',
-         }
-    }, */
+    /*  category_id: {
+         type: Sequelize.INTEGER,
+         allowNull: false,
+         references: {
+           model: Category,
+           key: 'id',
+          }
+     }, */
     person_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: Person,
-          key: 'id',
-         }
+            model: User,
+            key: 'id',
+        }
     },
-    initialbalance:{
-        type:Sequelize.DOUBLE,
+    initialbalance: {
+        type: Sequelize.DOUBLE,
         allowNull: false,
     },
-    actualbalance:{
-        type:Sequelize.DOUBLE,
+    actualbalance: {
+        type: Sequelize.DOUBLE,
         allowNull: false,
     },
-    coin:{
-        type:Sequelize.STRING,
+    coin: {
+        type: Sequelize.STRING,
         allowNull: false,
     },
-    
-    createdAt:{
-        type:Sequelize.DATE,
+
+    createdAt: {
+        type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
-        
+
     },
-    updatedAt:{
-        type:Sequelize.DATE,
+    updatedAt: {
+        type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
-        
+
     }
 
-},{timestamps:true });
+}, { timestamps: true });
 
 export default Account;
