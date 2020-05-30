@@ -45,7 +45,7 @@ const Account = sequelize.define('accounts', {
         type: Sequelize.DOUBLE,
         allowNull: false,
     },
-    coin: {
+    coin_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
