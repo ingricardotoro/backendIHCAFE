@@ -1,10 +1,12 @@
 
 import Account from '../models/Account'
+import Coin from '../models/Coin'
+import User from '../models/User'
 
 export async function listAccounts(req, res) {
 
     try {
-        const cuentas = await Account.findAll();
+        const cuentas = await Account.findAll({ include: [Coin, User] });
         res.json({
             cuentas
         })
