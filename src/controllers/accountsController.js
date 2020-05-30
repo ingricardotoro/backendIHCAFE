@@ -65,3 +65,21 @@ export async function CreateAccount(req, res) {
         });
     }
 }
+
+
+export async function deleteAccount(req, res) {
+    const { id } = req.params;
+    try {
+        const deleteRowCount = await Account.destroy({
+            where: {
+                id,
+            },
+        });
+        res.json({
+            message: "Cuenta Eliminada Satifactoriamente",
+            count: deleteRowCount,
+        });
+    } catch (error) {
+        console.log("ERROR AL QUERE ELIMINAR CUENTA:" + error);
+    }
+}
