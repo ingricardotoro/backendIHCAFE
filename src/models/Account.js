@@ -48,6 +48,10 @@ const Account = sequelize.define('accounts', {
     coin: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+            model: Coin,
+            key: 'id',
+        }
     },
 
     createdAt: {
