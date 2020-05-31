@@ -14,6 +14,7 @@ export async function Listcoins(req, res) {
 
 
 export async function createCoin(req, res) {
+  console.log("aqui vamos bien:");
   const {
     name,
     description,
@@ -34,7 +35,7 @@ export async function createCoin(req, res) {
         ],
       }
     );
-
+    console.log("pasamos la creacion:" + newCoin);
     if (newCoin) {
       return res.json({
         message: "Moneda Creada Exitosamente",
@@ -46,6 +47,7 @@ export async function createCoin(req, res) {
         data: {},
       });
     }
+
   } catch (error) {
     //console.log(error);
     res.status(500).json({
