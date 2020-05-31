@@ -14,12 +14,13 @@ export async function Listcoins(req, res) {
 
 
 export async function createCoin(req, res) {
-  console.log("aqui vamos bien:");
+
   const {
     name,
     description,
     code,
   } = req.body;
+  console.log("aqui vamos bien:" + name + "-" + code + "-" + description);
   try {
     let newCoin = await Coin.create(
       {
@@ -35,7 +36,7 @@ export async function createCoin(req, res) {
         ],
       }
     );
-    console.log("pasamos la creacion:" + newCoin);
+
     if (newCoin) {
       return res.json({
         message: "Moneda Creada Exitosamente",
