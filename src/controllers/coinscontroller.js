@@ -61,7 +61,7 @@ export async function createCoin(req, res) {
 export async function findOneCoin(req, res) {
   const { id } = req.params;
   try {
-    const team = await Coin.findOne({
+    const coin = await Coin.findOne({
       where: {
         id,
       }
