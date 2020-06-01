@@ -4,33 +4,33 @@ import Sequelize from 'sequelize';
 //import connection object
 import { sequelize } from '../database/database';
 
-const Rol = sequelize.define('roles',{
+const Rol = sequelize.define('roles', {
 
-    id:{
+    id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-   
-    name:{
-        type: Sequelize.STRING, 
+
+    role_name: {
+        type: Sequelize.STRING,
         allowNull: false,
     },
-    description:{
-        type:Sequelize.TEXT
+    description: {
+        type: Sequelize.TEXT
     },
-   
-    createdAt:{
-        type:Sequelize.DATE,
+
+    createdAt: {
+        type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
-        
+
     },
-    updatedAt:{
-        type:Sequelize.DATE,
+    updatedAt: {
+        type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
-        
+
     }
 
-},{timestamps:true });
+}, { timestamps: true });
 
 export default Rol;
