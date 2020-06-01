@@ -28,7 +28,7 @@ const TeamMember = sequelize.define('team_members', {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-            model: Person,
+            model: User,
             key: 'id',
         }
     },
