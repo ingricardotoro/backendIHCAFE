@@ -1,5 +1,4 @@
 import Team from '../models/Team'
-import TeamMember from '../models/TeamMember'
 
 export async function listTeams(req, res) {
 
@@ -11,7 +10,6 @@ export async function listTeams(req, res) {
     } catch (error) {
         console.log("ERROR AL QUERE LISTAR EQUIPOS:" + error);
     }
-
 }
 
 export async function createTeam(req, res) {
@@ -57,19 +55,19 @@ export async function createTeam(req, res) {
 }
 
 
-export async function deleteCoin(req, res) {
+export async function deleteTeam(req, res) {
     const { id } = req.params;
     try {
-        const deleteRowCount = await Coin.destroy({
+        const deleteRowCount = await Team.destroy({
             where: {
                 id,
             },
         });
         res.json({
-            message: "Moneda Eliminada Satifactoriamente",
+            message: "Equipo Eliminado Satifactoriamente",
             count: deleteRowCount,
         });
     } catch (error) {
-        console.log("ERROR AL QUERE ELIMINAR Moneda:" + error);
+        console.log("ERROR AL QUERE ELIMINAR Equipo:" + error);
     }
 }
