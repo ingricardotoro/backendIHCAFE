@@ -1,60 +1,61 @@
 //para modelar datos 
 import Sequelize from 'sequelize';
 import Person from './Person';
-import Project from './Project';
 import Rol from './Rol';
 import Team from './Team';
-import File from './File';
 
 //import connection object
 import { sequelize } from '../database/database';
 
-const Teams = sequelize.define('teams',{
+const Teammembers = sequelize.define('teammembers', {
 
-    id:{
+    id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-   
-    team_id:{
+
+    team_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: Team,
-          key: 'id',
-         }
+            model: Team,
+            key: 'id',
+        }
     },
-  
+
     person_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: Person,
-          key: 'id',
-         }
+            model: Person,
+            key: 'id',
+        }
     },
-  
+
     rol_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: Rol,
-          key: 'id',
-         }
+            model: Rol,
+            key: 'id',
+        }
     },
-    
-    createdAt:{
-        type:Sequelize.DATE,
+
+    createdAt: {
+        type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
-        
+
     },
-    updatedAt:{
-        type:Sequelize.DATE,
+    updatedAt: {
+        type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
-        
+
     }
 
-},{timestamps:true });
+}, { timestamps: true });
 
-export default Teams;
+Teammembers.belongsTo(Team, { foreignKey: 'team_id', targetKey: 'id' });
+Teammembers.belongsTo(Role, { foreignKey: 'rol_id', targetKey: 'id' });
+
+export default Teammembers;

@@ -20,7 +20,7 @@ export async function createCoin(req, res) {
     description,
     code,
   } = req.body;
-  console.log("aqui vamos bien:" + name + "-" + code + "-" + description);
+
   try {
     let newCoin = await Coin.create(
       {
@@ -50,7 +50,7 @@ export async function createCoin(req, res) {
     }
 
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     res.status(500).json({
       message: "Error al crear nuevas Moneda",
       data: {},
