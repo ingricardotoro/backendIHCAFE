@@ -15,7 +15,7 @@ export async function listTeams(req, res) {
 export async function findOneTeam(req, res) {
     const { id } = req.params;
     try {
-        const teams = await Team.findOne({
+        const team = await Team.findOne({
             where: {
                 id,
             }
