@@ -55,7 +55,7 @@ const Teammembers = sequelize.define('team_members', {
 
 }, { timestamps: true });
 
-Teammembers.belongsTo(Team, { foreignKey: 'team_id', targetKey: 'id' });
-Teammembers.belongsTo(Rol, { foreignKey: 'rol_id', targetKey: 'id' });
+//Teammembers.belongsTo(Team, { foreignKey: 'team_id', targetKey: 'id' });
+//Teammembers.belongsTo(Rol, { foreignKey: 'rol_id', targetKey: 'id' });
 
 export default Teammembers;
