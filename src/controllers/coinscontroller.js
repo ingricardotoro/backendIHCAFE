@@ -58,6 +58,23 @@ export async function createCoin(req, res) {
   }
 }
 
+export async function findOneCoin(req, res) {
+  const { id } = req.params;
+  try {
+    const team = await Coin.findOne({
+      where: {
+        id,
+      }
+    },
+    );
+    res.json({
+      coin
+    })
+  } catch (error) {
+    console.log("ERROR AL Buscar Coin By Id:" + error);
+  }
+}
+
 
 export async function deleteCoin(req, res) {
   const { id } = req.params;
