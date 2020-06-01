@@ -1,4 +1,4 @@
-import Rol from '../models/Role'
+import Rol from '../models/Rol'
 
 export async function listRole(req, res) {
 
