@@ -1,6 +1,6 @@
 //para modelar datos 
 import Sequelize from 'sequelize';
-import Person from './Person';
+import User from './User';
 import Rol from './Rol';
 import Team from './Team';
 
