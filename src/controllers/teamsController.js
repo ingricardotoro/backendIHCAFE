@@ -12,6 +12,23 @@ export async function listTeams(req, res) {
     }
 }
 
+export async function findOneTeam(req, res) {
+    const { id } = req.params;
+    try {
+        const teams = await Team.findOne({
+            where: {
+                id,
+            }
+        },
+        );
+        res.json({
+            team
+        })
+    } catch (error) {
+        console.log("ERROR AL Buscar EQUIPO:" + error);
+    }
+}
+
 export async function createTeam(req, res) {
 
     const {
