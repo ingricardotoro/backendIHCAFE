@@ -1,10 +1,13 @@
 import TeamMember from '../models/TeamMember'
+import User from '../models/User'
+import Rol from '../models/Rol'
 
 export async function listTeamMembersByTeamId(req, res) {
     //id del team
     const { id } = req.params;
     try {
         const teammembers = await TeamMember.findAll({
+            include: [Rol, User],
             where: {
                 team_id: id,
             }
@@ -36,7 +39,7 @@ export async function deleteTeammember(req, res) {
 }
 
 export async function createTeammember(req, res) {
-    console.log("SI ENTRAMOS!!!!")
+
     const {
         team_id,
         person_id,
