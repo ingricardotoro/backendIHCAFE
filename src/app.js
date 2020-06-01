@@ -55,7 +55,7 @@ app.use("/api/tasks", taskRoutes);
 app.use("/api/suppliers", suppliersRoutes);
 app.use("/api/files", filesRoutes);
 app.use("/api/coins", coinsRoutes);
-app.use("/api/comversions", conversionsRoutes);
+app.use("/api/conversions", conversionsRoutes);
 app.use("/api/reports", reportsRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/tipousers", tipousersRoutes);
