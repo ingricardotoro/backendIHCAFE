@@ -1,6 +1,5 @@
 //para modelar datos 
 import Sequelize from 'sequelize';
-import Teammember from './TeamMember';
 
 //import connection object
 import { sequelize } from '../database/database';
