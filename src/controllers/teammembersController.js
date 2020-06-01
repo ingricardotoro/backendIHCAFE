@@ -36,7 +36,7 @@ export async function deleteTeammember(req, res) {
 }
 
 export async function createTeammember(req, res) {
-
+    console.log("SI ENTRAMOS!!!!")
     const {
         team_id,
         person_id,
