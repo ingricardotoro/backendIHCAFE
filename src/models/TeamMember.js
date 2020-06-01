@@ -7,7 +7,7 @@ import Team from './Team';
 //import connection object
 import { sequelize } from '../database/database';
 
-const Teammembers = sequelize.define('teammembers', {
+const Teammembers = sequelize.define('team_members', {
 
     id: {
         type: Sequelize.INTEGER,
