@@ -7,7 +7,7 @@ import Team from './Team';
 //import connection object
 import { sequelize } from '../database/database';
 
-const Teammembers = sequelize.define('team_members', {
+const TeamMember = sequelize.define('team_members', {
 
     id: {
         type: Sequelize.INTEGER,
@@ -58,4 +58,4 @@ const Teammembers = sequelize.define('team_members', {
 //Teammembers.belongsTo(Team, { foreignKey: 'team_id', targetKey: 'id' });
 //Teammembers.belongsTo(Rol, { foreignKey: 'rol_id', targetKey: 'id' });
 
-export default Teammembers;
+export default TeamMember;
