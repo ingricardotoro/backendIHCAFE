@@ -1,8 +1,10 @@
-import {Router} from 'express';
+import { Router } from 'express';
 const router = Router()
 
-import {ListSuppliers} from '../controllers/suppliersController'
+import { listSuppliers, createSupplier, deleteSupplier } from '../controllers/suppliersController'
 
-router.get('/',ListSuppliers); // para poder listar todos los proveedores
+router.get('/', listSuppliers);
+router.post('/', createSupplier);
+router.post('/delete/:id', deleteSupplier);
 
 export default router;
