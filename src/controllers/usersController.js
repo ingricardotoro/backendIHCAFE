@@ -117,3 +117,20 @@ export async function register(req, res) {
 
 }
 
+//codigo para eliminar usuarios
+export async function deleteUser(req, res) {
+    const { id } = req.params;
+    try {
+        const deleteRowCount = await User.destroy({
+            where: {
+                id,
+            },
+        });
+        res.json({
+            message: "User Eliminado Satifactoriamente",
+            count: deleteRowCount,
+        });
+    } catch (error) {
+        console.log("ERROR AL QUERE ELIMINAR User:" + error);
+    }
+}
