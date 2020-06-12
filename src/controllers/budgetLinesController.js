@@ -557,3 +557,33 @@ export async function ReporteAtlasByProjectID(req, res) {
   }
 
 }
+
+/* Reporte semanal para las graficas del dashboard */
+export async function GraficaAtlasByProjectID(req, res) {
+
+  const { id } = req.params; // obtenemos el id del proyecto
+  try {
+    const ArrayGraficabyProject = await BudgetLineAtlas.findAll({
+
+      attributes: [
+        "date_part('week', date_start)"
+        [sequelize.fn("SUM", sequelize.col("balance")), "balance"],
+      ],
+
+      where: {
+        project_id: id,
+        status: "Aprobado"
+      },
+
+      group: ["budgetlines_atlas.date_part('week', date_start)"],
+      order: sequelize.col("date_part('week', date_start)")
+
+    });
+    res.json({
+      ArrayGraficabyProject,
+    });
+  } catch (error) {
+    console.log("ERROR AL QUERE LISTAR  Reporte_atlas_by_project:" + error);
+  }
+
+}
