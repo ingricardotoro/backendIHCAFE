@@ -578,7 +578,8 @@ export async function GraficaAtlasByProjectID(req, res) {
 
       /*group: [sequelize.fn('date_part', 'week', sequelize.col('date_start'))],*/
       /*order: sequelize.col("date_part('week', date_start)")*/
-      group: ['week']
+      group: ['week'],
+      order: ['week']
 
     });
     res.json({
