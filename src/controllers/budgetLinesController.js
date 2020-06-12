@@ -566,7 +566,7 @@ export async function GraficaAtlasByProjectID(req, res) {
     const ArrayGraficabyProject = await BudgetLineAtlas.findAll({
 
       attributes: [
-        "date_part('week', date_start)"
+        sequelize.fn('date_part', 'week', sequelize.col('date_start'))
         [sequelize.fn("SUM", sequelize.col("balance")), "balance"],
       ],
 
@@ -575,8 +575,8 @@ export async function GraficaAtlasByProjectID(req, res) {
         status: "Aprobado"
       },
 
-      group: ["budgetlines_atlas.date_part('week', date_start)"],
-      order: sequelize.col("date_part('week', date_start)")
+      group: [sequelize.fn('date_part', 'week', sequelize.col('date_start'))],
+      /*order: sequelize.col("date_part('week', date_start)")*/
 
     });
     res.json({
