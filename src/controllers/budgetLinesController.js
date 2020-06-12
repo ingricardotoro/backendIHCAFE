@@ -575,7 +575,7 @@ export async function GraficaAtlasByProjectID(req, res) {
         status: "Aprobado"
       },
 
-      group: [sequelize.fn('date_part', 'week', sequelize.col('date_start'))],
+      /*group: [sequelize.fn('date_part', 'week', sequelize.col('date_start'))],*/
       /*order: sequelize.col("date_part('week', date_start)")*/
 
     });
