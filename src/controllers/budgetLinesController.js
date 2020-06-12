@@ -566,7 +566,7 @@ export async function GraficaAtlasByProjectID(req, res) {
     const ArrayGraficabyProject = await BudgetLineAtlas.findAll({
 
       attributes: [
-        sequelize.fn('date_part', 'week', sequelize.col('date_start'))
+        /*sequelize.fn('date_part', 'week', sequelize.col('date_start'))*/
         [sequelize.fn("SUM", sequelize.col("balance")), "balance"],
       ],
 
