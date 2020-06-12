@@ -583,7 +583,7 @@ export async function GraficaAtlasByProjectID(req, res) {
       ArrayGraficabyProject,
     });
   } catch (error) {
-    console.log("ERROR AL QUERE LISTAR  Reporte_atlas_by_project:" + error);
+    console.log("ERROR AL QUERE LISTAR  Grafica_atlas_by_project:" + error);
   }
 
 }
