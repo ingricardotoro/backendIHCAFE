@@ -16,6 +16,22 @@ export async function listUsers(req, res) {
     }
 }
 
+export async function findUser(req, res) {
+    const { id } = req.params;
+    try {
+        const user = await User.findOne({
+            where: {
+                id,
+            },
+        });
+        res.json({
+            data: user,
+        });
+    } catch (error) {
+        console.log("ERROR AL QUERE BUSCAR EL User:" + error);
+    }
+}
+
 //codigo para realizar el login
 export async function login(req, res) {
 
