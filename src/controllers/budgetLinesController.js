@@ -567,6 +567,7 @@ export async function GraficaAtlasByProjectID(req, res) {
 
       attributes: [
         /*sequelize.fn('date_part', 'week', sequelize.col('date_start'))*/
+        [Sequelize.literal(`DATE("date_start")`), 'week'],
         [sequelize.fn("SUM", sequelize.col("balance")), "balance"],
       ],
 
