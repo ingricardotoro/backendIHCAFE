@@ -39,7 +39,7 @@ router.post(
 // ruta /api/budgetlines/project/:id -> para buscar los renglones de cada projecto
 router.post("/atlas/project/:id", budgetLinesAtlasbyProjectId);
 router.post("/atlas/reporte_atlas_by_project/:id", ReporteAtlasByProjectID);
-router.post("/atlas/grafica_atlas_by_project/:id", GraficaAtlasByProjectID);
+router.get("/atlas/grafica_atlas_by_project/:id", GraficaAtlasByProjectID);
 
 
 // ruta /api/budgetlines/ -> para crear un nuevo renglon
