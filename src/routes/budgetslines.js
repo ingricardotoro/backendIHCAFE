@@ -13,7 +13,8 @@ import {
   deleteBudgetLines,
   deleteBudgetLinesAtlas,
 
-  ReporteAtlasByProjectID
+  ReporteAtlasByProjectID,
+  GraficaAtlasByProjectID
 } from "../controllers/budgetLinesController";
 
 // ruta /api/budgetlines/project/:id -> para buscar los renglones de cada projecto
