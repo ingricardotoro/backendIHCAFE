@@ -21,7 +21,7 @@ export async function CreateAccount(req, res) {
     const {
         name,
         description,
-        coin,
+        coin_id,
         person_id
     } = req.body;
     try {
@@ -31,7 +31,7 @@ export async function CreateAccount(req, res) {
                 description,
                 initialbalance: 0.0,
                 actualbalance: 0.0,
-                coin,
+                coin_id,
                 person_id
             },
             {
@@ -40,7 +40,7 @@ export async function CreateAccount(req, res) {
                     "description",
                     "initialbalance",
                     "actualbalance",
-                    "coin",
+                    "coin_id",
                     "person_id"
                 ],
             }
