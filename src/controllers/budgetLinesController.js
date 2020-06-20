@@ -571,7 +571,7 @@ export async function budgets_by_projectid_and_atlasaccountid(req, res) {
       }],
 
       where: {
-        project_id: id,
+        project_id: project_id,
         code_atlas: atlas_account_id,
         status: "Aprobado"
       },
