@@ -6,10 +6,6 @@ import {
     fetchPdf,
     reportepdf,
 
-    /**REPORTES ATLAS */
-    budgets_by_projectid_and_atlasaccountid
-    /**FIN DE REPORTES ATLAS */
-
     /**REPORTES ESTANDARS */
 
     /**FIN DE REPORTES ATLAS */
@@ -22,11 +18,6 @@ import {
 //router.get('/fetch-pdf', fetchPdf);
 
 router.get('/reportepdf', reportepdf);
-
-
-/*Rutas de Reportes Atlas */
-router.get('/budgets_by_projectid_and_atlasaccountid', budgets_by_projectid_and_atlasaccountid);
-
 
 
 
