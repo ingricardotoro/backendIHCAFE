@@ -47,7 +47,7 @@ router.post("/atlas/project/:id", budgetLinesAtlasbyProjectId);
 
 /**Rutas para Reportes Atlas */
 router.post("/atlas/reporte_atlas_by_project/:id", ReporteAtlasByProjectID);
-router.post("/atlas/budgets_by_projectid_and_atlasaccountid/:project_id/:atlas_account_id/:coin_id/:year", budgets_by_projectid_and_atlasaccountid)
+router.get("/atlas/budgets_by_projectid_and_atlasaccountid/:project_id/:atlas_account_id/:coin_id/:year", budgets_by_projectid_and_atlasaccountid)
 
 /**Rutas para reportes standars */
 
