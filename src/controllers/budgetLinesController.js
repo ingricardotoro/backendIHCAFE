@@ -523,7 +523,8 @@ export async function deleteBudgetLinesAtlas(req, res) {
   }
 }
 
-
+/********INICIO DE REPORTS FUNCTIONS */
+/************************************ */
 export async function ReporteAtlasByProjectID(req, res) {
 
   const { id } = req.params; // obtenemos el id del proyecto
@@ -558,6 +559,41 @@ export async function ReporteAtlasByProjectID(req, res) {
 
 }
 
+export async function budgets_by_projectid_and_atlasaccountid(req, res) {
+
+  const { project_id, atlas_account_id, coin_id, year } = req.params; // obtenemos los valores enviados
+  try {
+    const ArrayReporteBudgetsByProjectIdByAccountId = await BudgetLineAtlas.findAll({
+
+      include: [{
+        model: AtlasAccount,
+        attributes: ["name", "code"]
+      }],
+
+      where: {
+        project_id: id,
+        code_atlas: atlas_account_id,
+        status: "Aprobado"
+      },
+
+      order: [["id", "DESC"]],
+
+    });
+    res.json({
+      ArrayReporteBudgetsByProjectIdByAccountId,
+    });
+  } catch (error) {
+    console.log("ERROR AL QUERE LISTAR  ArrayReporteBudgetsByProjectIdByAccountId:" + error);
+  }
+
+}
+
+/********FIN DE REPORTS FUNCTIONS */
+/************************************ */
+
+
+
+
 /* Reporte semanal para las graficas del dashboard */
 export async function GraficaAtlasByProjectID(req, res) {
 
@@ -590,3 +626,4 @@ export async function GraficaAtlasByProjectID(req, res) {
   }
 
 }
+
