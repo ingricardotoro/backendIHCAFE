@@ -593,7 +593,7 @@ export async function findAtlasAccountsByProjAct(req, res) {
 
   const { project_id, code_activity } = req.params; // obtenemos el id del proyecto y de activity
   try {
-    const atlasaccounts = await BudgetLineAtlas.findAll({
+    const atlasaccountsPA = await BudgetLineAtlas.findAll({
 
       attributes: [
         sequelize.fn('DISTINCT', sequelize.col('code_atlas'))
@@ -612,7 +612,7 @@ export async function findAtlasAccountsByProjAct(req, res) {
 
     });
     res.json({
-      atlasaccounts,
+      atlasaccountsPA,
     });
   } catch (error) {
     console.log("ERROR AL QUERE LISTAR findAtlasAccountsByProjAct:" + error);
