@@ -588,6 +588,39 @@ export async function budgets_by_projectid_and_atlasaccountid(req, res) {
 
 }
 
+//reporte para obtener los codigos atlas desde los busgetsLines, filtrados por projectos y activities
+export async function findAtlasAccountsByProjAct(req, res) {
+
+  const { project_id, code_activity } = req.params; // obtenemos el id del proyecto y de activity
+  try {
+    const atlasaccounts = await BudgetLineAtlas.findAll({
+
+      attributes: [
+        sequelize.fn('DISTINCT', sequelize.col('code_atlas'))
+      ],
+
+      include: [{
+        model: AtlasAccount,
+        attributes: ["name", "code"]
+      }],
+
+      where: {
+        project_id: project_id,
+        status: "Aprobado",
+        code_activity: code_activity
+      }
+
+    });
+    res.json({
+      atlasaccounts,
+    });
+  } catch (error) {
+    console.log("ERROR AL QUERE LISTAR findAtlasAccountsByProjAct:" + error);
+  }
+
+}
+
+
 /********FIN DE REPORTS FUNCTIONS */
 /************************************ */
 

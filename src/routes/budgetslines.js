@@ -16,6 +16,7 @@ import {
   /**Reporte Atlas */
   ReporteAtlasByProjectID,
   budgets_by_projectid_and_atlasaccountid,
+  findAtlasAccountsByProjAct,//encontrar las cuentas atlas, filtranso por project ya ctivity
 
   /**Reporte Standars */
 
@@ -47,8 +48,8 @@ router.post("/atlas/project/:id", budgetLinesAtlasbyProjectId);
 
 /**Rutas para Reportes Atlas */
 router.post("/atlas/reporte_atlas_by_project/:id", ReporteAtlasByProjectID);
-router.get("/atlas/budgets_by_projectid_and_atlasaccountid/:project_id/:atlas_account_id/:coin_id/:year", budgets_by_projectid_and_atlasaccountid)
-
+router.get("/atlas/budgets_by_projectid_and_atlasaccountid/:project_id/:atlas_account_id/:coin_id/:year", budgets_by_projectid_and_atlasaccountid);
+router.post("/atlas/findAtlasAccountsByProjAct/:project_id/:code_activity", findAtlasAccountsByProjAct);
 /**Rutas para reportes standars */
 
 /**Rutas para las Graficas */
