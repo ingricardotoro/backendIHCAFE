@@ -102,26 +102,24 @@ export async function atlas_sub_accounts(req, res) {
 
 /**  Para los reportes Atlas */
 
-//codigo para obtener las cuentas atlas por projecto y activity,para los reportes
-export async function atlas_accounts(req, res) {
+//codigo para obtener Una de las sub categorias de un id atlas dado
+export async function find_sub_atlas_category(req, res) {
+    const { id } = req.params;
 
     try {
 
-        const atlasaccounts = await AtlasAccount.findAll({
+        const sub_accounts = await AtlasAccount.findOne({
 
             where: {
-                code_atlas: '0'
-            },
-            order: [
-                ['id', 'ASC']
-            ]
+                id
+            }
         });
         res.json({
-            atlasaccounts
+            sub_accounts
         })
 
     } catch (error) {
-        console.log("ERROR AL QUERE LISTAR LAS CUENTAS de AtLAS:" + error);
+        console.log("ERROR AL QUERE LISTAR la Subcategoria ATLAS:" + error);
     }
 
 }
