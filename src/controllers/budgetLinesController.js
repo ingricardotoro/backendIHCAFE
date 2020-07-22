@@ -600,10 +600,10 @@ export async function findAtlasAccountsByProjAct(req, res) {
       ],*/
       attributes: [[sequelize["default"].fn('DISTINCT', sequelize["default"].col('budgetlines_atlas.code_atlas')), 'code_atlas2']],
 
-      include: [{
+      /*include: [{
         model: AtlasAccount,
         attributes: ["name", "code"]
-      }],
+      }],*/
 
       where: {
         project_id: project_id,
