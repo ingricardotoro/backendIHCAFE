@@ -596,12 +596,12 @@ export async function findAtlasAccountsByProjAct(req, res) {
     const atlasaccounts = await BudgetLineAtlas.findAll({
 
       attributes: [
-        sequelize.fn('DISTINCT', sequelize.col('code_atlas'))
+        sequelize.fn('DISTINCT', sequelize.col('budgetlines_atlas.code_atlas'))
       ],
 
       include: [{
         model: AtlasAccount,
-        attributes: ["name", "code", "code_atlas as codigo_atlas"]
+        attributes: ["name", "code"]
       }],
 
       where: {
