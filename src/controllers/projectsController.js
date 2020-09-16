@@ -131,37 +131,38 @@ export async function createProjects(req, res) {
 export async function updateProject(req, res) {
   const { id } = req.params;
   const {
-    code,
+    /*code,*/
     name,
     description,
-    category_id,
+    /*category_id,*/
     startdate,
     enddate,
-    department_id,
+    /*department_id,*/
     status,
     location,
     budget_id,
     team_id,
     priority,
-    color,
+    /*color,*/
+    budgetstart
   } = req.body;
 
   try {
     const result = await Project.update(
       {
-        code,
+        /*code,*/
         name,
         description,
-        category_id,
+        /*category_id,*/
         startdate,
         enddate,
-        department_id,
+        /*department_id,*/
         status,
         location,
-        budget_id,
         team_id,
         priority,
-        color,
+        /*color,*/
+        budgetstart
       },
       {
         where: { id },
