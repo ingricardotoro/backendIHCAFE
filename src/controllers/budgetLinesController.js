@@ -31,13 +31,13 @@ export async function budgetLinesbyProjectId(req, res) {
 
 //Funcion para obtenet un Unico renglon presupuestario dado el proyectoId y el Id del Bidget
 export async function budgetLinesbyProjectIdAndBudgetId(req, res) {
-  const { proyectId, id } = req.params;
+  const { proyectid, id } = req.params;
 
   //obtenemos el proyecto para determinar si el presupuesto es de tipo atlas
   const project = await Project.findOne({
     include: [Budget],
     where: {
-      id: proyectId
+      id: proyectid
     },
   })
 
