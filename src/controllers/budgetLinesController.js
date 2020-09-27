@@ -29,6 +29,52 @@ export async function budgetLinesbyProjectId(req, res) {
   }
 }
 
+//Funcion para obtenet un Unico renglon presupuestario dado el proyectoId y el Id del Bidget
+export async function budgetLinesbyProjectIdAndBudgetId(req, res) {
+  const { proyectId, id } = req.params;
+
+  //obtenemos el proyecto para determinar si el presupuesto es de tipo atlas
+  const project = await Project.findOne({
+    include: [Budget],
+    where: {
+      id: proyectId
+    },
+  })
+
+  try {
+    //verificamos si es del tipo Atlas o Estandar
+    if (project.budget.tipo == "atlas") {
+
+      const budgetLine = await BudgetLineAtlas.findAll({
+        include: [Person],
+        order: [["code", "Desc"]],
+        where: {
+          project_id: id,
+        },
+      });
+      res.json({
+        budgetLine,
+      });
+
+    } else {
+
+      const budgetLine = await BudgetLine.findAll({
+        include: [Person],
+        order: [["code", "Desc"]],
+        where: {
+          project_id: id,
+        },
+      });
+      res.json({
+        budgetLine,
+      })
+    }
+
+  } catch (error) {
+    console.log("ERROR AL QUERE LISTAR One Budgetline:" + error);
+  }
+}
+
 //Funcion para obtener los diferentes id de las categorias de los budgetlines
 //nos ayuda en generar los TableCost
 export async function budgetLinesCatgoriesByProjectId(req, res) {
