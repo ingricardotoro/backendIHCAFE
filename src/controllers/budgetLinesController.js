@@ -45,11 +45,11 @@ export async function budgetLinesbyProjectIdAndBudgetId(req, res) {
     //verificamos si es del tipo Atlas o Estandar
     if (project.budget.tipo == "atlas") {
 
-      const budgetLine = await BudgetLineAtlas.findAll({
+      const budgetLine = await BudgetLineAtlas.findOne({
         include: [Person],
-        order: [["code", "Desc"]],
         where: {
-          project_id: id,
+          proyect_id: proyectid,
+          id
         },
       });
       res.json({
@@ -58,11 +58,11 @@ export async function budgetLinesbyProjectIdAndBudgetId(req, res) {
 
     } else {
 
-      const budgetLine = await BudgetLine.findAll({
+      const budgetLine = await BudgetLine.findOne({
         include: [Person],
-        order: [["code", "Desc"]],
         where: {
-          project_id: id,
+          proyect_id: proyectid,
+          id
         },
       });
       res.json({
