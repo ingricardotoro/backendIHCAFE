@@ -48,7 +48,7 @@ export async function budgetLinesbyProjectIdAndBudgetId(req, res) {
       const budgetLine = await BudgetLineAtlas.findOne({
         include: [Person],
         where: {
-          proyect_id: proyectid,
+          project_id: proyectid,
           id
         },
       });
@@ -61,7 +61,7 @@ export async function budgetLinesbyProjectIdAndBudgetId(req, res) {
       const budgetLine = await BudgetLine.findOne({
         include: [Person],
         where: {
-          proyect_id: proyectid,
+          project_id: proyectid,
           id
         },
       });
