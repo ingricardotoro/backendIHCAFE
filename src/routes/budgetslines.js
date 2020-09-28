@@ -15,6 +15,9 @@ import {
 
   //ruta para obtener un renglon presupuestario segun su proyectId y si Id
   budgetLinesbyProjectIdAndBudgetId,
+  //ruta para editar un renglon, dado du proyectId y su Id unico
+  updateBudgetLinesbyProjectIdAndBudgetId,
+
 
   /**Reporte Atlas */
   ReporteAtlasByProjectID,
@@ -29,6 +32,7 @@ import {
 
 // ruta /api/budgetlines/project/:id -> para buscar los renglones de cada projecto
 router.post("/project/:id", budgetLinesbyProjectId);
+
 // ruta /api/budgetlines/project/:id -> para buscar las categorias de rengones de este projecto
 router.post("/cat_project/:id", budgetLinesCatgoriesByProjectId);
 // ruta /api/budgetlines/project/:id -> para buscar los renglones de cada projecto y categoria
@@ -39,6 +43,10 @@ router.post(
 
 // ruta /api/budgetlines/findone/:proyectid/:id -> para buscar un unico renglones dado el id y el proyectId
 router.post("/findone/:proyectid/:id", budgetLinesbyProjectIdAndBudgetId);
+// ruta /api/budgetlines/edit/:proyectid/:id -> para editar un unico renglones dado el id y el proyectId
+router.put("/update/:proyectid/:id", updateBudgetLinesbyProjectIdAndBudgetId);
+
+
 
 // ruta para actualizar el status del budget line por ser aprobado
 router.post("/aprobar/:id/:status/:valor/:comentario", AprobarBudgetLinesbyId);

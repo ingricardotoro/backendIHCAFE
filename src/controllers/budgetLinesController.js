@@ -75,6 +75,109 @@ export async function budgetLinesbyProjectIdAndBudgetId(req, res) {
   }
 }
 
+//Funcion par aeditar un renglon dado su proyectId y su Id unico
+export async function updateBudgetLinesbyProjectIdAndBudgetId(req, res) {
+
+  const { proyectid, id } = req.params;
+
+  //obtenemos el proyecto para determinar si el presupuesto es de tipo atlas
+  const project = await Project.findOne({
+    include: [Budget],
+    where: {
+      id: proyectid
+    },
+  })
+
+  const {
+    code,
+    description,
+    date_start,
+    date_end,
+    category_id,
+    sub_category_code,
+    account_id,
+    supplier_id,
+    balance
+
+  } = req.body;
+
+  if (project.budget.tipo == "atlas") {
+    try {
+      const result = await BudgetlineAtlas.update(
+        {
+          code,
+          description,
+          date_start,
+          date_end,
+          category_id,
+          sub_category_code,
+          account_id,
+          supplier_id,
+          balance
+        },
+        {
+          where: {
+            project_id: proyectid,
+            id
+          },
+        }
+      );
+
+      if (result) {
+        res.json({
+          message: "REnglon Presupuestario Atlas Actualizado Satifactoriamente",
+        });
+      }
+    } catch (erro) {
+      console.log(erro);
+      return res.json({
+        message: "Something Wrong in Update",
+        data: {},
+      });
+    }
+  }
+
+  else {
+    try {
+      const result = await Budgetline.update(
+        {
+          code,
+          description,
+          date_start,
+          date_end,
+          category_id,
+          sub_category_code,
+          account_id,
+          supplier_id,
+          balance
+        },
+        {
+          where: {
+            project_id: proyectid,
+            id
+          },
+        }
+      );
+
+      if (result) {
+        res.json({
+          message: "REnglon Presupuestario Estandar Actualizado Satifactoriamente",
+        });
+      }
+    } catch (erro) {
+      console.log(erro);
+      return res.json({
+        message: "Something Wrong in Update",
+        data: {},
+      });
+    }
+  }
+
+
+
+}
+
+
 //Funcion para obtener los diferentes id de las categorias de los budgetlines
 //nos ayuda en generar los TableCost
 export async function budgetLinesCatgoriesByProjectId(req, res) {
