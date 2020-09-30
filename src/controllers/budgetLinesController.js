@@ -9,6 +9,8 @@ import BudgetLineAtlas from "../models/BudgetLineAtlas";
 import BudgetLine from "../models/Budgetline";
 import AtlasAccount from "../models/AtlasAccount";
 
+import { sequelizeDB } from '../database/database';
+
 //funcion para obtener todos los renglones presupuestario de este projecto id
 //nos ayuda a calcular los totales de presupuestos para las RowCardProjects
 export async function budgetLinesbyProjectId(req, res) {
@@ -744,8 +746,8 @@ export async function findAtlasAccountsByProjAct(req, res) {
   const { project_id, code_activity } = req.params; // obtenemos el id del proyecto y de activity
   try {
 
-    const [results, metadata] = await sequelize.query(
-      "SELECT DISTINCT('budgetlines_atlas'.'code_atlas') AS 'code_atlas2','atlas_account'.'name' AS 'atlas_account.name',  'atlas_account'.'code' AS 'atlas_account.code'  FROM 'budgetlines_atlas' AS 'budgetlines_atlas' , 'atlas_accounts' AS 'atlas_account' Where  'budgetlines_atlas'.'code_atlas' = 'atlas_account'.'id'  AND 'budgetlines_atlas'.'project_id' = " + project_id + " AND 'budgetlines_atlas'.'status' = 'Aprobado' AND 'budgetlines_atlas'.'code_activity' = '" + code_activity + "'"
+    const results = await sequelizeDB.query(
+      "SELECT DISTINCT('budgetlines_atlas'.'code_atlas') AS 'code_atlas2','atlas_account'.'name' AS 'atlas_account.name',  'atlas_account'.'code' AS 'atlas_account.code'  FROM 'budgetlines_atlas' AS 'budgetlines_atlas' , 'atlas_accounts' AS 'atlas_account' Where  'budgetlines_atlas'.'code_atlas' = 'atlas_account'.'id'  AND 'budgetlines_atlas'.'project_id' = " + project_id + " AND 'budgetlines_atlas'.'status' = 'Aprobado' AND 'budgetlines_atlas'.'code_activity' = '" + code_activity + "'", { type: sequelize.QueryTypes.SELECT }
     )
     console.log("Result=" + results)
     res.json({
