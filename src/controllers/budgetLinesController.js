@@ -747,7 +747,7 @@ export async function findAtlasAccountsByProjAct(req, res) {
   try {
 
     const results = await sequelizeDb.query(
-      "SELECT DISTINCT('budgetlines_atlas'.'code_atlas') AS 'code_atlas2','atlas_account'.'name' AS 'atlas_account.name',  'atlas_account'.'code' AS 'atlas_account.code'  FROM 'budgetlines_atlas' AS 'budgetlines_atlas' , 'atlas_accounts' AS 'atlas_account' Where  'budgetlines_atlas'.'code_atlas' = 'atlas_account'.'id'  AND 'budgetlines_atlas'.'project_id' = " + project_id + " AND 'budgetlines_atlas'.'status' = 'Aprobado' AND 'budgetlines_atlas'.'code_activity' = '" + code_activity + "'", { type: sequelize.QueryTypes.SELECT }
+      "SELECT DISTINCT(budgetlines_atlas.code_atlas) AS code_atlas2,atlas_account.name AS atlas_account.name,  atlas_account.code AS atlas_account.code FROM budgetlines_atlas AS budgetlines_atlas , atlas_accounts AS atlas_account Where budgetlines_atlas.code_atlas = atlas_account.id  AND budgetlines_atlas.project_id = " + project_id + " AND budgetlines_atlas.status = 'Aprobado' AND budgetlines_atlas.code_activity = '" + code_activity + "'", { type: sequelize.QueryTypes.SELECT }
     )
     console.log("Result=" + results)
     res.json({
