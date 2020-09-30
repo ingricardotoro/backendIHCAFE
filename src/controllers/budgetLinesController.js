@@ -740,13 +740,20 @@ export async function budgets_by_projectid_and_atlasaccountid(req, res) {
 //reporte para obtener los codigos atlas desde los busgetsLines, filtrados por projectos y activities
 export async function findAtlasAccountsByProjAct(req, res) {
 
+
   const { project_id, code_activity } = req.params; // obtenemos el id del proyecto y de activity
   try {
-    const atlasaccounts = await BudgetLineAtlas.findAll({
 
-      /*attributes: [
-        sequelize.fn('DISTINCT', sequelize.col('budgetlines_atlas.code_atlas'))
-      ],*/
+    const [results, metadata] = await sequelize.query(
+      "SELECT DISTINCT('budgetlines_atlas'.'code_atlas') AS 'code_atlas2','atlas_account'.'name' AS 'atlas_account.name',  'atlas_account'.'code' AS 'atlas_account.code'  FROM 'budgetlines_atlas' AS 'budgetlines_atlas' , 'atlas_accounts' AS 'atlas_account' Where  'budgetlines_atlas'.'code_atlas' = 'atlas_account'.'id'  AND 'budgetlines_atlas'.'project_id' = " + project_id + " AND 'budgetlines_atlas'.'status' = 'Aprobado' AND 'budgetlines_atlas'.'code_activity' = '" + code_activity + "'"
+    )
+    console.log("Result=" + results)
+    res.json({
+      results,
+    });
+
+    /*const atlasaccounts = await BudgetLineAtlas.findAll({
+
       attributes: [[sequelize["default"].fn('DISTINCT', sequelize["default"].col('budgetlines_atlas.code_atlas')), 'code_atlas2']],
 
       include: [{
@@ -763,7 +770,7 @@ export async function findAtlasAccountsByProjAct(req, res) {
     });
     res.json({
       atlasaccounts,
-    });
+    });*/
   } catch (error) {
     console.log("ERROR AL QUERE LISTAR findAtlasAccountsByProjAct:" + error);
   }
