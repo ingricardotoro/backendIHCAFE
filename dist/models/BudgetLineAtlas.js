@@ -65,6 +65,9 @@ var BudgetLineAtlas = _database.sequelize.define('budgetlines_atlas', {
   details: {
     type: _sequelize["default"].TEXT
   },
+  comentario: {
+    type: _sequelize["default"].TEXT
+  },
   date_start: {
     type: _sequelize["default"].DATEONLY
   },
@@ -160,11 +163,13 @@ BudgetLineAtlas.belongsTo(_Project["default"], {
 });
 BudgetLineAtlas.belongsTo(_Person["default"], {
   foreignKey: 'supplier_id'
-}); //BudgetLineAtlas.belongsTo(AtlasAccount, {foreignKey: 'code_atlas'});
+}); //BudgetLineAtlas.belongsTo(AtlasAccount, { foreignKey: 'code_atlas' });
 
 BudgetLineAtlas.belongsTo(_AtlasAccount["default"], {
-  foreignKey: 'code_sub_atlas'
-}); //BudgetLineAtlas.belongsTo(AtlasAccount, {foreignKey: 'code_atlas', targetKey: 'code'});
+  foreignKey: 'code_atlas',
+  targetKey: 'id'
+}); //BudgetLineAtlas.belongsTo(AtlasAccount,  {foreignKey: 'code_sub_atlas'});
+//BudgetLineAtlas.belongsTo(AtlasAccount, {foreignKey: 'code_atlas', targetKey: 'code'});
 //BudgetLineAtlas.belongsTo(AtlasAccount, {foreignKey: 'code_atlas'});
 //BudgetLine.belongsTo(Person, {foreignKey: 'approvalby_id'});
 

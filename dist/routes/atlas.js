@@ -18,5 +18,9 @@ router.get('/accounts', _atlasController.atlas_accounts); // obtener las cuentas
 
 router.get('/sub_accounts/:id', _atlasController.atlas_sub_accounts); // para obtener todas las sub categorias de una cuenta atlas dada
 
+/**Para los reportes atlas */
+
+router.get('/find_sub_atlas_category/:id', _atlasController.find_sub_atlas_category); // para obtener una de las sub categorias de una cuenta atlas dada
+
 var _default = router;
 exports["default"] = _default;

@@ -10,7 +10,8 @@ var _express = require("express");
 var _suppliersController = require("../controllers/suppliersController");
 
 var router = (0, _express.Router)();
-router.get('/', _suppliersController.ListSuppliers); // para poder listar todos los proveedores
-
+router.get('/', _suppliersController.listSuppliers);
+router.post('/', _suppliersController.createSupplier);
+router.post('/delete/:id', _suppliersController.deleteSupplier);
 var _default = router;
 exports["default"] = _default;

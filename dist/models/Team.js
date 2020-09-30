@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _sequelize = _interopRequireDefault(require("sequelize"));
 
-var _File = _interopRequireDefault(require("./File"));
-
 var _database = require("../database/database");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -27,14 +25,6 @@ var Team = _database.sequelize.define('teams', {
   },
   description: {
     type: _sequelize["default"].TEXT
-  },
-  files_id: {
-    type: _sequelize["default"].INTEGER,
-    allowNull: false,
-    references: {
-      model: _File["default"],
-      key: 'id'
-    }
   },
   createdAt: {
     type: _sequelize["default"].DATE,

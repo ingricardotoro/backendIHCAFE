@@ -9,44 +9,23 @@ var _sequelize = _interopRequireDefault(require("sequelize"));
 
 var _database = require("../database/database");
 
-var _BudgetLineAtlas = _interopRequireDefault(require("./BudgetLineAtlas"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 //para modelar datos 
 //import connection object
-var Archivo = _database.sequelize.define('archivos', {
+var tipoUser = _database.sequelize.define('tipousers', {
   id: {
     type: _sequelize["default"].INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
-  filename: {
+  tipo_user: {
     type: _sequelize["default"].STRING,
     allowNull: false
   },
   description: {
     type: _sequelize["default"].STRING,
     allowNull: false
-  },
-  filedir: {
-    type: _sequelize["default"].STRING,
-    allowNull: false
-  },
-  fase: {
-    type: _sequelize["default"].STRING
-  },
-  budgetlineatlas_id: {
-    type: _sequelize["default"].INTEGER,
-    allowNull: true,
-    references: {
-      model: _BudgetLineAtlas["default"],
-      key: 'id'
-    }
-  },
-  budget_id: {
-    type: _sequelize["default"].INTEGER,
-    allowNull: true
   },
   createdAt: {
     type: _sequelize["default"].DATE,
@@ -58,10 +37,7 @@ var Archivo = _database.sequelize.define('archivos', {
   }
 }, {
   timestamps: true
-}); //Archivo.belongsTo(BudgetLineAtlas, {foreignKey: 'budgetlineatlas_id', targetKey: 'id'});
-//Archivo.belongsTo(BudgetLineAtlas, {foreignKey: 'budgetlineatlas_id'});
-//Archivo.belongsTo(BudgetLineAtlas);
+});
 
-
-var _default = Archivo;
+var _default = tipoUser;
 exports["default"] = _default;

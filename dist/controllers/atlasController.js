@@ -7,6 +7,7 @@ exports.atlas_resultados = atlas_resultados;
 exports.atlas_productos = atlas_productos;
 exports.atlas_accounts = atlas_accounts;
 exports.atlas_sub_accounts = atlas_sub_accounts;
+exports.find_sub_atlas_category = find_sub_atlas_category;
 
 var _Atlas = _interopRequireDefault(require("../models/Atlas"));
 
@@ -25,9 +26,7 @@ function atlas_resultados(_x, _x2) {
 
 
 function _atlas_resultados() {
-  _atlas_resultados = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee(req, res) {
+  _atlas_resultados = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
     var _atlas_resultados2;
 
     return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -72,9 +71,7 @@ function atlas_productos(_x3, _x4) {
 
 
 function _atlas_productos() {
-  _atlas_productos = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee2(req, res) {
+  _atlas_productos = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(req, res) {
     var id, productos_atlas;
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
@@ -119,9 +116,7 @@ function atlas_accounts(_x5, _x6) {
 
 
 function _atlas_accounts() {
-  _atlas_accounts = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee3(req, res) {
+  _atlas_accounts = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(req, res) {
     var _atlas_accounts2;
 
     return regeneratorRuntime.wrap(function _callee3$(_context3) {
@@ -163,11 +158,12 @@ function _atlas_accounts() {
 function atlas_sub_accounts(_x7, _x8) {
   return _atlas_sub_accounts.apply(this, arguments);
 }
+/**  Para los reportes Atlas */
+//codigo para obtener Una de las sub categorias de un id atlas dado
+
 
 function _atlas_sub_accounts() {
-  _atlas_sub_accounts = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee4(req, res) {
+  _atlas_sub_accounts = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(req, res) {
     var id, sub_accounts;
     return regeneratorRuntime.wrap(function _callee4$(_context4) {
       while (1) {
@@ -193,7 +189,7 @@ function _atlas_sub_accounts() {
           case 8:
             _context4.prev = 8;
             _context4.t0 = _context4["catch"](1);
-            console.log("ERROR AL QUERE LISTAR Los PRoductos ATLAS:" + _context4.t0);
+            console.log("ERROR AL QUERE LISTAR Las Sub categorias ATLAS:" + _context4.t0);
 
           case 11:
           case "end":
@@ -203,4 +199,47 @@ function _atlas_sub_accounts() {
     }, _callee4, null, [[1, 8]]);
   }));
   return _atlas_sub_accounts.apply(this, arguments);
+}
+
+function find_sub_atlas_category(_x9, _x10) {
+  return _find_sub_atlas_category.apply(this, arguments);
+}
+
+function _find_sub_atlas_category() {
+  _find_sub_atlas_category = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(req, res) {
+    var id, sub_accounts;
+    return regeneratorRuntime.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            id = req.params.id;
+            _context5.prev = 1;
+            _context5.next = 4;
+            return _AtlasAccount["default"].findOne({
+              where: {
+                id: id
+              }
+            });
+
+          case 4:
+            sub_accounts = _context5.sent;
+            res.json({
+              sub_accounts: sub_accounts
+            });
+            _context5.next = 11;
+            break;
+
+          case 8:
+            _context5.prev = 8;
+            _context5.t0 = _context5["catch"](1);
+            console.log("ERROR AL QUERE LISTAR la Subcategoria ATLAS:" + _context5.t0);
+
+          case 11:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5, null, [[1, 8]]);
+  }));
+  return _find_sub_atlas_category.apply(this, arguments);
 }

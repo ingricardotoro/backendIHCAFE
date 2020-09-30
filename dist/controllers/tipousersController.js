@@ -1,8 +1,11 @@
 "use strict";
 
-var _app = _interopRequireDefault(require("./app"));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.listTipoUsers = listTipoUsers;
 
-require("@babel/polyfill");
+var _TipoUser = _interopRequireDefault(require("../models/TipoUser"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -10,41 +13,41 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-require('dotenv').config();
-
-function main() {
-  return _main.apply(this, arguments);
+//codigo para listar tipousuarios
+function listTipoUsers(_x, _x2) {
+  return _listTipoUsers.apply(this, arguments);
 }
 
-function _main() {
-  _main = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+function _listTipoUsers() {
+  _listTipoUsers = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
+    var tipousers;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
-            return _app["default"].listen(_app["default"].get('port'));
-
-          case 2:
-            console.log('Server on port=', _app["default"].get('port'));
-            /*import { sequelize } from './database/database';
-            sequelize.authenticate()
-            .then(() => {
-              console.log('Connection has been established successfully.');
-            })
-            .catch(err => {
-              console.error('Unable to connect to the database:', err);
-            });*/
+            _context.prev = 0;
+            _context.next = 3;
+            return _TipoUser["default"].findAll();
 
           case 3:
+            tipousers = _context.sent;
+            res.json({
+              tipousers: tipousers
+            });
+            _context.next = 10;
+            break;
+
+          case 7:
+            _context.prev = 7;
+            _context.t0 = _context["catch"](0);
+            console.log("ERROR AL QUERE LISTAR Tipo de Usuarios:" + _context.t0);
+
+          case 10:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee);
+    }, _callee, null, [[0, 7]]);
   }));
-  return _main.apply(this, arguments);
+  return _listTipoUsers.apply(this, arguments);
 }
-
-;
-main();

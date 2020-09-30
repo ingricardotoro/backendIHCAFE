@@ -43,6 +43,10 @@ var Project = _database.sequelize.define('projects', {
     type: _sequelize["default"].STRING,
     allowNull: false
   },
+  budgetstart: {
+    type: _sequelize["default"].DOUBLE,
+    allowNull: false
+  },
   color: {
     type: _sequelize["default"].STRING,
     allowNull: false,

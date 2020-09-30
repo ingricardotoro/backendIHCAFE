@@ -21,9 +21,7 @@ function categoriesbyid(_x, _x2) {
 }
 
 function _categoriesbyid() {
-  _categoriesbyid = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee(req, res) {
+  _categoriesbyid = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
     var id, category;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
@@ -67,9 +65,7 @@ function categoriesparents(_x3, _x4) {
 
 
 function _categoriesparents() {
-  _categoriesparents = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee2(req, res) {
+  _categoriesparents = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(req, res) {
     var categories;
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
@@ -111,9 +107,7 @@ function categories_childs(_x5, _x6) {
 }
 
 function _categories_childs() {
-  _categories_childs = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee3(req, res) {
+  _categories_childs = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(req, res) {
     var id, clasificaciones;
     return regeneratorRuntime.wrap(function _callee3$(_context3) {
       while (1) {
@@ -162,9 +156,7 @@ function childbyid(_x7, _x8) {
 }
 
 function _childbyid() {
-  _childbyid = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee4(req, res) {
+  _childbyid = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(req, res) {
     var id, child;
     return regeneratorRuntime.wrap(function _callee4$(_context4) {
       while (1) {

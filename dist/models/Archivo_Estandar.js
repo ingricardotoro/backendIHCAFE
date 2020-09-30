@@ -9,13 +9,13 @@ var _sequelize = _interopRequireDefault(require("sequelize"));
 
 var _database = require("../database/database");
 
-var _BudgetLineAtlas = _interopRequireDefault(require("./BudgetLineAtlas"));
+var _Budgetline = _interopRequireDefault(require("./Budgetline"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 //para modelar datos 
 //import connection object
-var Archivo = _database.sequelize.define('archivos', {
+var Archivo_Estandar = _database.sequelize.define('archivos_estandar', {
   id: {
     type: _sequelize["default"].INTEGER,
     primaryKey: true,
@@ -36,11 +36,11 @@ var Archivo = _database.sequelize.define('archivos', {
   fase: {
     type: _sequelize["default"].STRING
   },
-  budgetlineatlas_id: {
+  budgetline_id: {
     type: _sequelize["default"].INTEGER,
     allowNull: true,
     references: {
-      model: _BudgetLineAtlas["default"],
+      model: _Budgetline["default"],
       key: 'id'
     }
   },
@@ -63,5 +63,5 @@ var Archivo = _database.sequelize.define('archivos', {
 //Archivo.belongsTo(BudgetLineAtlas);
 
 
-var _default = Archivo;
+var _default = Archivo_Estandar;
 exports["default"] = _default;

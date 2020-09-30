@@ -11,13 +11,15 @@ var _Person = _interopRequireDefault(require("./Person"));
 
 var _Account = _interopRequireDefault(require("./Account"));
 
+var _Coin = _interopRequireDefault(require("./Coin"));
+
 var _database = require("../database/database");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-//para modelar datos 
+//para modelar datos
 //import connection object
-var Budget = _database.sequelize.define('budgets', {
+var Budget = _database.sequelize.define("budgets", {
   id: {
     type: _sequelize["default"].INTEGER,
     primaryKey: true,
@@ -29,6 +31,18 @@ var Budget = _database.sequelize.define('budgets', {
   name: {
     type: _sequelize["default"].STRING,
     allowNull: false
+  },
+  tipo: {
+    type: _sequelize["default"].STRING,
+    allowNull: false
+  },
+  coin_id: {
+    type: _sequelize["default"].INTEGER,
+    allowNull: false,
+    references: {
+      model: _Coin["default"],
+      key: "id"
+    }
   },
   description: {
     type: _sequelize["default"].TEXT
@@ -44,7 +58,7 @@ var Budget = _database.sequelize.define('budgets', {
     allowNull: false,
     references: {
       model: _Account["default"],
-      key: 'id'
+      key: "id"
     }
   },
   person_id: {
@@ -52,7 +66,7 @@ var Budget = _database.sequelize.define('budgets', {
     allowNull: false,
     references: {
       model: _Person["default"],
-      key: 'id'
+      key: "id"
     }
   },
   buddgetstart: {
@@ -89,7 +103,7 @@ var Budget = _database.sequelize.define('budgets', {
     allowNull: false,
     references: {
       model: _Person["default"],
-      key: 'id'
+      key: "id"
     }
   },
   dateapproval: {
@@ -110,7 +124,10 @@ var Budget = _database.sequelize.define('budgets', {
 
 
 Budget.belongsTo(_Account["default"], {
-  foreignKey: 'account_id'
+  foreignKey: "account_id"
+});
+Budget.belongsTo(_Coin["default"], {
+  foreignKey: "coin_id"
 });
 var _default = Budget;
 exports["default"] = _default;

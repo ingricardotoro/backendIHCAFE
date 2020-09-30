@@ -19,7 +19,7 @@ var Rol = _database.sequelize.define('roles', {
     primaryKey: true,
     autoIncrement: true
   },
-  name: {
+  role_name: {
     type: _sequelize["default"].STRING,
     allowNull: false
   },

@@ -7,15 +7,11 @@ exports["default"] = void 0;
 
 var _sequelize = _interopRequireDefault(require("sequelize"));
 
-var _Person = _interopRequireDefault(require("./Person"));
-
-var _Project = _interopRequireDefault(require("./Project"));
+var _User = _interopRequireDefault(require("./User"));
 
 var _Rol = _interopRequireDefault(require("./Rol"));
 
 var _Team = _interopRequireDefault(require("./Team"));
-
-var _File = _interopRequireDefault(require("./File"));
 
 var _database = require("../database/database");
 
@@ -23,7 +19,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 //para modelar datos 
 //import connection object
-var Teams = _database.sequelize.define('teams', {
+var TeamMember = _database.sequelize.define('team_members', {
   id: {
     type: _sequelize["default"].INTEGER,
     primaryKey: true,
@@ -41,7 +37,7 @@ var Teams = _database.sequelize.define('teams', {
     type: _sequelize["default"].INTEGER,
     allowNull: false,
     references: {
-      model: _Person["default"],
+      model: _User["default"],
       key: 'id'
     }
   },
@@ -65,5 +61,17 @@ var Teams = _database.sequelize.define('teams', {
   timestamps: true
 });
 
-var _default = Teams;
+TeamMember.belongsTo(_Team["default"], {
+  foreignKey: 'team_id',
+  targetKey: 'id'
+});
+TeamMember.belongsTo(_User["default"], {
+  foreignKey: 'person_id',
+  targetKey: 'id'
+});
+TeamMember.belongsTo(_Rol["default"], {
+  foreignKey: 'rol_id',
+  targetKey: 'id'
+});
+var _default = TeamMember;
 exports["default"] = _default;

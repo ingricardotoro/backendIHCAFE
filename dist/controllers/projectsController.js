@@ -25,9 +25,7 @@ function listProjects(_x, _x2) {
 }
 
 function _listProjects() {
-  _listProjects = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee(req, res) {
+  _listProjects = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
     var projects;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
@@ -67,9 +65,7 @@ function findProject(_x3, _x4) {
 }
 
 function _findProject() {
-  _findProject = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee2(req, res) {
+  _findProject = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(req, res) {
     var id, project;
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
@@ -79,6 +75,7 @@ function _findProject() {
             _context2.prev = 1;
             _context2.next = 4;
             return _Project["default"].findOne({
+              include: [_Budget["default"]],
               where: {
                 id: id
               }
@@ -112,9 +109,7 @@ function findProjectsByBudgetId(_x5, _x6) {
 }
 
 function _findProjectsByBudgetId() {
-  _findProjectsByBudgetId = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee3(req, res) {
+  _findProjectsByBudgetId = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(req, res) {
     var id, projectsbybudgetid;
     return regeneratorRuntime.wrap(function _callee3$(_context3) {
       while (1) {
@@ -157,9 +152,7 @@ function deleteProject(_x7, _x8) {
 }
 
 function _deleteProject() {
-  _deleteProject = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee4(req, res) {
+  _deleteProject = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(req, res) {
     var id, deleteRowCount;
     return regeneratorRuntime.wrap(function _callee4$(_context4) {
       while (1) {
@@ -203,22 +196,21 @@ function createProjects(_x9, _x10) {
 }
 
 function _createProjects() {
-  _createProjects = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee5(req, res) {
-    var _req$body, code, name, description, startdate, enddate, status, location, budget_id, team_id, priority, newProject;
+  _createProjects = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(req, res) {
+    var _req$body, code, name, description, budgetstart, startdate, enddate, status, location, budget_id, team_id, priority, newProject;
 
     return regeneratorRuntime.wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
-            _req$body = req.body, code = _req$body.code, name = _req$body.name, description = _req$body.description, startdate = _req$body.startdate, enddate = _req$body.enddate, status = _req$body.status, location = _req$body.location, budget_id = _req$body.budget_id, team_id = _req$body.team_id, priority = _req$body.priority;
+            _req$body = req.body, code = _req$body.code, name = _req$body.name, description = _req$body.description, budgetstart = _req$body.budgetstart, startdate = _req$body.startdate, enddate = _req$body.enddate, status = _req$body.status, location = _req$body.location, budget_id = _req$body.budget_id, team_id = _req$body.team_id, priority = _req$body.priority;
             _context5.prev = 1;
             _context5.next = 4;
             return _Project["default"].create({
               code: code,
               name: name,
               description: description,
+              budgetstart: budgetstart,
               startdate: startdate,
               enddate: enddate,
               status: status,
@@ -227,7 +219,7 @@ function _createProjects() {
               team_id: team_id,
               priority: priority
             }, {
-              fields: ['code', 'name', 'description', 'startdate', 'enddate', 'status', 'location', 'budget_id', 'team_id', 'priority']
+              fields: ["code", "name", "description", "budgetstart", "startdate", "enddate", "status", "location", "budget_id", "team_id", "priority"]
             });
 
           case 4:
@@ -258,7 +250,7 @@ function _createProjects() {
             _context5.t0 = _context5["catch"](1);
             //console.log(error);
             res.status(500).json({
-              message: "Error al crar nuevos projectos",
+              message: "Error al crear nuevos projectos",
               data: {}
             });
 
@@ -277,33 +269,34 @@ function updateProject(_x11, _x12) {
 }
 
 function _updateProject() {
-  _updateProject = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee6(req, res) {
-    var id, _req$body2, code, name, description, category_id, startdate, enddate, department_id, status, location, budget_id, team_id, priority, color, result;
+  _updateProject = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(req, res) {
+    var id, _req$body2, name, description, startdate, enddate, status, location, budget_id, team_id, priority, budgetstart, result;
 
     return regeneratorRuntime.wrap(function _callee6$(_context6) {
       while (1) {
         switch (_context6.prev = _context6.next) {
           case 0:
             id = req.params.id;
-            _req$body2 = req.body, code = _req$body2.code, name = _req$body2.name, description = _req$body2.description, category_id = _req$body2.category_id, startdate = _req$body2.startdate, enddate = _req$body2.enddate, department_id = _req$body2.department_id, status = _req$body2.status, location = _req$body2.location, budget_id = _req$body2.budget_id, team_id = _req$body2.team_id, priority = _req$body2.priority, color = _req$body2.color;
+            _req$body2 = req.body, name = _req$body2.name, description = _req$body2.description, startdate = _req$body2.startdate, enddate = _req$body2.enddate, status = _req$body2.status, location = _req$body2.location, budget_id = _req$body2.budget_id, team_id = _req$body2.team_id, priority = _req$body2.priority, budgetstart = _req$body2.budgetstart;
             _context6.prev = 2;
             _context6.next = 5;
             return _Project["default"].update({
-              code: code,
+              /*code,*/
               name: name,
               description: description,
-              category_id: category_id,
+
+              /*category_id,*/
               startdate: startdate,
               enddate: enddate,
-              department_id: department_id,
+
+              /*department_id,*/
               status: status,
               location: location,
-              budget_id: budget_id,
               team_id: team_id,
               priority: priority,
-              color: color
+
+              /*color,*/
+              budgetstart: budgetstart
             }, {
               where: {
                 id: id
@@ -327,7 +320,7 @@ function _updateProject() {
             _context6.t0 = _context6["catch"](2);
             console.log(_context6.t0);
             return _context6.abrupt("return", res.json({
-              message: 'Something Wrong in Update',
+              message: "Something Wrong in Update",
               data: {}
             }));
 
