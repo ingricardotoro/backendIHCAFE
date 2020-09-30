@@ -9,7 +9,7 @@ import BudgetLineAtlas from "../models/BudgetLineAtlas";
 import BudgetLine from "../models/Budgetline";
 import AtlasAccount from "../models/AtlasAccount";
 
-import { sequelizeDB } from '../database/database';
+import { sequelize as sequelizeDb } from '../database/database';
 
 //funcion para obtener todos los renglones presupuestario de este projecto id
 //nos ayuda a calcular los totales de presupuestos para las RowCardProjects
