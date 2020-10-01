@@ -1,7 +1,7 @@
 //const pdf = require('html-pdf');
 //import pdfTemplate from '../templates/report.html'
-import pdf from 'pdf-creator-node'
-import fs from 'fs'
+//import pdf from 'pdf-creator-node'
+//import fs from 'fs'
 
 
 /* export async function createReports(req, res) {
@@ -19,7 +19,7 @@ export async function fetchPdf(req, res) {
     res.sendFile('${__dirname}/Reportes.pdf')
 } */
 
-export async function reportepdf(req, res) {
+/*export async function reportepdf(req, res) {
 
     const html = fs.readFileSync('report.html', 'utf8');
     var options = {
