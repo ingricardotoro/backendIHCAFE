@@ -1,7 +1,7 @@
 import User from '../models/User'
 import TipoUser from '../models/TipoUser'
 
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
 //codigo para listar usuarios
@@ -79,7 +79,8 @@ export async function register(req, res) {
     //en caso no exister el nuevo usuario
     if (!user) {
 
-        const saltRounds = 10;
+        //const saltRounds = 10;
+        const saltRounds = bcrypt.genSaltSync(10);
         //encriptamos la clave
         const hash = bcrypt.hashSync(password, saltRounds)
         password = hash;
