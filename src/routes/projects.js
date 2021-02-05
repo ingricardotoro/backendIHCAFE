@@ -1,7 +1,7 @@
-import {Router} from 'express';
+import { Router } from 'express';
 const router = Router();
 
-import {createProjects,listProjects,findProject,deleteProject,updateProject,findProjectsByBudgetId } from '../controllers/projectsController';
+import { createProjects, listProjects, findProject, deleteProject, updateProject, findProjectsByBudgetId } from '../controllers/projectsController';
 // rutas /api/projets
 router.post('/', createProjects);
 router.get('/', listProjects);
