@@ -9,6 +9,8 @@ import BudgetLineAtlas from "../models/BudgetLineAtlas";
 import BudgetLine from "../models/Budgetline";
 import AtlasAccount from "../models/AtlasAccount";
 
+import { sequelize as sequelizeDb } from '../database/database';
+
 //funcion para obtener todos los renglones presupuestario de este projecto id
 //nos ayuda a calcular los totales de presupuestos para las RowCardProjects
 export async function budgetLinesbyProjectId(req, res) {
@@ -30,6 +32,155 @@ export async function budgetLinesbyProjectId(req, res) {
         console.log("ERROR AL QUERE LISTAR Budgetline:" + error);
     }
 }
+
+//Funcion para obtenet un Unico renglon presupuestario dado el proyectoId y el Id del Bidget
+export async function budgetLinesbyProjectIdAndBudgetId(req, res) {
+  const { proyectid, id } = req.params;
+
+  //obtenemos el proyecto para determinar si el presupuesto es de tipo atlas
+  const project = await Project.findOne({
+    include: [Budget],
+    where: {
+      id: proyectid
+    },
+  })
+
+  try {
+    //verificamos si es del tipo Atlas o Estandar
+    if (project.budget.tipo == "atlas") {
+
+      const budgetLine = await BudgetLineAtlas.findOne({
+        include: [Person],
+        where: {
+          project_id: proyectid,
+          id
+        },
+      });
+      res.json({
+        budgetLine,
+      });
+
+    } else {
+
+      const budgetLine = await BudgetLine.findOne({
+        include: [Person],
+        where: {
+          project_id: proyectid,
+          id
+        },
+      });
+      res.json({
+        budgetLine,
+      })
+    }
+
+  } catch (error) {
+    console.log("ERROR AL QUERE LISTAR One Budgetline:" + error);
+  }
+}
+
+//Funcion par aeditar un renglon dado su proyectId y su Id unico
+export async function updateBudgetLinesbyProjectIdAndBudgetId(req, res) {
+
+  const { proyectid, id } = req.params;
+
+  //obtenemos el proyecto para determinar si el presupuesto es de tipo atlas
+  const project = await Project.findOne({
+    include: [Budget],
+    where: {
+      id: proyectid
+    },
+  })
+
+  const {
+    code,
+    description,
+    date_start,
+    date_end,
+    category_id,
+    sub_category_code,
+    account_id,
+    supplier_id,
+    balance
+
+  } = req.body;
+
+  if (project.budget.tipo == "atlas") {
+    try {
+      const result = await BudgetlineAtlas.update(
+        {
+          code,
+          description,
+          date_start,
+          date_end,
+          category_id,
+          sub_category_code,
+          account_id,
+          supplier_id,
+          balance
+        },
+        {
+          where: {
+            project_id: proyectid,
+            id
+          },
+        }
+      );
+
+      if (result) {
+        res.json({
+          message: "REnglon Presupuestario Atlas Actualizado Satifactoriamente",
+        });
+      }
+    } catch (erro) {
+      console.log(erro);
+      return res.json({
+        message: "Something Wrong in Update",
+        data: {},
+      });
+    }
+  }
+
+  else {
+    try {
+      const result = await Budgetline.update(
+        {
+          code,
+          description,
+          date_start,
+          date_end,
+          category_id,
+          sub_category_code,
+          account_id,
+          supplier_id,
+          balance
+        },
+        {
+          where: {
+            project_id: proyectid,
+            id
+          },
+        }
+      );
+
+      if (result) {
+        res.json({
+          message: "REnglon Presupuestario Estandar Actualizado Satifactoriamente",
+        });
+      }
+    } catch (erro) {
+      console.log(erro);
+      return res.json({
+        message: "Something Wrong in Update",
+        data: {},
+      });
+    }
+  }
+
+
+
+}
+
 
 //Funcion para obtener los diferentes id de las categorias de los budgetlines
 //nos ayuda en generar los TableCost
@@ -581,6 +732,7 @@ export async function budgets_by_projectid_and_atlasaccountid(req, res) {
 //reporte para obtener los codigos atlas desde los busgetsLines, filtrados por projectos y activities
 export async function findAtlasAccountsByProjAct(req, res) {
 
+<<<<<<< HEAD
     const { project_id, code_activity } = req.params; // obtenemos el id del proyecto y de activity
     try {
         const atlasaccounts = await BudgetLineAtlas.findAll({
@@ -610,6 +762,42 @@ export async function findAtlasAccountsByProjAct(req, res) {
     } catch (error) {
         console.log("ERROR AL QUERE LISTAR findAtlasAccountsByProjAct:" + error);
     }
+=======
+
+  const { project_id, code_activity } = req.params; // obtenemos el id del proyecto y de activity
+  try {
+
+    const results = await sequelizeDb.query(
+      "SELECT DISTINCT(budgetlines_atlas.code_atlas) AS code_atlas2, atlas_account.name AS name,  atlas_account.code AS code FROM budgetlines_atlas , atlas_accounts as atlas_account Where budgetlines_atlas.code_atlas = atlas_account.id  AND budgetlines_atlas.project_id = " + project_id + " AND budgetlines_atlas.status = 'Aprobado' AND budgetlines_atlas.code_activity = '" + code_activity + "'", { type: sequelize.QueryTypes.SELECT }
+    )
+    console.log("Result=" + results)
+    res.json({
+      results,
+    });
+
+    /*const atlasaccounts = await BudgetLineAtlas.findAll({
+
+      attributes: [[sequelize["default"].fn('DISTINCT', sequelize["default"].col('budgetlines_atlas.code_atlas')), 'code_atlas2']],
+
+      include: [{
+        model: AtlasAccount,
+        attributes: ["name", "code"]
+      }],
+
+      where: {
+        project_id: project_id,
+        status: "Aprobado",
+        code_activity: code_activity
+      }
+
+    });
+    res.json({
+      atlasaccounts,
+    });*/
+  } catch (error) {
+    console.log("ERROR AL QUERE LISTAR findAtlasAccountsByProjAct:" + error);
+  }
+>>>>>>> 147fb549f82480ee944057966a05c45bc0845151
 
 }
 
@@ -620,7 +808,7 @@ export async function findAtlasAccountsByProjAct(req, res) {
 
 
 
-/* Reporte semanal para las graficas del dashboard */
+/* Reporte ATLAS semanal para las graficas del dashboard */
 export async function GraficaAtlasByProjectID(req, res) {
 
     const { id } = req.params; // obtenemos el id del proyecto
@@ -651,4 +839,38 @@ export async function GraficaAtlasByProjectID(req, res) {
         console.log("ERROR AL QUERE LISTAR  Grafica_atlas_by_project:" + error);
     }
 
+<<<<<<< HEAD
+=======
+/* Reporte NO ATLAS semanal para las graficas del dashboard */
+export async function GraficaByProjectID(req, res) {
+
+  const { id } = req.params; // obtenemos el id del proyecto
+  try {
+    const ArrayGraficabyProject = await BudgetLine.findAll({
+
+      attributes: [
+        /*sequelize.fn('date_part', 'week', sequelize.col('date_start'))*/
+        [sequelize.literal(`date_part('week', date_start)`), 'week'],
+        [sequelize.fn("SUM", sequelize.col("balance")), "balance"],
+      ],
+
+      where: {
+        project_id: id,
+        status: "Aprobado"
+      },
+
+      /*group: [sequelize.fn('date_part', 'week', sequelize.col('date_start'))],*/
+      /*order: sequelize.col("date_part('week', date_start)")*/
+      group: ['week'],
+      order: sequelize.col("week")
+
+    });
+    res.json({
+      ArrayGraficabyProject,
+    });
+  } catch (error) {
+    console.log("ERROR AL QUERE LISTAR  Grafica_atlas_by_project:" + error);
+  }
+
+>>>>>>> 147fb549f82480ee944057966a05c45bc0845151
 }
