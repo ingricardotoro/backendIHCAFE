@@ -766,8 +766,6 @@ export async function findAtlasAccountsByProjAct(req, res) {
 /************************************ */
 
 
-
-
 /* Reporte ATLAS semanal para las graficas del dashboard */
 export async function GraficaAtlasByProjectID(req, res) {
 
@@ -798,36 +796,37 @@ export async function GraficaAtlasByProjectID(req, res) {
     } catch (error) {
         console.log("ERROR AL QUERE LISTAR  Grafica_atlas_by_project:" + error);
     }
+}
 
-    /* Reporte NO ATLAS semanal para las graficas del dashboard */
-    export async function GraficaByProjectID(req, res) {
+/* Reporte NO ATLAS semanal para las graficas del dashboard */
+export async function GraficaByProjectID(req, res) {
 
-        const { id } = req.params; // obtenemos el id del proyecto
-        try {
-            const ArrayGraficabyProject = await BudgetLine.findAll({
+    const { id } = req.params; // obtenemos el id del proyecto
+    try {
+        const ArrayGraficabyProject = await BudgetLine.findAll({
 
-                attributes: [
-                    /*sequelize.fn('date_part', 'week', sequelize.col('date_start'))*/
-                    [sequelize.literal(`date_part('week', date_start)`), 'week'],
-                    [sequelize.fn("SUM", sequelize.col("balance")), "balance"],
-                ],
+            attributes: [
+                /*sequelize.fn('date_part', 'week', sequelize.col('date_start'))*/
+                [sequelize.literal(`date_part('week', date_start)`), 'week'],
+                [sequelize.fn("SUM", sequelize.col("balance")), "balance"],
+            ],
 
-                where: {
-                    project_id: id,
-                    status: "Aprobado"
-                },
+            where: {
+                project_id: id,
+                status: "Aprobado"
+            },
 
-                /*group: [sequelize.fn('date_part', 'week', sequelize.col('date_start'))],*/
-                /*order: sequelize.col("date_part('week', date_start)")*/
-                group: ['week'],
-                order: sequelize.col("week")
+            /*group: [sequelize.fn('date_part', 'week', sequelize.col('date_start'))],*/
+            /*order: sequelize.col("date_part('week', date_start)")*/
+            group: ['week'],
+            order: sequelize.col("week")
 
-            });
-            res.json({
-                ArrayGraficabyProject,
-            });
-        } catch (error) {
-            console.log("ERROR AL QUERE LISTAR  Grafica_atlas_by_project:" + error);
-        }
-
+        });
+        res.json({
+            ArrayGraficabyProject,
+        });
+    } catch (error) {
+        console.log("ERROR AL QUERE LISTAR  Grafica_atlas_by_project:" + error);
     }
+
+}
