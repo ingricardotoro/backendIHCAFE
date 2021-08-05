@@ -72,7 +72,11 @@ router.post("/atlas", upload.single("archivo"), async function (req, res, next) 
 
     if (newFile) {
       //res.redirect('http://localhost:3000/project/'+req.body.project_id);
-      res.redirect("http://167.99.15.83/project/" + req.body.project_id);
+      //res.redirect("http://167.99.15.83/project/" + req.body.project_id);
+      return res.json({
+        message: "Archivo Subido Exitosamente",
+      });
+
     } else {
       return res.json({
         message: "No se Pudo Crear el Nuevo Archivo",
