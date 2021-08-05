@@ -103,6 +103,10 @@ const BudgetLineAtlas = sequelize.define('budgetlines_atlas', {
         type: Sequelize.DOUBLE,
         allowNull: false,
     },
+    budgetactual: {
+        type: Sequelize.DOUBLE,
+        allowNull: false,
+    },
     budgetfinal: {
         type: Sequelize.DOUBLE,
         allowNull: false,
