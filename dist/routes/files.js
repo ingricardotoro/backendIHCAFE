@@ -96,7 +96,7 @@ router.post("/atlas", upload.single("archivo"), /*#__PURE__*/function () {
             }
 
             //res.redirect('http://localhost:3000/project/'+req.body.project_id);
-            res.redirect("http://167.99.15.83:3001/project/" + req.body.project_id);
+            res.redirect("http://190.92.73.69:3001/project/" + req.body.project_id);
             _context.next = 11;
             break;
 
@@ -163,7 +163,7 @@ router.post("/", upload.single("archivo"), /*#__PURE__*/function () {
             }
 
             //res.redirect('http://localhost:3000/project/'+req.body.project_id);
-            res.redirect("http://167.99.15.83:3001/project/" + req.body.project_id);
+            res.redirect("http://190.92.73.69:3001/project/" + req.body.project_id);
             _context2.next = 11;
             break;
 

@@ -633,7 +633,7 @@ export async function AprobarBudgetLinesAtlasbyId(req, res) {
       const result = await BudgetLineAtlas.update(
         {
           status: Nuevo_status,
-          balance: valor,
+          budgetstart: valor,
           comentario: comentario,
         },
         {
