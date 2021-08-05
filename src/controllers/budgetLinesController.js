@@ -18,7 +18,9 @@ export async function budgetLinesbyProjectId(req, res) {
   try {
     const budgetLines = await BudgetLine.findAll({
       include: [Person],
-      order: [["code", "Desc"]],
+      order: [
+        ["code", "Desc"]
+      ],
       where: {
         project_id: id,
       },
@@ -105,25 +107,22 @@ export async function updateBudgetLinesbyProjectIdAndBudgetId(req, res) {
 
   if (project.budget.tipo == "atlas") {
     try {
-      const result = await BudgetlineAtlas.update(
-        {
-          code,
-          description,
-          date_start,
-          date_end,
-          category_id,
-          sub_category_code,
-          account_id,
-          supplier_id,
-          balance
+      const result = await BudgetlineAtlas.update({
+        code,
+        description,
+        date_start,
+        date_end,
+        category_id,
+        sub_category_code,
+        account_id,
+        supplier_id,
+        balance
+      }, {
+        where: {
+          project_id: proyectid,
+          id
         },
-        {
-          where: {
-            project_id: proyectid,
-            id
-          },
-        }
-      );
+      });
 
       if (result) {
         res.json({
@@ -137,29 +136,24 @@ export async function updateBudgetLinesbyProjectIdAndBudgetId(req, res) {
         data: {},
       });
     }
-  }
-
-  else {
+  } else {
     try {
-      const result = await Budgetline.update(
-        {
-          code,
-          description,
-          date_start,
-          date_end,
-          category_id,
-          sub_category_code,
-          account_id,
-          supplier_id,
-          balance
+      const result = await Budgetline.update({
+        code,
+        description,
+        date_start,
+        date_end,
+        category_id,
+        sub_category_code,
+        account_id,
+        supplier_id,
+        balance
+      }, {
+        where: {
+          project_id: proyectid,
+          id
         },
-        {
-          where: {
-            project_id: proyectid,
-            id
-          },
-        }
-      );
+      });
 
       if (result) {
         res.json({
@@ -214,7 +208,9 @@ export async function budgetLinesbyProjectIdCategories(req, res) {
       // attributes: [sequelize.fn('DISTINCT', sequelize.col('category_id')), 'categorias'],
       //attributes: [['category_id','categoria'] ],
 
-      order: [["category_id", "ASC"]],
+      order: [
+        ["category_id", "ASC"]
+      ],
       where: {
         project_id: idPro,
         category_id: idCat,
@@ -254,56 +250,53 @@ export async function createBudgetLines(req, res) {
     dateapproval,*/
   } = req.body;
   try {
-    let newBudgetLine = await Budgetline.create(
-      {
-        code,
-        name,
-        description,
-        date_start,
-        date_end,
-        category_id,
-        sub_category_code,
-        account_id,
-        project_id,
-        user_id,
-        supplier_id,
-        buddgetstart,
-        buddgeupdate,
-        buddgetfinal,
-        balance,
-        status,
-        /*returns,
-        deviation,
-        approval,
-        approvalby_id,
-        dateapproval,*/
-      },
-      {
-        fields: [
-          "code",
-          "name",
-          "description",
-          "date_start",
-          "date_end",
-          "category_id",
-          "sub_category_code",
-          "account_id",
-          "project_id",
-          "user_id",
-          "supplier_id",
-          "buddgetstart",
-          "buddgeupdate",
-          "buddgetfinal",
-          "balance",
-          "status",
-          /*"returns",
-          "deviation",
-          "approval",
-          "approvalby_id",
-          "dateapproval",*/
-        ],
-      }
-    );
+    let newBudgetLine = await Budgetline.create({
+      code,
+      name,
+      description,
+      date_start,
+      date_end,
+      category_id,
+      sub_category_code,
+      account_id,
+      project_id,
+      user_id,
+      supplier_id,
+      buddgetstart,
+      buddgeupdate,
+      buddgetfinal,
+      balance,
+      status,
+      /*returns,
+      deviation,
+      approval,
+      approvalby_id,
+      dateapproval,*/
+    }, {
+      fields: [
+        "code",
+        "name",
+        "description",
+        "date_start",
+        "date_end",
+        "category_id",
+        "sub_category_code",
+        "account_id",
+        "project_id",
+        "user_id",
+        "supplier_id",
+        "buddgetstart",
+        "buddgeupdate",
+        "buddgetfinal",
+        "balance",
+        "status",
+        /*"returns",
+        "deviation",
+        "approval",
+        "approvalby_id",
+        "dateapproval",*/
+      ],
+    });
 
     if (newBudgetLine) {
       //acutualizamos la base de datos , el balance y el budget star, ya que solo es soliictado
@@ -325,15 +318,12 @@ export async function createBudgetLines(req, res) {
           parseFloat(Budgetstart_old) + parseFloat(buddgetstart);
         const newBalance = parseFloat(balance_old) + parseFloat(balance);
 
-        const result_update = await Budget.update(
-          {
-            buddgetstart: newBudgetStar,
-            balance: newBalance,
-          },
-          {
-            where: { id: project_budget.budget.id },
-          }
-        );
+        const result_update = await Budget.update({
+          buddgetstart: newBudgetStar,
+          balance: newBalance,
+        }, {
+          where: { id: project_budget.budget.id },
+        });
 
         if (result_update) {
           res.json({
@@ -381,15 +371,12 @@ export async function AprobarBudgetLinesbyId(req, res) {
     }
 
     try {
-      const result = await Budgetline.update(
-        {
-          status: Nuevo_status,
-          balance: valor,
-        },
-        {
-          where: { id },
-        }
-      );
+      const result = await Budgetline.update({
+        status: Nuevo_status,
+        balance: valor,
+      }, {
+        where: { id },
+      });
 
       if (result) {
         res.json({
@@ -454,62 +441,59 @@ export async function createBudgetLinesAtlas(req, res) {
     comentario,
   } = req.body;
   try {
-    let newBudgetLineAtlas = await BudgetLineAtlas.create(
-      {
-        code_resultado,
-        code_producto,
-        code_activity,
-        code_atlas,
-        code_sub_atlas,
-        code,
-        details,
-        date_start,
-        date_end,
-        account_id,
-        project_id,
-        user_id,
-        supplier_id,
-        budgetstart,
-        budgeupdate,
-        budgetfinal,
-        balance,
-        returns,
-        deviation,
-        status,
-        approval,
-        approvalby_id,
-        dateapproval,
-        comentario,
-      },
-      {
-        fields: [
-          "code_resultado",
-          "code_producto",
-          "code_activity",
-          "code_atlas",
-          "code_sub_atlas",
-          "code",
-          "details",
-          "date_start",
-          "date_end",
-          "account_id",
-          "project_id",
-          "user_id",
-          "supplier_id",
-          "budgetstart",
-          "budgeupdate",
-          "budgetfinal",
-          "balance",
-          "returns",
-          "deviation",
-          "status",
-          "approval",
-          "approvalby_id",
-          "dateapproval",
-          "comentario",
-        ],
-      }
-    );
+    let newBudgetLineAtlas = await BudgetLineAtlas.create({
+      code_resultado,
+      code_producto,
+      code_activity,
+      code_atlas,
+      code_sub_atlas,
+      code,
+      details,
+      date_start,
+      date_end,
+      account_id,
+      project_id,
+      user_id,
+      supplier_id,
+      budgetstart,
+      budgeupdate,
+      budgetfinal,
+      balance,
+      returns,
+      deviation,
+      status,
+      approval,
+      approvalby_id,
+      dateapproval,
+      comentario,
+    }, {
+      fields: [
+        "code_resultado",
+        "code_producto",
+        "code_activity",
+        "code_atlas",
+        "code_sub_atlas",
+        "code",
+        "details",
+        "date_start",
+        "date_end",
+        "account_id",
+        "project_id",
+        "user_id",
+        "supplier_id",
+        "budgetstart",
+        "budgeupdate",
+        "budgetfinal",
+        "balance",
+        "returns",
+        "deviation",
+        "status",
+        "approval",
+        "approvalby_id",
+        "dateapproval",
+        "comentario",
+      ],
+    });
 
     if (newBudgetLineAtlas) {
       //acutualizamos la base de datos , el balance y el budget star, ya que solo es soliictado
@@ -531,15 +515,12 @@ export async function createBudgetLinesAtlas(req, res) {
           parseFloat(Budgetstart_old) + parseFloat(budgetstart);
         const newBalance = parseFloat(balance_old) + parseFloat(balance);
 
-        const result_update = await Budget.update(
-          {
-            budgetstart: newBudgetStar,
-            balance: newBalance,
-          },
-          {
-            where: { id: project_budget.budget.id },
-          }
-        );
+        const result_update = await Budget.update({
+          budgetstart: newBudgetStar,
+          balance: newBalance,
+        }, {
+          where: { id: project_budget.budget.id },
+        });
 
         if (result_update) {
           res.json({
@@ -580,7 +561,9 @@ export async function budgetLinesAtlasbyProjectId(req, res) {
   try {
     const budgetLines_atlas = await BudgetLineAtlas.findAll({
       include: [Person, AtlasAccount],
-      order: [["id", "DESC"]],
+      order: [
+        ["id", "DESC"]
+      ],
       where: {
         project_id: id,
       },
@@ -630,16 +613,13 @@ export async function AprobarBudgetLinesAtlasbyId(req, res) {
     }
 
     try {
-      const result = await BudgetLineAtlas.update(
-        {
-          status: Nuevo_status,
-          budgetstart: valor,
-          comentario: comentario,
-        },
-        {
-          where: { id },
-        }
-      );
+      const result = await BudgetLineAtlas.update({
+        status: Nuevo_status,
+        budgetstart: valor,
+        comentario: comentario,
+      }, {
+        where: { id },
+      });
 
       if (result) {
         res.json({
@@ -727,7 +707,9 @@ export async function budgets_by_projectid_and_atlasaccountid(req, res) {
         status: "Aprobado"
       },
 
-      order: [["id", "DESC"]],
+      order: [
+        ["id", "DESC"]
+      ],
 
     });
     res.json({
@@ -784,8 +766,6 @@ export async function findAtlasAccountsByProjAct(req, res) {
 /************************************ */
 
 
-
-
 /* Reporte ATLAS semanal para las graficas del dashboard */
 export async function GraficaAtlasByProjectID(req, res) {
 
@@ -816,7 +796,6 @@ export async function GraficaAtlasByProjectID(req, res) {
   } catch (error) {
     console.log("ERROR AL QUERE LISTAR  Grafica_atlas_by_project:" + error);
   }
-
 }
 
 /* Reporte NO ATLAS semanal para las graficas del dashboard */

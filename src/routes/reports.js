@@ -17,7 +17,7 @@ import {
 
 //router.get('/fetch-pdf', fetchPdf);
 
-router.get('/reportepdf', reportepdf);
+//router.get('/reportepdf', reportepdf);
 
 
 

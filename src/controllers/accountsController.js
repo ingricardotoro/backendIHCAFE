@@ -1,4 +1,3 @@
-
 import Account from '../models/Account'
 import Coin from '../models/Coin'
 import User from '../models/User'
@@ -25,26 +24,23 @@ export async function CreateAccount(req, res) {
         person_id
     } = req.body;
     try {
-        let newAccount = await Account.create(
-            {
-                name,
-                description,
-                initialbalance: 0.0,
-                actualbalance: 0.0,
-                coin_id,
-                person_id
-            },
-            {
-                fields: [
-                    "name",
-                    "description",
-                    "initialbalance",
-                    "actualbalance",
-                    "coin_id",
-                    "person_id"
-                ],
-            }
-        );
+        let newAccount = await Account.create({
+            name,
+            description,
+            initialbalance: 0.0,
+            actualbalance: 0.0,
+            coin_id,
+            person_id
+        }, {
+            fields: [
+                "name",
+                "description",
+                "initialbalance",
+                "actualbalance",
+                "coin_id",
+                "person_id"
+            ],
+        });
 
         if (newAccount) {
             return res.json({

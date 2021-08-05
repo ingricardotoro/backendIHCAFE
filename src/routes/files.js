@@ -52,30 +52,27 @@ router.post("/atlas", upload.single("archivo"), async function (req, res, next) 
   console.log(req.file);
   const dir = "files/";
   try {
-    let newFile = await Archivo.create(
-      {
-        filename: req.file.filename,
-        filedir: dir,
-        description: req.body.file_name,
-        fase: req.body.fase,
-        budget_id: req.body.budget_id,
-        budgetlineatlas_id: req.body.budgetlineatlas_id,
-      },
-      {
-        fields: [
-          "filename",
-          "filedir",
-          "description",
-          "fase",
-          "budget_id",
-          "budgetlineatlas_id",
-        ],
-      }
-    );
+    let newFile = await Archivo.create({
+      filename: req.file.filename,
+      filedir: dir,
+      description: req.body.file_name,
+      fase: req.body.fase,
+      budget_id: req.body.budget_id,
+      budgetlineatlas_id: req.body.budgetlineatlas_id,
+    }, {
+      fields: [
+        "filename",
+        "filedir",
+        "description",
+        "fase",
+        "budget_id",
+        "budgetlineatlas_id",
+      ],
+    });
 
     if (newFile) {
       //res.redirect('http://localhost:3000/project/'+req.body.project_id);
-      res.redirect("http://190.92.73.69:3001/project/" + req.body.project_id);
+      res.redirect("http://167.99.15.83/project/" + req.body.project_id);
     } else {
       return res.json({
         message: "No se Pudo Crear el Nuevo Archivo",
@@ -96,30 +93,27 @@ router.post("/", upload.single("archivo"), async function (req, res, next) {
   console.log(req.file);
   const dir = "files/";
   try {
-    let newFile = await Archivo_Estandar.create(
-      {
-        filename: req.file.filename,
-        filedir: dir,
-        description: req.body.file_name,
-        fase: req.body.fase,
-        budget_id: req.body.budget_id,
-        budgetline_id: req.body.budgetline_id,
-      },
-      {
-        fields: [
-          "filename",
-          "filedir",
-          "description",
-          "fase",
-          "budget_id",
-          "budgetline_id",
-        ],
-      }
-    );
+    let newFile = await Archivo_Estandar.create({
+      filename: req.file.filename,
+      filedir: dir,
+      description: req.body.file_name,
+      fase: req.body.fase,
+      budget_id: req.body.budget_id,
+      budgetline_id: req.body.budgetline_id,
+    }, {
+      fields: [
+        "filename",
+        "filedir",
+        "description",
+        "fase",
+        "budget_id",
+        "budgetline_id",
+      ],
+    });
 
     if (newFile) {
       //res.redirect('http://localhost:3000/project/'+req.body.project_id);
-      res.redirect("http://190.92.73.69:3001/project/" + req.body.project_id);
+      res.redirect("http://167.99.15.83/project/" + req.body.project_id);
     } else {
       return res.json({
         message: "No se Pudo Crear el Nuevo Archivo",
