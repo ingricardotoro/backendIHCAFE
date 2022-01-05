@@ -358,40 +358,35 @@ export async function createBudgetLines(req, res) {
 }
 
 export async function AprobarBudgetLinesbyId(req, res) {
-  let Nuevo_status = "";
 
-  const { id, status, valor } = req.params;
+  const { id, code, valor, fecha } = req.params;
+  const Nuevo_status = "Ejecutado";
 
-  if (status != 0) {
-    if (status == "1") {
-      Nuevo_status = "Aprobado";
-    }
-    if (status == "2") {
-      Nuevo_status = "No Aprobado";
-    }
+  try {
+    const result = await Budgetline.update({
+      status: Nuevo_status,
+      balance: valor,
+      code: code,
+      date_start: fecha
+    }, {
+      where: { id },
+    });
 
-    try {
-      const result = await Budgetline.update({
-        status: Nuevo_status,
-        balance: valor,
-      }, {
-        where: { id },
-      });
-
-      if (result) {
-        res.json({
-          message: "Actualizado Satifactoriamente",
-        });
-      }
-    } catch (erro) {
-      console.log(erro);
-      return res.json({
-        message: "Something Wrong in Update",
-        data: {},
+    if (result) {
+      console.log('EXITO')
+      res.json({
+        message: "Actualizado Satifactoriamente",
       });
     }
+  } catch (erro) {
+    console.log(erro);
+    return res.json({
+      message: "Something Wrong in Update",
+      data: {},
+    });
   }
 }
+
 
 //funcion para eliminar un budgetLine
 export async function deleteBudgetLines(req, res) {

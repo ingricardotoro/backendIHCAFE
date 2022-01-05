@@ -49,7 +49,7 @@ router.put("/update/:proyectid/:id", updateBudgetLinesbyProjectIdAndBudgetId);
 
 
 // ruta para actualizar el status del budget line por ser aprobado
-router.post("/aprobar/:id/:status/:valor/:comentario", AprobarBudgetLinesbyId);
+router.post("/aprobar/:id/:code/:valor/:fecha", AprobarBudgetLinesbyId);
 
 // ruta para actualizar el status del budget line por ser aprobado
 router.post(
