@@ -360,11 +360,10 @@ export async function createBudgetLines(req, res) {
 export async function AprobarBudgetLinesbyId(req, res) {
 
   const { id, code, valor, fecha } = req.params;
-  const Nuevo_status = "Ejecutado";
 
   try {
     const result = await Budgetline.update({
-      status: Nuevo_status,
+      status: 'Ejecutado',
       balance: valor,
       code: code,
       date_start: fecha
