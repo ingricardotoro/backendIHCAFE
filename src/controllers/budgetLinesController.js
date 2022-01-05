@@ -360,6 +360,7 @@ export async function createBudgetLines(req, res) {
 export async function AprobarBudgetLinesbyId(req, res) {
 
   const { id, code, valor, fecha } = req.params;
+  console.log('ID=' + id + ' code=' + code + ' valor=' + valor + 'fecha=' + fecha)
 
   try {
     const result = await Budgetline.update({
@@ -371,11 +372,16 @@ export async function AprobarBudgetLinesbyId(req, res) {
       where: { id },
     });
 
+    console.log(result)
+
     if (result) {
       console.log('EXITO')
       res.json({
         message: "Actualizado Satifactoriamente",
       });
+    } else {
+      console.log('NOOOOOOO ')
+
     }
   } catch (erro) {
     console.log(erro);
