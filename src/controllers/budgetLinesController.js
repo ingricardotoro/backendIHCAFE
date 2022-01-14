@@ -127,6 +127,7 @@ export async function updateBudgetLinesbyProjectIdAndBudgetId(req, res) {
       if (result) {
         res.json({
           message: "REnglon Presupuestario Atlas Actualizado Satifactoriamente",
+          ok: true
         });
       }
     } catch (erro) {
@@ -134,6 +135,7 @@ export async function updateBudgetLinesbyProjectIdAndBudgetId(req, res) {
       return res.json({
         message: "Something Wrong in Update",
         data: {},
+        ok: false
       });
     }
   } else {
@@ -158,6 +160,7 @@ export async function updateBudgetLinesbyProjectIdAndBudgetId(req, res) {
       if (result) {
         res.json({
           message: "REnglon Presupuestario Estandar Actualizado Satifactoriamente",
+          ok: true
         });
       }
     } catch (erro) {
@@ -165,6 +168,8 @@ export async function updateBudgetLinesbyProjectIdAndBudgetId(req, res) {
       return res.json({
         message: "Something Wrong in Update",
         data: {},
+        ok: false
+
       });
     }
   }
@@ -328,6 +333,7 @@ export async function createBudgetLines(req, res) {
         if (result_update) {
           res.json({
             message: "BudgetStarNEW Actualizado Satifactoriamente",
+            ok: true
           });
         }
       } catch (erro) {
@@ -335,17 +341,20 @@ export async function createBudgetLines(req, res) {
         return res.json({
           message: "Something Wrong in Update BudgetLine",
           data: {},
+          ok: false
         });
       }
 
       return res.json({
         message: "Renglon Presupuestario Creado Exitosamente",
         data: newBudgetLine,
+        ok: true
       });
     } else {
       return res.json({
         message: "No se Pudo Crear el Nuevo Renglon Presupuestario",
         data: {},
+        ok: false
       });
     }
   } catch (error) {
@@ -353,6 +362,7 @@ export async function createBudgetLines(req, res) {
     res.status(500).json({
       message: "Error al crear nuevo Renglon Presupuestario",
       data: {},
+      ok: false
     });
   }
 }
@@ -378,6 +388,7 @@ export async function AprobarBudgetLinesbyId(req, res) {
       console.log('EXITO')
       res.json({
         message: "Actualizado Satifactoriamente",
+        ok: true
       });
     } else {
       console.log('NOOOOOOO ')
@@ -388,6 +399,7 @@ export async function AprobarBudgetLinesbyId(req, res) {
     return res.json({
       message: "Something Wrong in Update",
       data: {},
+      ok: false
     });
   }
 }
@@ -405,6 +417,7 @@ export async function deleteBudgetLines(req, res) {
     res.json({
       message: "BudgetLine Eliminado Satifactoriamente",
       count: deleteRowCount,
+      ok: true
     });
   } catch (error) {
     console.log("ERROR AL QUERE ELIMINAR EL BudgetLine:" + error);
