@@ -25,7 +25,7 @@ export async function budgetLinesbyProjectId(req, res) {
                 project_id: id,
             },
         });
-        console.log(budgetLines);
+
         res.json({
             budgetLines,
         });
@@ -197,8 +197,8 @@ export async function budgetLinesbyProjectIdCategories(req, res) {
     try {
         const budgetLinesCat = await Budgetline.findAll({
             /* include: [
-                      { model: Category, where: { id: idCat }}
-                   ], */
+                            { model: Category, where: { id: idCat }}
+                         ], */
             include: [Category, Person],
             // attributes: [sequelize.fn('DISTINCT', sequelize.col('category_id')), 'categorias'],
             //attributes: [['category_id','categoria'] ],
@@ -239,10 +239,10 @@ export async function createBudgetLines(req, res) {
         balance,
         status,
         /*returns,
-        deviation,
-        approval,
-        approvalby_id,
-        dateapproval,*/
+            deviation,
+            approval,
+            approvalby_id,
+            dateapproval,*/
     } = req.body;
     try {
         let newBudgetLine = await Budgetline.create({
@@ -740,23 +740,23 @@ export async function findAtlasAccountsByProjAct(req, res) {
 
         /*const atlasaccounts = await BudgetLineAtlas.findAll({
 
-          attributes: [[sequelize["default"].fn('DISTINCT', sequelize["default"].col('budgetlines_atlas.code_atlas')), 'code_atlas2']],
+              attributes: [[sequelize["default"].fn('DISTINCT', sequelize["default"].col('budgetlines_atlas.code_atlas')), 'code_atlas2']],
 
-          include: [{
-            model: AtlasAccount,
-            attributes: ["name", "code"]
-          }],
+              include: [{
+                model: AtlasAccount,
+                attributes: ["name", "code"]
+              }],
 
-          where: {
-            project_id: project_id,
-            status: "Aprobado",
-            code_activity: code_activity
-          }
+              where: {
+                project_id: project_id,
+                status: "Aprobado",
+                code_activity: code_activity
+              }
 
-        });
-        res.json({
-          atlasaccounts,
-        });*/
+            });
+            res.json({
+              atlasaccounts,
+            });*/
     } catch (error) {
         console.log('ERROR AL QUERE LISTAR findAtlasAccountsByProjAct:' + error);
     }
