@@ -21,7 +21,7 @@ const corsOptions = {
         if (whiteList.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
-            callback(new Error('Not Allow by CORS'));
+            callback(new Error('Not Allow by CORS2'));
         }
     },
 };
