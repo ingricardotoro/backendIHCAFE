@@ -9,7 +9,7 @@ import path from 'path';
 //importamos el middleare core para el enlace entre servidores
 import cors from 'cors';
 
-const whiteList = ['http://167.99.15.83:4000'];
+const whiteList = ['http://167.99.15.83', 'http://localhost:3001'];
 
 const corsOptions = {
     origin: function(origin, callback) {
