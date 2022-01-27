@@ -10,10 +10,10 @@ import path from 'path';
 import cors from 'cors';
 
 const whiteList = [
-    'http://sipa.ihcafe.hn',
-    'http://167.99.15.83',
-    'http://167.99.15.83:80',
-    'http://167.99.15.83:8080',
+    'https://sipa.ihcafe.hn',
+    'https://167.99.15.83',
+    'https://167.99.15.83:80',
+    'https://167.99.15.83:8080',
     'http://localhost:3001',
 ];
 
