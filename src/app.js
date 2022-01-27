@@ -28,6 +28,7 @@ import cors from 'cors';
 }; */
 
 //Import Routes
+import inicioRoutes from './routes/inicio';
 import projectRoutes from './routes/projects';
 import budgetstRoutes from './routes/budgets';
 import budgetLinesRoutes from './routes/budgetslines';
@@ -59,6 +60,7 @@ app.use(cors());
 app.use(json()); // para entender archivos json
 
 //routes
+app.use('/api', inicioRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/budgets', budgetstRoutes);
 app.use('/api/budgetlines', budgetLinesRoutes);
