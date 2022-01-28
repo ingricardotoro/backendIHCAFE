@@ -11,7 +11,9 @@ import cors from 'cors';
 
 const whiteList = [
     'http://167.99.15.83',
+    'https://167.99.15.83',
     'http://167.99.15.83:4000/api',
+    'https://167.99.15.83:4000/api',
     'http://localhost:3001',
 ];
 
