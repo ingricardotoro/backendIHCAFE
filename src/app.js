@@ -9,15 +9,13 @@ import path from 'path';
 //importamos el middleare core para el enlace entre servidores
 import cors from 'cors';
 
-/*const whiteList = [
-    'https://sipa.ihcafe.hn',
-    'https://167.99.15.83',
-    'https://167.99.15.83:80',
-    'https://167.99.15.83:8080',
+const whiteList = [
+    'http://167.99.15.83',
+    'http://167.99.15.83:4000/api',
     'http://localhost:3001',
 ];
 
- const corsOptions = {
+const corsOptions = {
     origin: function(origin, callback) {
         if (whiteList.indexOf(origin) !== -1) {
             callback(null, true);
@@ -25,7 +23,7 @@ import cors from 'cors';
             callback(new Error('Not Allow by CORS2'));
         }
     },
-}; */
+};
 
 //Import Routes
 import inicioRoutes from './routes/inicio';
@@ -60,24 +58,24 @@ app.use(cors());
 app.use(json()); // para entender archivos json
 
 //routes
-app.use('/api', inicioRoutes);
-app.use('/api/projects', projectRoutes);
-app.use('/api/budgets', budgetstRoutes);
-app.use('/api/budgetlines', budgetLinesRoutes);
-app.use('/api/categories', categoriesRoutes);
-app.use('/api/teams', teamsRoutes);
-app.use('/api/teammembers', teamMembersRoutes);
-app.use('/api/roles', rolesRoutes);
-app.use('/api/accounts', accountsRoutes);
-app.use('/api/atlas', atlasRoutes);
-app.use('/api/tasks', taskRoutes);
-app.use('/api/suppliers', suppliersRoutes);
-app.use('/api/files', filesRoutes);
-app.use('/api/coins', coinsRoutes);
-app.use('/api/conversions', conversionsRoutes);
-app.use('/api/reports', reportsRoutes);
-app.use('/api/users', usersRoutes);
-app.use('/api/tipousers', tipousersRoutes);
+app.use('/api', corsOptions, inicioRoutes);
+app.use('/api/projects', corsOptions, projectRoutes);
+app.use('/api/budgets', corsOptions, budgetstRoutes);
+app.use('/api/budgetlines', corsOptions, budgetLinesRoutes);
+app.use('/api/categories', corsOptions, categoriesRoutes);
+app.use('/api/teams', corsOptions, teamsRoutes);
+app.use('/api/teammembers', corsOptions, teamMembersRoutes);
+app.use('/api/roles', corsOptions, rolesRoutes);
+app.use('/api/accounts', corsOptions, accountsRoutes);
+app.use('/api/atlas', corsOptions, atlasRoutes);
+app.use('/api/tasks', corsOptions, taskRoutes);
+app.use('/api/suppliers', corsOptions, suppliersRoutes);
+app.use('/api/files', corsOptions, filesRoutes);
+app.use('/api/coins', corsOptions, coinsRoutes);
+app.use('/api/conversions', corsOptions, conversionsRoutes);
+app.use('/api/reports', corsOptions, reportsRoutes);
+app.use('/api/users', corsOptions, usersRoutes);
+app.use('/api/tipousers', corsOptions, tipousersRoutes);
 
 //crear carpeta publica para el navegador
 //app.use(express.static(path.join(__dirname,'public')));
