@@ -60,24 +60,24 @@ app.use(cors());
 app.use(json()); // para entender archivos json
 
 //routes
-app.use('/api', corsOptions, inicioRoutes);
-app.use('/api/projects', corsOptions, projectRoutes);
-app.use('/api/budgets', corsOptions, budgetstRoutes);
-app.use('/api/budgetlines', corsOptions, budgetLinesRoutes);
-app.use('/api/categories', corsOptions, categoriesRoutes);
-app.use('/api/teams', corsOptions, teamsRoutes);
-app.use('/api/teammembers', corsOptions, teamMembersRoutes);
-app.use('/api/roles', corsOptions, rolesRoutes);
-app.use('/api/accounts', corsOptions, accountsRoutes);
-app.use('/api/atlas', corsOptions, atlasRoutes);
-app.use('/api/tasks', corsOptions, taskRoutes);
-app.use('/api/suppliers', corsOptions, suppliersRoutes);
-app.use('/api/files', corsOptions, filesRoutes);
-app.use('/api/coins', corsOptions, coinsRoutes);
-app.use('/api/conversions', corsOptions, conversionsRoutes);
-app.use('/api/reports', corsOptions, reportsRoutes);
-app.use('/api/users', corsOptions, usersRoutes);
-app.use('/api/tipousers', corsOptions, tipousersRoutes);
+app.use('/api', cors(corsOptions), inicioRoutes);
+app.use('/api/projects', cors(corsOptions), projectRoutes);
+app.use('/api/budgets', cors(corsOptions), budgetstRoutes);
+app.use('/api/budgetlines', cors(corsOptions), budgetLinesRoutes);
+app.use('/api/categories', cors(corsOptions), categoriesRoutes);
+app.use('/api/teams', cors(corsOptions), teamsRoutes);
+app.use('/api/teammembers', cors(corsOptions), teamMembersRoutes);
+app.use('/api/roles', cors(corsOptions), rolesRoutes);
+app.use('/api/accounts', cors(corsOptions), accountsRoutes);
+app.use('/api/atlas', cors(corsOptions), atlasRoutes);
+app.use('/api/tasks', cors(corsOptions), taskRoutes);
+app.use('/api/suppliers', cors(corsOptions), suppliersRoutes);
+app.use('/api/files', cors(corsOptions), filesRoutes);
+app.use('/api/coins', cors(corsOptions), coinsRoutes);
+app.use('/api/conversions', cors(corsOptions), conversionsRoutes);
+app.use('/api/reports', cors(corsOptions), reportsRoutes);
+app.use('/api/users', cors(corsOptions), usersRoutes);
+app.use('/api/tipousers', cors(corsOptions), tipousersRoutes);
 
 //crear carpeta publica para el navegador
 //app.use(express.static(path.join(__dirname,'public')));
