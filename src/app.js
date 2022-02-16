@@ -9,7 +9,7 @@ import path from 'path';
 //importamos el middleare core para el enlace entre servidores
 import cors from 'cors';
 
-const whiteList = [
+/*const whiteList = [
     'http://167.99.15.83',
     'https://167.99.15.83',
     'http://167.99.15.83:4000/api',
@@ -25,7 +25,7 @@ const corsOptions = {
             callback(new Error('Not Allow by CORS2'));
         }
     },
-};
+};*/
 
 //Import Routes
 import inicioRoutes from './routes/inicio';
