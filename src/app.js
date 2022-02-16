@@ -55,7 +55,7 @@ app.set('port', process.env.PORT || 4000);
 
 //middlewares
 app.use(morgan('dev'));
-app.options('*', cors());
+//app.options('*', cors());
 app.use(cors());
 app.use(json()); // para entender archivos json
 
