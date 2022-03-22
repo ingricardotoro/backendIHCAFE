@@ -38,7 +38,7 @@ const BudgetLineAtlas = sequelize.define(
         },
         code_sub_atlas: {
             /*type: Sequelize.STRING, 
-              allowNull: false*/
+                          allowNull: false*/
             type: Sequelize.INTEGER,
             allowNull: false,
             references: {
@@ -105,7 +105,7 @@ const BudgetLineAtlas = sequelize.define(
         },
         budgetactual: {
             type: Sequelize.DOUBLE,
-            allowNull: false,
+            allowNull: true,
         },
         budgetfinal: {
             type: Sequelize.DOUBLE,
