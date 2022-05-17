@@ -104,7 +104,7 @@ router.post(
 );
 
 //Ruta para almacenar el archivo para presupuestos estandar
-router.post('/', upload.single('archivo'), async function(req, res, next) {
+router.post('/', upload.single('file'), async function(req, res, next) {
     console.log(req.file);
     const dir = 'files/';
     try {
