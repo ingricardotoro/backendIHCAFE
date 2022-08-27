@@ -109,9 +109,9 @@ router.post('/', upload.single('file'), async function(req, res, next) {
     const dir = 'files/';
     try {
         let newFile = await Archivo_Estandar.create({
-            filename: req.file.filename,
+            filename: req.body.nombre_archivo,
             filedir: dir,
-            description: req.body.file_name,
+            description: req.body.nombre_archivo,
             fase: req.body.fase_archivo,
             budget_id: req.body.budget_id,
             budgetline_id: req.body.budgetline_id,
